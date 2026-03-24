@@ -1,4 +1,4 @@
-# Berkeley Portfolio Web
+# Portfolio Web
 
 A React-based portfolio website with multiple pages.
 
