@@ -1,0 +1,71 @@
+.portfolio {
+  min-height: 100vh;
+}
+
+/* ── Sections ─────────────────────────────────────────────────────────────── */
+.section {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+.section--hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 5rem;
+  letter-spacing: -3%;
+  /* margin-block-end: 0em; */
+}
+
+.hero-tagline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 540px;
+  text-align: center;
+}
+
+.hero-tagline p {
+  font-family: 'AlteHaas';
+  /* font-size: clamp(0.9rem, 1.4vw, 1rem); */
+  font-size: 1.3rem;
+  color: #313131;
+  /* line-height: 1.6; */
+  letter-spacing: -3%;
+}
+
+.hero-last-line {
+  font-family: 'AlteHaas', sans-serif;
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  color: #313131;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+
+/* ── Placeholder sections ─────────────────────────────────────────────────── */
+.section--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-label {
+  font-family: 'AlteHaas', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: var(--maroon);
+  opacity: 0.4;
+}
