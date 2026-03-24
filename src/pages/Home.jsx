@@ -33,40 +33,30 @@ const Home = () => {
         start: 0,
         end: 'max',
         onUpdate: (self) => {
-          const v = Math.min(Math.abs(self.getVelocity()) / 1500, 1)
-
-          gsap.to('.nav-text.main', {
-            y: 0,
-            duration: 0.2,
-            overwrite: true,
-          })
-
-          gsap.to('.nav-text.trail1', {
-            y: v * 6,
-            x: v * 2,
-            duration: 0.3,
-            overwrite: true,
-          })
-
-          gsap.to('.nav-text.trail2', {
-            y: v * 12,
-            x: v * 4,
-            duration: 0.45,
-            overwrite: true,
-          })
-
+          // Section detection first so velocity suppression uses current section
           const scrollMid = window.scrollY + window.innerHeight * 0.5
           let newActive = 'hero'
-
           for (const { id } of SECTIONS) {
             const el = document.getElementById(id)
             if (el && el.offsetTop <= scrollMid) newActive = id
           }
-
           if (newActive !== trackedSection) {
             trackedSection = newActive
             setActiveSection(newActive)
+            // Immediately cancel in-flight trail tweens at boundary sections
+            if (newActive === 'hero' || newActive === 'playground') {
+              gsap.to('.nav-text.trail1', { y: 0, x: 0, duration: 0.3, overwrite: true })
+              gsap.to('.nav-text.trail2', { y: 0, x: 0, duration: 0.45, overwrite: true })
+            }
           }
+
+          // Suppress trails entirely at hero and playground
+          const suppressTrails = trackedSection === 'hero' || trackedSection === 'playground'
+          const v = suppressTrails ? 0 : Math.min(Math.abs(self.getVelocity()) / 1500, 1)
+
+          gsap.to('.nav-text.main', { y: 0, duration: 0.2, overwrite: true })
+          gsap.to('.nav-text.trail1', { y: v * 6, x: v * 2, duration: 0.3, overwrite: true })
+          gsap.to('.nav-text.trail2', { y: v * 12, x: v * 4, duration: 0.45, overwrite: true })
         },
       })
 
@@ -103,7 +93,7 @@ const Home = () => {
         trigger: lastLineRef.current,
         start: 'top+=20 10%',
         endTrigger: '#playground',
-        end: 'top top',
+        end: 'bottom top',
         pin: true,
         pinSpacing: false,
         pinReparent: true,

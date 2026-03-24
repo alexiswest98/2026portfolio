@@ -6,7 +6,7 @@ const ContactLinks = forwardRef((props, ref) => {
     <div className="contact-links" ref={ref}>
       <a
         className="contact-link"
-        href="https://linkedin.com"
+        href="https://www.linkedin.com/in/alexiswest98/"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -14,7 +14,7 @@ const ContactLinks = forwardRef((props, ref) => {
       </a>
       <a
         className="contact-link"
-        href="https://github.com"
+        href="https://github.com/alexiswest98"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -22,7 +22,7 @@ const ContactLinks = forwardRef((props, ref) => {
       </a>
       <a
         className="contact-link"
-        href="mailto:your@email.com"
+        href="mailto:alexishwest98@gmail.com.com"
       >
         email
       </a>
