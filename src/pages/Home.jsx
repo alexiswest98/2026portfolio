@@ -27,23 +27,20 @@ const Home = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
 
-      // ── 1 + 2. Active section tracker + nav velocity (single onUpdate) ──────
+      // ── 1. Active section + nav velocity ───────────────────────────────
       let trackedSection = 'hero'
       ScrollTrigger.create({
         start: 0,
         end: 'max',
         onUpdate: (self) => {
-          // Nav velocity drop effect
           const v = Math.min(Math.abs(self.getVelocity()) / 1500, 1)
 
-          // main stays tight
           gsap.to('.nav-text.main', {
             y: 0,
             duration: 0.2,
             overwrite: true,
           })
 
-          // trail1 = slight lag
           gsap.to('.nav-text.trail1', {
             y: v * 6,
             x: v * 2,
@@ -51,23 +48,21 @@ const Home = () => {
             overwrite: true,
           })
 
-          // trail2 = more lag
           gsap.to('.nav-text.trail2', {
             y: v * 12,
             x: v * 4,
             duration: 0.45,
             overwrite: true,
           })
-          //to here*********
 
-
-          // Active section: find the last section whose offsetTop <= viewport midpoint
           const scrollMid = window.scrollY + window.innerHeight * 0.5
           let newActive = 'hero'
+
           for (const { id } of SECTIONS) {
             const el = document.getElementById(id)
             if (el && el.offsetTop <= scrollMid) newActive = id
           }
+
           if (newActive !== trackedSection) {
             trackedSection = newActive
             setActiveSection(newActive)
@@ -75,87 +70,69 @@ const Home = () => {
         },
       })
 
-      // ── 3. Hero pin — all elements scroll up together ─────────────────────
+      // ── 2. Hero pin (logo + line1 move together) ───────────────────────
       const heroTl = gsap.timeline({
         scrollTrigger: {
           trigger: heroRef.current,
           start: 'top top',
           end: '+=180%',
           pin: true,
-          scrub: 1,
+          scrub: true,
         },
       })
 
-      // Contact links scroll up and out with the hero content
       heroTl.to(contactRef.current, { y: '-110vh', ease: 'none' }, 0)
 
-      // line1 leads — starts moving first
-      heroTl.to(line1Ref.current, { y: '-55vh', color: '#aaaaaa', ease: 'none' }, 0)
+      heroTl.to(line1Ref.current, {
+        y: '-55vh',
+        color: '#aaaaaa',
+        ease: 'none',
+      }, 0)
 
-      // Logo starts slightly after line1 has begun (overlap)
-      heroTl.to(logoRef.current, { y: '-55vh', opacity: 0, ease: 'none' }, 0.025)
+      heroTl.to(logoRef.current, {
+        y: '-55vh',
+        opacity: 0,
+        ease: 'none',
+      }, 0.025)
 
-      // ── 4. lastLine — dedicated ScrollTrigger, decoupled from heroTl ────────
-      // Driving y manually lets us freeze it precisely at the threshold
-      // without heroTl fighting position: fixed on every scroll tick
-      const freezeTopPx = window.innerHeight * 0.08 // 8vh
-      let lastLineFixed = false
+      // lastLine joins the same timeline at position 0 — perfectly synced with line1 and logo
+      heroTl.to(lastLineRef.current, { y: '-55vh', ease: 'none' }, 0)
 
+      // ── 4. lastLine PIN at ~10vh ───────────────────────────────────────
       ScrollTrigger.create({
-        trigger: heroRef.current,
-        start: 'top top',
-        end: '+=180%',
-        onUpdate: (self) => {
-          if (lastLineFixed) return
-          // lastLine lags behind logo/line1 (kicks in at 15% scroll progress)
-          const p = Math.max(0, (self.progress - 0.15) / 0.85)
-          gsap.set(lastLineRef.current, { y: `${p * -55}vh`, color: '#333333' })
-
-          const rect = lastLineRef.current.getBoundingClientRect()
-          if (rect.top <= freezeTopPx) {
-            lastLineFixed = true
-            gsap.set(lastLineRef.current, {
-              position: 'fixed',
-              top: freezeTopPx,
-              left: '50%',
-              xPercent: -50,
-              y: 0,
-              zIndex: 150,
-            })
-          }
-        },
-        onLeave: () => {
-          if (!lastLineFixed) {
-            lastLineFixed = true
-            gsap.set(lastLineRef.current, {
-              position: 'fixed',
-              top: freezeTopPx,
-              left: '50%',
-              xPercent: -50,
-              y: 0,
-              zIndex: 150,
-            })
-          }
-        },
-        onEnterBack: () => {
-          lastLineFixed = false
-          // clearProps removes all GSAP inline styles — element snaps back to
-          // its natural CSS position (below line1) and onUpdate drives y from there
-          gsap.set(lastLineRef.current, {
-            clearProps: 'position,top,left,xPercent,y,zIndex,opacity',
-          })
-        },
+        trigger: lastLineRef.current,
+        start: 'top+=20 10%',
+        endTrigger: '#playground',
+        end: 'top top',
+        pin: true,
+        pinSpacing: false,
+        pinReparent: true,
       })
 
-      // ── 5. lastLine fades out when playground enters ──────────────────────
+      // ── 5. Optional polish: subtle opacity shift when locking ──────────
+      // gsap.fromTo(
+      //   lastLineRef.current,
+      //   { opacity: 0.6 },
+      //   {
+      //     opacity: 1,
+      //     scrollTrigger: {
+      //       trigger: lastLineRef.current,
+      //       start: 'top 20%',
+      //       end: 'top 10%',
+      //       scrub: true,
+      //     },
+      //   }
+      // )
+
+      // ── 6. Fade out at playground ──────────────────────────────────────
       gsap.to(lastLineRef.current, {
         opacity: 0,
         pointerEvents: 'none',
         scrollTrigger: {
           trigger: '#playground',
           start: 'top 90%',
-          end: 'top 10%',
-          scrub: 0.6,
+          end: 'top 20%',
+          scrub: 0.2,
         },
       })
 
@@ -167,38 +144,41 @@ const Home = () => {
   return (
     <div className="portfolio">
 
-      {/* Fixed UI — nav + contacts */}
+      {/* Fixed UI */}
       <NavSidebar activeSection={activeSection} />
       <ContactLinks ref={contactRef} />
 
-      {/* ── Hero Section ──────────────────────────────────────────────────── */}
+      {/* ── Hero Section ─────────────────────────────────────────────── */}
       <section id="hero" ref={heroRef} className="section section--hero">
         <div className="hero-content">
           <h1 ref={logoRef} className='hero-title'>Alexis West</h1>
-          {/* <img className="hero-logo" ref={logoRef} src="src/assets/namelogo.png" alt="Alexis West" /> */}
+
           <div className="hero-tagline">
-            <p ref={line1Ref}>San Francisco–based UX designer, developer, and <br /> creative technologist crafting digital experiences that feel</p>
-            <p ref={lastLineRef} className="hero-last-line">intuitive, intentional, and quietly human.</p>
+            <p ref={line1Ref}>
+              San Francisco–based UX designer, developer, and <br />
+              creative technologist crafting digital experiences that feel
+            </p>
+
+            <p ref={lastLineRef} className="hero-last-line">
+              intuitive, intentional, and quietly human.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ── Case Study 0 ──────────────────────────────────────────────────── */}
+      {/* Sections */}
       <section id="case-study-0" className="section section--placeholder">
         <p className="placeholder-label">CASE STUDY 0</p>
       </section>
 
-      {/* ── Case Study 1 ──────────────────────────────────────────────────── */}
       <section id="case-study-1" className="section section--placeholder">
         <p className="placeholder-label">CASE STUDY 1</p>
       </section>
 
-      {/* ── Case Study 2 ──────────────────────────────────────────────────── */}
       <section id="case-study-2" className="section section--placeholder">
         <p className="placeholder-label">CASE STUDY 2</p>
       </section>
 
-      {/* ── Playground ────────────────────────────────────────────────────── */}
       <section id="playground" className="section section--placeholder">
         <p className="placeholder-label">PLAYGROUND MODE</p>
       </section>

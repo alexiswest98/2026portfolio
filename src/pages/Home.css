@@ -53,6 +53,8 @@
   color: #313131;
   line-height: 1.7;
   white-space: nowrap;
+  position: relative;
+  text-align: center;
 }
 
 /* ── Placeholder sections ─────────────────────────────────────────────────── */
