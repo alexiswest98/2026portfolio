@@ -21,12 +21,21 @@ const NavSidebar = ({ activeSection }) => {
   return (
     <nav className="nav-sidebar">
       {NAV_ITEMS.map(({ label, id }) => (
+        // <button
+        //   key={id}
+        //   className={`nav-item ${activeSection === id ? 'nav-item--active' : ''}`}
+        //   onClick={() => handleClick(id)}
+        // >
+        //   {label}
+        // </button>
         <button
           key={id}
           className={`nav-item ${activeSection === id ? 'nav-item--active' : ''}`}
           onClick={() => handleClick(id)}
         >
-          {label}
+          <span className="nav-text main">{label}</span>
+          <span className="nav-text trail trail1">{label}</span>
+          <span className="nav-text trail trail2">{label}</span>
         </button>
       ))}
     </nav>

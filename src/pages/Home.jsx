@@ -33,13 +33,33 @@ const Home = () => {
         start: 0,
         end: 'max',
         onUpdate: (self) => {
-          // Nav velocity drop shadow
-          const v = Math.min(Math.abs(self.getVelocity()) / 2000, 1)
-          gsap.to('.nav-item', {
-            textShadow: `0 0 ${v * 12}px rgba(0, 34, 255, ${v * 2})`,
-            duration: 0.1,
+          // Nav velocity drop effect
+          const v = Math.min(Math.abs(self.getVelocity()) / 1500, 1)
+
+          // main stays tight
+          gsap.to('.nav-text.main', {
+            y: 0,
+            duration: 0.2,
             overwrite: true,
           })
+
+          // trail1 = slight lag
+          gsap.to('.nav-text.trail1', {
+            y: v * 6,
+            x: v * 2,
+            duration: 0.3,
+            overwrite: true,
+          })
+
+          // trail2 = more lag
+          gsap.to('.nav-text.trail2', {
+            y: v * 12,
+            x: v * 4,
+            duration: 0.45,
+            overwrite: true,
+          })
+          //to here*********
+
 
           // Active section: find the last section whose offsetTop <= viewport midpoint
           const scrollMid = window.scrollY + window.innerHeight * 0.5
