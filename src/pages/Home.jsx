@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
 import NavSidebar from '../components/NavSidebar'
 import ContactLinks from '../components/ContactLinks'
+import readBetweenLogo from '../assets/ReadBetweenLogo.png';
 import './Home.css'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin)
 
 const SECTIONS = [
   { id: 'hero' },
@@ -17,12 +20,23 @@ const SECTIONS = [
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState('hero')
+  const location = useLocation()
 
   const heroRef = useRef(null)
   const logoRef = useRef(null)
   const line1Ref = useRef(null)
   const lastLineRef = useRef(null)
   const contactRef = useRef(null)
+
+  // Scroll to section when navigating back from a case study page
+  useEffect(() => {
+    const target = location.state?.scrollTo
+    if (!target) return
+    requestAnimationFrame(() => {
+      const el = document.getElementById(target)
+      if (el) window.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
+    })
+  }, [location.state])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -71,7 +85,40 @@ const Home = () => {
         },
       })
 
-      heroTl.to(contactRef.current, { y: '-110vh', ease: 'none' }, 0)
+      // Contact links: hold position while title starts moving, then scramble to binary + slide out
+      const binaryMap = { linkedin: '10110110', github: '011010', email: '01110' }
+      const linkEls = Array.from(contactRef.current.querySelectorAll('.contact-link'))
+      const originalTexts = linkEls.map((el) => el.textContent.trim())
+
+      // Scramble fires as a real-time tween (not scrubbed) so rightToLeft works correctly.
+      // Triggers at ~36% of the 180% hero pin scroll (≈ 65vh past hero top).
+      ScrollTrigger.create({
+        trigger: heroRef.current,
+        start: 'top+=65% top',
+        onEnter: () => {
+          linkEls.forEach((el, i) => {
+            gsap.to(el, {
+              duration: 0.5,
+              scrambleText: {
+                text: binaryMap[originalTexts[i].toLowerCase()] ?? '01010101',
+                rightToLeft: true,
+                chars: '01',
+                speed: 1.5,
+                revealDelay: 0.2,
+              },
+            })
+          })
+        },
+        onLeaveBack: () => {
+          linkEls.forEach((el, i) => {
+            gsap.killTweensOf(el)
+            el.textContent = originalTexts[i]
+          })
+        },
+      })
+
+      // Scrubbed exit: y + opacity (starts at same scroll point as scramble trigger)
+      heroTl.to(contactRef.current, { y: '-110vh', opacity: 0, ease: 'none', duration: 0.35 }, 0.27)
 
       heroTl.to(line1Ref.current, {
         y: '-55vh',
@@ -91,7 +138,7 @@ const Home = () => {
       // ── 4. lastLine PIN at ~10vh ───────────────────────────────────────
       ScrollTrigger.create({
         trigger: lastLineRef.current,
-        start: 'top+=20 10%',
+        start: 'top 7%',
         endTrigger: '#playground',
         end: 'bottom top',
         pin: true,
@@ -120,7 +167,7 @@ const Home = () => {
         pointerEvents: 'none',
         scrollTrigger: {
           trigger: '#playground',
-          start: 'top 90%',
+          start: 'top 80%',
           end: 'top 20%',
           scrub: 0.2,
         },
@@ -144,7 +191,7 @@ const Home = () => {
           <h1 ref={logoRef} className='hero-title'>Alexis West</h1>
 
           <div className="hero-tagline">
-            <p ref={line1Ref}>
+            <p ref={line1Ref} className='hero-second-line'>
               San Francisco–based UX designer, developer, and <br />
               creative technologist crafting digital experiences that feel
             </p>
@@ -159,14 +206,28 @@ const Home = () => {
       {/* Sections */}
       <section id="case-study-0" className="section section--placeholder">
         <p className="placeholder-label">CASE STUDY 0</p>
+        <div>
+          <div>
+            <img src={readBetweenLogo} alt="Read Between logo" className='rb-logo'/>
+            <p>A transparency-first news chrome extension that helps users evaluate articles in under 60 seconds.</p>
+            <h3>Problem: Readers lack fast, reliable ways to evaluate news credibility</h3>
+          </div>
+          <div>
+            <h3>PRODUCT DESIGN · END-TO-END</h3>
+            <iframe style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }} width="800" height="450" src="https://embed.figma.com/proto/R3J73lHqd9VbDAPel9IRPH/ReadingBetween-Mockup?node-id=6-0&viewport=-385%2C-227%2C0.63&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&embed-host=share" allowFullScreen></iframe>
+          </div>
+        </div>
+        <Link to="/case-study-0" className="cs-link">VIEW PROJECT →</Link>
       </section>
 
       <section id="case-study-1" className="section section--placeholder">
         <p className="placeholder-label">CASE STUDY 1</p>
+        <Link to="/case-study-1" className="cs-link">VIEW PROJECT →</Link>
       </section>
 
       <section id="case-study-2" className="section section--placeholder">
         <p className="placeholder-label">CASE STUDY 2</p>
+        <Link to="/case-study-2" className="cs-link">VIEW PROJECT →</Link>
       </section>
 
       <section id="playground" className="section section--placeholder">

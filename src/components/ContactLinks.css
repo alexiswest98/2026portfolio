@@ -1,18 +1,18 @@
 .contact-links {
   position: fixed;
   right: 1.5rem;
-  top: calc(15% - 60px);
+  top: var(--ui-top);
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.6rem;
 }
 
 .contact-link {
   font-family: 'AlteHaas', sans-serif;
-  font-size: 1.2rem;
-  letter-spacing: -3%;
+  font-size: 1.3rem;
+  letter-spacing: -5%;
   color: var(--blue);
   text-decoration: none;
   writing-mode: vertical-rl;

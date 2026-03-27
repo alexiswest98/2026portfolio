@@ -1,4 +1,5 @@
 @import './pages.css';
+@import "tailwindcss";
 
 @font-face {
   font-family: 'AlteHaas';
@@ -23,7 +24,8 @@
 
 :root {
   --blue: #0022FF;
-  --maroon: #8D2645;
+  --maroon: #8E0931;
+  --ui-top: 7vh;
 }
 
 * {
@@ -42,7 +44,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
   color: #000000;
-  background-color: #ffffff;
+  background-color: #FCFAFF;
   background-image:
     linear-gradient(to right, rgba(0, 34, 255, 0.25) 0.5px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 34, 255, 0.1) 1px, transparent 1px);
