@@ -9,22 +9,22 @@
 }
 
 @font-face {
-  font-family: 'DeFonteDemiGras';
-  src: url('../assets/fonts/DeFonte reduced DemiGras.ttf') format('truetype');
+  font-family: 'PlayfairItalic';
+  src: url('../assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
   font-weight: normal;
-  font-style: normal;
+  font-style: italic;
 }
 
 @font-face {
-  font-family: 'DeFonte';
-  src: url('../assets/fonts/DeFonte reduced Normale.ttf') format('truetype');
+  font-family: 'Playfair';
+  src: url('../assets/fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 :root {
-  --blue: #0022FF;
-  --maroon: #8E0931;
+  --blue: #0061D7;
+  --maroon: #5D0062;
   --ui-top: 7vh;
 }
 
@@ -44,11 +44,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
   color: #000000;
-  background-color: #FCFAFF;
-  background-image:
-    linear-gradient(to right, rgba(0, 34, 255, 0.25) 0.5px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 34, 255, 0.1) 1px, transparent 1px);
-  background-size: 25px 25px;
+  background-color: #FCFCFE;
+  /* background-image:
+    linear-gradient(to right, rgba(0, 34, 255, 0.05) 0.5px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 34, 255, 0.08) 1px, transparent 1px);
+  background-size: 25px 25px; */
 }
 
 #root {
