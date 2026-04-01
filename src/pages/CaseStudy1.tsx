@@ -2,14 +2,29 @@ import {
   Users,
   Eye,
   CheckCircle2,
-  TrendingUp,
   BarChart3,
   Target,
   DollarSign,
   ArrowLeft,
 } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './CaseStudy.css'
+import './CaseStudy0.css'
+import './CaseStudy1.css'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const CS1_NAV = [
+  { label: 'Problem',         id: 'cs1-problem' },
+  { label: 'User Research',   id: 'cs1-research' },
+  { label: 'Design Approach', id: 'cs1-design' },
+  { label: 'Design Flows',    id: 'cs1-flows' },
+  { label: 'Measurement',     id: 'cs1-measurement' },
+  { label: 'Reflection',      id: 'cs1-reflection' },
+]
 
 // ── Supporting Components ─────────────────────────────────────────────────────
 
@@ -27,41 +42,35 @@ function UserFeedbackCard({
   isHighlight?: boolean
 }) {
   return (
-    <div
-      className={`${
-        isHighlight
-          ? 'bg-[#8D2645]/5 border-2 border-[#8D2645]'
-          : 'bg-white border border-gray-200'
-      } p-6 rounded-lg`}
-    >
-      <div className="flex items-start gap-3 mb-4">
-        <div className="w-8 h-8 bg-[#0022FF] text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
-          {number}
-        </div>
-        <h4 className="font-semibold text-black leading-tight text-lg">{title}</h4>
+    <div className={`insight-card${isHighlight ? ' insight-card--highlight' : ''}`}>
+      <div className="insight-card__header">
+        <div className="insight-number-badge">{number}</div>
+        <h4 className="insight-card__title">{title}</h4>
       </div>
-
-      <div className="space-y-3 mb-4">
+      <ul className="insight-card__items">
         {quotes.map((quote, idx) => (
-          <div key={idx} className="bg-gray-50 p-3 rounded border-l-2 border-[#0022FF]">
-            <p className="text-sm italic text-[#535252]">"{quote}"</p>
-          </div>
+          <li key={idx} className="insight-card__quote">
+            <p className="insight-card__quote-text">"{quote}"</p>
+          </li>
         ))}
-      </div>
-
-      <p className={`text-sm ${isHighlight ? 'text-black font-medium' : 'text-[#535252]'}`}>
-        {insight}
-      </p>
+      </ul>
+      {isHighlight ? (
+        <div className="insight-card__highlight">
+          <p className="insight-card__highlight-text">{insight}</p>
+        </div>
+      ) : (
+        <p className="insight-card__body-text">{insight}</p>
+      )}
     </div>
   )
 }
 
 function PrincipleCard({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="bg-white p-4 border border-gray-200 rounded-lg flex items-start gap-3">
-      <div className="text-[#0022FF] mt-0.5">{icon}</div>
-      <p className="text-sm text-[#535252]">
-        <strong className="text-black">{text}</strong>
+    <div className="cs1-principle-card">
+      <div className="cs1-principle-card__icon">{icon}</div>
+      <p className="cs1-principle-card__text">
+        <strong>{text}</strong>
       </p>
     </div>
   )
@@ -69,13 +78,9 @@ function PrincipleCard({ icon, text }: { icon: React.ReactNode; text: string }) 
 
 function FlowHeader({ number, title }: { number: string; title: string }) {
   return (
-    <div className="bg-gradient-to-r from-[#0022FF]/10 to-transparent p-6 rounded-lg border-l-4 border-[#0022FF] mb-6">
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-[#0022FF] text-white rounded-full flex items-center justify-center font-bold">
-          {number}
-        </div>
-        <h3 className="text-2xl font-bold text-black">{title}</h3>
-      </div>
+    <div className="cs0-section-header">
+      <div className="arch-stage-badge">{number}</div>
+      <h3 className="cs0-section-header__h2">{title}</h3>
     </div>
   )
 }
@@ -93,33 +98,21 @@ function FlowSection({
   conclusion?: string
   color?: 'red' | 'blue' | 'green'
 }) {
-  const colorMap = {
-    red: { bg: 'bg-[#8D2645]/5', border: 'border-[#8D2645]', text: 'text-[#8D2645]' },
-    blue: { bg: 'bg-[#0022FF]/5', border: 'border-[#0022FF]', text: 'text-[#0022FF]' },
-    green: { bg: 'bg-[#00A20B]/5', border: 'border-[#00A20B]', text: 'text-[#00A20B]' },
-  }
-
-  const colors = colorMap[color]
-
   return (
-    <div className={`${colors.bg} p-6 rounded-lg border-l-4 ${colors.border}`}>
-      <p className={`text-xs font-bold ${colors.text} uppercase tracking-wide mb-3`}>{label}</p>
-      {content && <p className="text-[#535252] mb-3">{content}</p>}
+    <div className={`cs1-flow-section cs1-flow-section--${color}`}>
+      <p className="cs1-flow-section__label">{label}</p>
+      {content && <p className="cs1-flow-section__content">{content}</p>}
       {items && (
-        <ul className="space-y-2">
+        <ul className="cs1-flow-section__items">
           {items.map((item, idx) => (
-            <li key={idx} className="text-sm text-[#535252] flex items-start gap-2">
-              <CheckCircle2 className={`w-4 h-4 ${colors.text} mt-0.5 flex-shrink-0`} />
+            <li key={idx} className="cs1-flow-section__item">
+              <CheckCircle2 className="cs1-flow-section__item-icon" size={16} />
               <span>{item}</span>
             </li>
           ))}
         </ul>
       )}
-      {conclusion && (
-        <p className="text-sm text-black font-medium mt-4 pt-4 border-t border-gray-200">
-          {conclusion}
-        </p>
-      )}
+      {conclusion && <p className="cs1-flow-section__conclusion">{conclusion}</p>}
     </div>
   )
 }
@@ -138,26 +131,21 @@ function MeasurementCard({
   highlight?: string
 }) {
   return (
-    <div className="bg-white p-6 rounded-lg border border-gray-200">
-      <div className="mb-4">
-        <h4 className="text-xl font-semibold text-black mb-1">{title}</h4>
-        <p className="text-sm text-[#535252] italic">{subtitle}</p>
-      </div>
-
-      {description && <p className="text-sm text-[#535252] mb-4">{description}</p>}
-
-      <ul className="space-y-2 mb-4">
+    <div className="cs1-measurement-card">
+      <h4 className="cs1-measurement-card__title">{title}</h4>
+      <p className="cs1-measurement-card__subtitle">{subtitle}</p>
+      {description && <p className="cs1-measurement-card__desc">{description}</p>}
+      <ul className="cs1-measurement-card__items">
         {metrics.map((metric, idx) => (
-          <li key={idx} className="text-sm text-[#535252] flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-[#00A20B] mt-0.5 flex-shrink-0" />
+          <li key={idx} className="cs1-measurement-card__item">
+            <CheckCircle2 className="cs1-measurement-card__item-icon" size={16} />
             <span>{metric}</span>
           </li>
         ))}
       </ul>
-
       {highlight && (
-        <div className="bg-[#00A20B]/5 p-4 rounded border-l-2 border-[#00A20B]">
-          <p className="text-sm italic text-[#535252]">{highlight}</p>
+        <div className="cs1-measurement-card__highlight">
+          <p className="cs1-measurement-card__highlight-text">{highlight}</p>
         </div>
       )}
     </div>
@@ -168,460 +156,482 @@ function MeasurementCard({
 
 const CaseStudy1 = () => {
   const navigate = useNavigate()
+  const [activeSection, setActiveSection] = useState('')
+
+  const handleNavClick = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) window.scrollTo({ top: el.offsetTop - 40, behavior: 'smooth' })
+  }
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      let resetTimer: ReturnType<typeof setTimeout>
+      ScrollTrigger.create({
+        start: 0,
+        end: 'max',
+        onUpdate: (self) => {
+          clearTimeout(resetTimer)
+          const v = Math.min(Math.abs(self.getVelocity()) / 800, 1)
+          gsap.to('.cs0-nav-text.trail1', { y: v * 6, duration: 0.3, overwrite: true })
+          gsap.to('.cs0-nav-text.trail2', { y: v * 12, duration: 0.45, overwrite: true })
+          resetTimer = setTimeout(() => {
+            gsap.to('.cs0-nav-text.trail1', { y: 0, duration: 0.3, overwrite: true })
+            gsap.to('.cs0-nav-text.trail2', { y: 0, duration: 0.45, overwrite: true })
+          }, 120)
+        },
+      })
+
+      CS1_NAV.forEach(({ id }) => {
+        ScrollTrigger.create({
+          trigger: `#${id}`,
+          start: 'top 55%',
+          end: 'bottom 55%',
+          onEnter: () => setActiveSection(id),
+          onEnterBack: () => setActiveSection(id),
+        })
+      })
+    })
+    return () => ctx.revert()
+  }, [])
 
   return (
-    <div className="min-h-screen bg-white case-study">
-      {/* Hero Section */}
-      <header className="bg-black text-white py-20 px-8 md:px-12">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex items-center gap-6 mb-4">
-            <button
-              onClick={() => navigate('/', { state: { scrollTo: 'case-study-1' } })}
-              className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-              aria-label="Go back"
-            >
-              <ArrowLeft className="w-8 h-8" />
-            </button>
-            <h1 className="text-5xl font-bold">Capital One Mobile Experience</h1>
+    <div className="cs0-root case-study">
+      {/* Hero */}
+      <header className="cs0-hero">
+        <button
+          onClick={() => navigate('/', { state: { scrollTo: 'works' } })}
+          className="cs0-hero__back-btn"
+          aria-label="Go back"
+        >
+          <ArrowLeft className="cs0-hero__back-icon" />
+        </button>
+        <div className="cs0-hero__inner">
+          <div className="cs0-hero__top">
+            <h1 className="cs1-hero-title">Capital One Mobile Experience</h1>
+            <p className="cs0-hero__subtitle">
+              Redesigning financial clarity: Making payment status immediately understandable
+            </p>
+            <div>
+              <div className="case-study0-tags-container">
+                <div className="case-study0-tags">UX DESIGN</div>
+                <div className="case-study0-tags">MOBILE</div>
+                <div className="case-study0-tags tag-blue">REDESIGN</div>
+              </div>
+            </div>
           </div>
-          <p className="text-xl text-gray-300 max-w-2xl leading-relaxed ml-14">
-            Redesigning financial clarity: Making payment status immediately understandable
-          </p>
         </div>
       </header>
 
-      <div className="cs-content">
+      <div className="cs0-body">
+        {/* Left nav */}
+        <aside className="cs0-nav-aside">
+          <nav className="cs0-nav">
+            {CS1_NAV.map(({ label, id }) => (
+              <button
+                key={id}
+                className={`cs0-nav-item${activeSection === id ? ' cs0-nav-item--active' : ''}`}
+                onClick={() => handleNavClick(id)}
+              >
+                <span className="cs0-nav-text main">{label}</span>
+                <span className="cs0-nav-text trail trail1">{label}</span>
+                <span className="cs0-nav-text trail trail2">{label}</span>
+              </button>
+            ))}
+          </nav>
+        </aside>
 
-        {/* Problem */}
-        <section>
-          <h2 className="text-3xl font-bold text-black mb-8">Problem</h2>
-          <div className="bg-gray-50 border-l-4 border-black p-8 rounded-r-lg mb-8">
-            <p className="text-lg leading-relaxed text-[#535252]">
-              Financial apps don't just help people manage money — they shape how people{' '}
-              <strong className="text-black">feel about their financial stability.</strong>
-            </p>
-          </div>
+        <div className="cs-content">
 
-          <p className="text-[#535252] mb-6 leading-relaxed">
-            In the Capital One mobile experience, key payment details—minimum payment, due date, and
-            payment status—aren't consistently prioritized in the interface.
-          </p>
-
-          <p className="text-[#535252] mb-6 leading-relaxed">They're technically there, but often:</p>
-
-          <div className="space-y-4 mb-8">
-            <div className="bg-[#8D2645]/10 border-l-4 border-[#8D2645] p-4 rounded-r-lg">
-              <p className="text-[#535252]">Revealed only after interaction</p>
-            </div>
-            <div className="bg-[#8D2645]/10 border-l-4 border-[#8D2645] p-4 rounded-r-lg">
-              <p className="text-[#535252]">Competing with promotional content</p>
-            </div>
-            <div className="bg-[#8D2645]/10 border-l-4 border-[#8D2645] p-4 rounded-r-lg">
-              <p className="text-[#535252]">Positioned lower in the visual hierarchy</p>
-            </div>
-          </div>
-
-          <div className="bg-[#0022FF]/5 p-6 rounded-lg border-l-4 border-[#0022FF]">
-            <p className="text-lg font-semibold text-black">
-              "Am I on track, or do I owe something right now?"
-            </p>
-            <p className="text-sm text-[#535252] mt-2">So something simple becomes effortful</p>
-          </div>
-        </section>
-
-        {/* Why This Matters */}
-        <section>
-          <h2 className="text-3xl font-bold text-black mb-8">Why This Matters</h2>
-
-          <p className="text-lg text-[#535252] mb-8 leading-relaxed">
-            When this question isn't answered immediately, the issue isn't just usability — it's{' '}
-            <strong className="text-black">trust</strong>.
-          </p>
-
-          <div className="bg-white border border-gray-200 p-8 rounded-lg">
-            <h3 className="font-semibold text-black mb-6">In payment flows:</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#0022FF] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#535252]">What shows up first signals what matters</p>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#0022FF] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#535252]">What's hidden creates doubt</p>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#0022FF] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#535252]">What competes for attention creates friction</p>
-              </div>
-            </div>
-            <p className="text-[#535252] mt-6 italic">
-              And when that friction shows up around money, users don't just get annoyed — they start
-              to question the system itself.
-            </p>
-          </div>
-        </section>
-
-        {/* Key Insight */}
-        <section>
-          <div className="bg-[#0022FF] text-white p-8 rounded-xl">
-            <h3 className="text-xl font-semibold mb-4">Key Insight</h3>
-            <p className="text-2xl leading-relaxed">
-              People aren't opening a finance app to explore, they're opening it for{' '}
-              <strong>reassurance.</strong>
-            </p>
-          </div>
-        </section>
-
-        {/* What I Heard from Users */}
-        <section>
-          <div className="flex items-center gap-3 mb-8">
-            <Users className="w-8 h-8 text-black" />
-            <h2 className="text-3xl font-bold text-black">What I Heard from Users</h2>
-          </div>
-
-          <p className="text-[#535252] mb-8 leading-relaxed">
-            I reviewed 50–100 recent app store reviews to understand where the experience breaks down.
-            Three patterns showed up consistently:
-          </p>
-
-          <div className="space-y-8">
-            <UserFeedbackCard
-              number="1"
-              title="Why is the most important info so hard to find?"
-              quotes={[
-                'Features that are highest use are buried',
-                'I have to go through make a payment just to check my balance',
-              ]}
-              insight="Basic financial information requires too much effort to access."
-            />
-            <UserFeedbackCard
-              number="2"
-              title="I just want to manage my money — not fight the UI"
-              quotes={['Bombarded with ads', 'Popups every time']}
-              insight="Promotional content is interrupting high-intent tasks."
-            />
-            <UserFeedbackCard
-              number="3"
-              title="Can I trust what I'm seeing?"
-              quotes={[
-                "Payment wasn't successful but the app adjusted everything",
-                'Feels like a scam',
-              ]}
-              insight="This is the real problem. When payment states aren't clear or reliable, users don't just lose clarity — they lose confidence."
-              isHighlight
-            />
-          </div>
-        </section>
-
-        {/* Design Approach */}
-        <section>
-          <h2 className="text-3xl font-bold text-black mb-8">Design Approach</h2>
-
-          <div className="bg-[#0022FF]/5 p-8 rounded-lg border-l-4 border-[#0022FF] mb-8">
-            <p className="text-lg text-black">
-              Instead of adding features, I focused on restructuring the experience around one goal:
-            </p>
-            <p className="text-xl font-semibold text-black mt-4">
-              Make financial status immediately understandable.
-            </p>
-          </div>
-
-          <h3 className="text-lg font-semibold text-black mb-4">
-            That led to a few guiding decisions:
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <PrincipleCard
-              icon={<Eye className="w-5 h-5" />}
-              text="Show payment status up front, not on demand"
-            />
-            <PrincipleCard
-              icon={<Target className="w-5 h-5" />}
-              text="Align navigation with user intent, not feature lists"
-            />
-            <PrincipleCard
-              icon={<DollarSign className="w-5 h-5" />}
-              text="Separate money tasks from marketing content"
-            />
-            <PrincipleCard
-              icon={<CheckCircle2 className="w-5 h-5" />}
-              text="Make every state (including 'no payment due') explicit and unambiguous"
-            />
-          </div>
-        </section>
-
-        {/* Flows Header */}
-        <section>
-          <div className="bg-gradient-to-r from-[#0022FF] to-[#0022FF]/80 text-white p-8 rounded-xl">
-            <h2 className="text-3xl font-bold mb-2">Design Flows</h2>
-            <p className="text-blue-100">
-              Restructuring key user journeys for clarity and confidence
-            </p>
-          </div>
-        </section>
-
-        {/* Flow 1 */}
-        <section>
-          <FlowHeader number="1" title="Home → Payment Clarity" />
-
-          <div className="space-y-6">
-            <FlowSection
-              label="The Issue"
-              content="The home screen tries to do too much at once. Account data, rewards, and promotions all compete for attention, making it harder to answer the one question users actually care about."
-              color="red"
-            />
-            <FlowSection
-              label="What I Changed"
-              content="I restructured the screen so financial status becomes the entry point:"
-              items={[
-                'Elevated the account card as the primary focus',
-                'Introduced a clear, scannable payment state',
-                'Moved secondary content below the fold',
-                'Reduced visual competition without removing functionality',
-              ]}
-              color="blue"
-            />
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <p className="text-sm font-semibold text-[#535252] mb-3">What This Unlocks</p>
-              <p className="text-[#535252] mb-2">The experience shifts from:</p>
-              <p className="text-[#535252] italic mb-3">"Let me figure this out"</p>
-              <p className="text-[#535252] mb-2">to:</p>
-              <p className="text-black font-semibold">"Got it — I'm good" (or "I need to act")</p>
-              <p className="text-sm text-[#535252] mt-4">
-                That clarity happens immediately, without navigation.
+          {/* ── Problem ─────────────────────────────────────────────────── */}
+          <section id="cs1-problem">
+            <h2 className="cs0-h2">Problem</h2>
+            <div className="cs0-overview-callout">
+              <p className="cs0-overview-callout__text">
+                Financial apps don't just help people manage money — they shape how people{' '}
+                <strong className="cs0-overview-callout__text-stronger">
+                  feel about their financial stability.
+                </strong>
               </p>
             </div>
-            <FlowSection
-              label="Result"
-              content="In usability testing (n=10):"
-              items={[
-                '10/10 users identified their payment status without scrolling',
-                '8/10 users understood their status in under 5 seconds',
-                'No users hesitated before interpreting whether action was needed',
-              ]}
-              conclusion="This confirmed that prioritizing payment hierarchy reduced the need for scanning and interpretation."
-              color="green"
-            />
-          </div>
-        </section>
-
-        {/* Flow 2 */}
-        <section>
-          <FlowHeader number="2" title="Account → Payment & Management" />
-
-          <div className="space-y-6">
-            <FlowSection
-              label="The Issue"
-              content="The account screen functions like a list of features, not a system. Users have to scan, interpret, and piece together where things live — especially when trying to make a payment."
-              color="red"
-            />
-            <FlowSection
-              label="What I Changed"
-              content="I turned the screen into a structured control surface:"
-              items={[
-                'Grouped content by intent (Payments, Transactions, Account, Management)',
-                'Introduced preview → drill-down patterns',
-                'Separated actions from informational content',
-                'Standardized navigation patterns across sections',
-              ]}
-              color="blue"
-            />
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <p className="text-sm font-semibold text-[#535252] mb-3">What This Unlocks</p>
-              <p className="text-[#535252] mb-4">
-                Users no longer have to think about <em>where</em> something is. They just act on
-                intent:
-              </p>
-              <div className="space-y-2">
-                <div className="bg-white p-3 rounded border-l-2 border-[#0022FF]">
-                  <p className="text-sm text-[#535252]">
-                    "I need to pay" → <strong className="text-black">Payments</strong>
-                  </p>
-                </div>
-                <div className="bg-white p-3 rounded border-l-2 border-[#0022FF]">
-                  <p className="text-sm text-[#535252]">
-                    "I want to check activity" → <strong className="text-black">Transactions</strong>
-                  </p>
-                </div>
-                <div className="bg-white p-3 rounded border-l-2 border-[#0022FF]">
-                  <p className="text-sm text-[#535252]">
-                    "I need to change something about my account" →{' '}
-                    <strong className="text-black">Manage Account</strong>
-                  </p>
-                </div>
+            <p className="cs0-intro cs0-intro--mb8">
+              In the Capital One mobile experience, key payment details—minimum payment, due date, and
+              payment status—aren't consistently prioritized in the interface.
+            </p>
+            <p className="cs0-intro cs0-intro--mb8">They're technically there, but often:</p>
+            <div className="cs0-problem-list">
+              <div className="cs1-problem-card">
+                <p className="cs0-problem-card__text">Revealed only after interaction</p>
+              </div>
+              <div className="cs1-problem-card">
+                <p className="cs0-problem-card__text">Competing with promotional content</p>
+              </div>
+              <div className="cs1-problem-card">
+                <p className="cs0-problem-card__text">Positioned lower in the visual hierarchy</p>
               </div>
             </div>
-            <FlowSection
-              label="Result"
-              content="In testing (n=10):"
-              items={[
-                'Users initiated "Make Payment" faster, with reduced navigation backtracking',
-                '9/10 users navigated directly to the correct section on first attempt',
-                'Users no longer relied on trial-and-error to locate actions',
-              ]}
-              conclusion="Grouping by intent improved both speed and confidence in navigation."
-              color="green"
-            />
-          </div>
-        </section>
+            <div className="cs1-flow-section cs1-flow-section--blue cs0-intro--mb8" style={{ marginTop: '2rem' }}>
+              <p className="cs0-overview-callout__text-stronger" style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>
+                "Am I on track, or do I owe something right now?"
+              </p>
+              <p className="insight-card__body-text">So something simple becomes effortful</p>
+            </div>
+          </section>
 
-        {/* Flow 3 */}
-        <section>
-          <FlowHeader number="3" title="Virtual Card → Control & Trust" />
-
-          <div className="space-y-6">
-            <FlowSection
-              label="The Issue"
-              content="Virtual card features exist, but they don't feel like a cohesive control system. That weakens the perception of security."
-              color="red"
-            />
-            <FlowSection
-              label="What I Changed"
-              items={[
-                'Centralized card controls into a single surface',
-                'Grouped actions clearly (lock, view, manage)',
-                'Made sensitive actions feel intentional (not passive)',
-              ]}
-              color="blue"
-            />
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <p className="text-sm font-semibold text-[#535252] mb-3">What This Unlocks</p>
-              <p className="text-[#535252]">
-                In financial products, control isn't just functional — it's emotional. When users can
-                clearly see and manage their card, trust increases.
+          {/* ── Why This Matters ────────────────────────────────────────── */}
+          <section>
+            <h2 className="cs0-h2">Why This Matters</h2>
+            <p className="cs0-intro cs0-intro--lg">
+              When this question isn't answered immediately, the issue isn't just usability — it's{' '}
+              <strong>trust</strong>.
+            </p>
+            <div className="cs1-why-card">
+              <h3 className="cs1-why-card__title">In payment flows:</h3>
+              <div className="cs1-why-card__items">
+                <div className="cs1-why-card__item">
+                  <div className="cs1-why-card__bullet" />
+                  <p className="cs1-why-card__item-text">What shows up first signals what matters</p>
+                </div>
+                <div className="cs1-why-card__item">
+                  <div className="cs1-why-card__bullet" />
+                  <p className="cs1-why-card__item-text">What's hidden creates doubt</p>
+                </div>
+                <div className="cs1-why-card__item">
+                  <div className="cs1-why-card__bullet" />
+                  <p className="cs1-why-card__item-text">What competes for attention creates friction</p>
+                </div>
+              </div>
+              <p className="cs1-why-card__note">
+                And when that friction shows up around money, users don't just get annoyed — they start
+                to question the system itself.
               </p>
             </div>
-            <FlowSection
-              label="Result"
-              items={[
-                'Users were able to locate card controls without assistance',
-                'Increased confidence in managing card settings',
-                'Reduced hesitation when interacting with sensitive actions',
-              ]}
-              color="green"
-            />
-          </div>
-        </section>
+          </section>
 
-        {/* Measurement */}
-        <section>
-          <div className="flex items-center gap-3 mb-8">
-            <BarChart3 className="w-8 h-8 text-black" />
-            <h2 className="text-3xl font-bold text-black">How I Measured Success</h2>
-          </div>
-
-          <p className="text-[#535252] mb-8 leading-relaxed">
-            To evaluate the redesign, I tested it with 10 users across three areas:
-          </p>
-
-          <div className="space-y-6">
-            <MeasurementCard
-              title="Structure"
-              subtitle="Is the information where users expect it?"
-              metrics={[
-                '10/10 users saw payment obligations within the first viewport',
-                'No scrolling required to access critical payment details',
-                'Fewer competing elements reduced visual ambiguity',
-              ]}
-            />
-            <MeasurementCard
-              title="Behavior"
-              subtitle="Can users act quickly and confidently?"
-              metrics={[
-                '8/10 users understood their payment status in under 5 seconds',
-                'Users initiated "Make Payment" with fewer steps',
-                'Navigation backtracking was significantly reduced',
-              ]}
-            />
-            <MeasurementCard
-              title="Perception"
-              subtitle="Do users feel more confident?"
-              description='Using a Likert scale (1–5): "How confident do you feel about your payment status?"'
-              metrics={[
-                '9/10 users reported confidence levels of 4 or higher',
-                '100% correctly understood the "No Payment Due" state',
-                'Users reported noticeably lower anxiety during payment tasks',
-              ]}
-              highlight="Together, these results show that improving information hierarchy didn't just make the interface easier to use — it made users feel more certain about their financial standing."
-            />
-          </div>
-        </section>
-
-        {/* Reflection */}
-        <section>
-          <h2 className="text-3xl font-bold text-black mb-6">Reflection</h2>
-
-          <div className="bg-[#8D2645] text-white p-8 rounded-xl mb-8">
-            <p className="text-lg leading-relaxed mb-4">This project made one thing very clear:</p>
-            <p className="text-2xl font-semibold leading-relaxed">
-              In financial products, hierarchy is trust.
-            </p>
-            <p className="text-gray-200 mt-6 leading-relaxed">
-              What you show first, what you hide, and what you interrupt with — all shape how users
-              interpret their financial reality.
-            </p>
-            <p className="text-gray-200 mt-4 leading-relaxed">
-              By prioritizing clarity and removing competition from high-sensitivity moments, the
-              experience becomes quieter, more predictable, and more trustworthy.
-            </p>
-          </div>
-
-          <h3 className="text-xl font-semibold text-black mb-6">Key Takeaways</h3>
-
-          <div className="space-y-4">
-            <div className="bg-white p-6 border-l-4 border-[#0022FF] rounded-r-lg">
-              <p className="text-[#535252]">People trust what they can understand instantly</p>
+          {/* ── Key Insight ─────────────────────────────────────────────── */}
+          <section>
+            <div className="cs1-callout-blue">
+              <p className="cs1-callout-blue__label">Key Insight</p>
+              <p className="cs1-callout-blue__text">
+                People aren't opening a finance app to explore, they're opening it for{' '}
+                reassurance.
+              </p>
             </div>
-            <div className="bg-white p-6 border-l-4 border-[#0022FF] rounded-r-lg">
-              <p className="text-[#535252]">Financial clarity should never require effort</p>
-            </div>
-            <div className="bg-white p-6 border-l-4 border-[#0022FF] rounded-r-lg">
-              <p className="text-[#535252]">Promotions have a place — just not during critical tasks</p>
-            </div>
-            <div className="bg-white p-6 border-l-4 border-[#0022FF] rounded-r-lg">
-              <p className="text-[#535252]">Good structure reduces the need for more features</p>
-            </div>
-          </div>
+          </section>
 
-          <div className="mt-12 pt-8 border-t border-gray-200">
-            <h4 className="text-lg font-semibold text-black mb-4">What I'd Do Next</h4>
-            <p className="text-[#535252] mb-4">
-              If this were a real product, I'd focus on validation and edge cases:
+          {/* ── User Research ────────────────────────────────────────────── */}
+          <section id="cs1-research">
+            <div className="cs0-section-header">
+              <Users className="cs0-section-header__icon" size={32} />
+              <h2 className="cs0-section-header__h2">What I Heard from Users</h2>
+            </div>
+            <p className="cs0-intro cs0-intro--mb12">
+              I reviewed 50–100 recent app store reviews to understand where the experience breaks down.
+              Three patterns showed up consistently:
             </p>
-            <ul className="space-y-2 text-[#535252]">
-              <li className="flex items-start gap-2">
-                <span className="text-[#0022FF] mt-1">•</span>
-                <span>Test how quickly users can confirm their payment status</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#0022FF] mt-1">•</span>
-                <span>Measure confidence before and after changes</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#0022FF] mt-1">•</span>
-                <span>Explore failure states (delayed payments, processing issues)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#0022FF] mt-1">•</span>
-                <span>
-                  Reintroduce business content in ways that don't interrupt intent
-                </span>
-              </li>
-            </ul>
-            <p className="text-[#535252] mt-6 italic">
-              Because the real challenge isn't just improving clarity — it's{' '}
-              <strong className="text-black">
-                maintaining it at scale while balancing business goals
-              </strong>
-              .
+            <div className="cs0-solution-list">
+              <UserFeedbackCard
+                number="1"
+                title="Why is the most important info so hard to find?"
+                quotes={[
+                  'Features that are highest use are buried',
+                  'I have to go through make a payment just to check my balance',
+                ]}
+                insight="Basic financial information requires too much effort to access."
+              />
+              <UserFeedbackCard
+                number="2"
+                title="I just want to manage my money — not fight the UI"
+                quotes={['Bombarded with ads', 'Popups every time']}
+                insight="Promotional content is interrupting high-intent tasks."
+              />
+              <UserFeedbackCard
+                number="3"
+                title="Can I trust what I'm seeing?"
+                quotes={[
+                  "Payment wasn't successful but the app adjusted everything",
+                  'Feels like a scam',
+                ]}
+                insight="This is the real problem. When payment states aren't clear or reliable, users don't just lose clarity — they lose confidence."
+                isHighlight
+              />
+            </div>
+          </section>
+
+          {/* ── Design Approach ──────────────────────────────────────────── */}
+          <section id="cs1-design">
+            <h2 className="cs0-h2">Design Approach</h2>
+            <div className="cs1-flow-section cs1-flow-section--blue" style={{ marginBottom: '2rem' }}>
+              <p className="cs0-intro">
+                Instead of adding features, I focused on restructuring the experience around one goal:
+              </p>
+              <p className="cs0-overview-callout__text-stronger" style={{ marginTop: '0.75rem', fontSize: '1.05rem' }}>
+                Make financial status immediately understandable.
+              </p>
+            </div>
+            <h3 className="cs0-h3">That led to a few guiding decisions:</h3>
+            <div className="cs0-grid-2col">
+              <PrincipleCard icon={<Eye size={20} />} text="Show payment status up front, not on demand" />
+              <PrincipleCard icon={<Target size={20} />} text="Align navigation with user intent, not feature lists" />
+              <PrincipleCard icon={<DollarSign size={20} />} text="Separate money tasks from marketing content" />
+              <PrincipleCard icon={<CheckCircle2 size={20} />} text="Make every state (including 'no payment due') explicit and unambiguous" />
+            </div>
+          </section>
+
+          {/* ── Design Flows ─────────────────────────────────────────────── */}
+          <section id="cs1-flows">
+            <div className="cs1-callout-blue">
+              <h2 className="cs0-section-header__h2" style={{ color: '#fff', marginBottom: '0.5rem' }}>Design Flows</h2>
+              <p className="cs1-callout-blue__subtitle">
+                Restructuring key user journeys for clarity and confidence
+              </p>
+            </div>
+
+            {/* Flow 1 */}
+            <div className="cs1-flow-group">
+              <FlowHeader number="1" title="Home → Payment Clarity" />
+              <div className="cs1-flow-stack">
+                <FlowSection
+                  label="The Issue"
+                  content="The home screen tries to do too much at once. Account data, rewards, and promotions all compete for attention, making it harder to answer the one question users actually care about."
+                  color="red"
+                />
+                <FlowSection
+                  label="What I Changed"
+                  content="I restructured the screen so financial status becomes the entry point:"
+                  items={[
+                    'Elevated the account card as the primary focus',
+                    'Introduced a clear, scannable payment state',
+                    'Moved secondary content below the fold',
+                    'Reduced visual competition without removing functionality',
+                  ]}
+                  color="blue"
+                />
+                <div className="cs1-flow-unlocks">
+                  <p className="cs1-flow-unlocks__label">What This Unlocks</p>
+                  <p className="cs1-flow-unlocks__text">The experience shifts from:</p>
+                  <div className="cs1-flow-unlocks__exchange">
+                    <p className="cs1-flow-unlocks__before">"Let me figure this out"</p>
+                    <p className="cs1-flow-unlocks__arrow">to:</p>
+                    <p className="cs1-flow-unlocks__after">"Got it — I'm good" (or "I need to act")</p>
+                  </div>
+                  <p className="cs1-flow-unlocks__note">That clarity happens immediately, without navigation.</p>
+                </div>
+                <FlowSection
+                  label="Result"
+                  content="In usability testing (n=10):"
+                  items={[
+                    '10/10 users identified their payment status without scrolling',
+                    '8/10 users understood their status in under 5 seconds',
+                    'No users hesitated before interpreting whether action was needed',
+                  ]}
+                  conclusion="This confirmed that prioritizing payment hierarchy reduced the need for scanning and interpretation."
+                  color="green"
+                />
+              </div>
+            </div>
+
+            {/* Flow 2 */}
+            <div className="cs1-flow-group">
+              <FlowHeader number="2" title="Account → Payment & Management" />
+              <div className="cs1-flow-stack">
+                <FlowSection
+                  label="The Issue"
+                  content="The account screen functions like a list of features, not a system. Users have to scan, interpret, and piece together where things live — especially when trying to make a payment."
+                  color="red"
+                />
+                <FlowSection
+                  label="What I Changed"
+                  content="I turned the screen into a structured control surface:"
+                  items={[
+                    'Grouped content by intent (Payments, Transactions, Account, Management)',
+                    'Introduced preview → drill-down patterns',
+                    'Separated actions from informational content',
+                    'Standardized navigation patterns across sections',
+                  ]}
+                  color="blue"
+                />
+                <div className="cs1-flow-unlocks">
+                  <p className="cs1-flow-unlocks__label">What This Unlocks</p>
+                  <p className="cs1-flow-unlocks__text">
+                    Users no longer have to think about <em>where</em> something is. They just act on intent:
+                  </p>
+                  <div className="cs1-flow-unlocks__items">
+                    <div className="cs1-flow-unlocks__item">
+                      "I need to pay" → <strong>Payments</strong>
+                    </div>
+                    <div className="cs1-flow-unlocks__item">
+                      "I want to check activity" → <strong>Transactions</strong>
+                    </div>
+                    <div className="cs1-flow-unlocks__item">
+                      "I need to change something about my account" → <strong>Manage Account</strong>
+                    </div>
+                  </div>
+                </div>
+                <FlowSection
+                  label="Result"
+                  content="In testing (n=10):"
+                  items={[
+                    'Users initiated "Make Payment" faster, with reduced navigation backtracking',
+                    '9/10 users navigated directly to the correct section on first attempt',
+                    'Users no longer relied on trial-and-error to locate actions',
+                  ]}
+                  conclusion="Grouping by intent improved both speed and confidence in navigation."
+                  color="green"
+                />
+              </div>
+            </div>
+
+            {/* Flow 3 */}
+            <div className="cs1-flow-group">
+              <FlowHeader number="3" title="Virtual Card → Control & Trust" />
+              <div className="cs1-flow-stack">
+                <FlowSection
+                  label="The Issue"
+                  content="Virtual card features exist, but they don't feel like a cohesive control system. That weakens the perception of security."
+                  color="red"
+                />
+                <FlowSection
+                  label="What I Changed"
+                  items={[
+                    'Centralized card controls into a single surface',
+                    'Grouped actions clearly (lock, view, manage)',
+                    'Made sensitive actions feel intentional (not passive)',
+                  ]}
+                  color="blue"
+                />
+                <div className="cs1-flow-unlocks">
+                  <p className="cs1-flow-unlocks__label">What This Unlocks</p>
+                  <p className="cs1-flow-unlocks__text">
+                    In financial products, control isn't just functional — it's emotional. When users can
+                    clearly see and manage their card, trust increases.
+                  </p>
+                </div>
+                <FlowSection
+                  label="Result"
+                  items={[
+                    'Users were able to locate card controls without assistance',
+                    'Increased confidence in managing card settings',
+                    'Reduced hesitation when interacting with sensitive actions',
+                  ]}
+                  color="green"
+                />
+              </div>
+            </div>
+          </section>
+
+          {/* ── Measurement ──────────────────────────────────────────────── */}
+          <section id="cs1-measurement">
+            <div className="cs0-section-header">
+              <BarChart3 className="cs0-section-header__icon" size={32} />
+              <h2 className="cs0-section-header__h2">How I Measured Success</h2>
+            </div>
+            <p className="cs0-intro cs0-intro--mb12">
+              To evaluate the redesign, I tested it with 10 users across three areas:
             </p>
-          </div>
-        </section>
+            <div className="cs0-arch-stages">
+              <MeasurementCard
+                title="Structure"
+                subtitle="Is the information where users expect it?"
+                metrics={[
+                  '10/10 users saw payment obligations within the first viewport',
+                  'No scrolling required to access critical payment details',
+                  'Fewer competing elements reduced visual ambiguity',
+                ]}
+              />
+              <MeasurementCard
+                title="Behavior"
+                subtitle="Can users act quickly and confidently?"
+                metrics={[
+                  '8/10 users understood their payment status in under 5 seconds',
+                  'Users initiated "Make Payment" with fewer steps',
+                  'Navigation backtracking was significantly reduced',
+                ]}
+              />
+              <MeasurementCard
+                title="Perception"
+                subtitle="Do users feel more confident?"
+                description='Using a Likert scale (1–5): "How confident do you feel about your payment status?"'
+                metrics={[
+                  '9/10 users reported confidence levels of 4 or higher',
+                  '100% correctly understood the "No Payment Due" state',
+                  'Users reported noticeably lower anxiety during payment tasks',
+                ]}
+                highlight="Together, these results show that improving information hierarchy didn't just make the interface easier to use — it made users feel more certain about their financial standing."
+              />
+            </div>
+          </section>
+
+          {/* ── Reflection ───────────────────────────────────────────────── */}
+          <section id="cs1-reflection">
+            <h2 className="cs0-h2">Reflection</h2>
+            <div className="cs1-reflection-callout">
+              <p className="cs1-reflection-callout__intro">This project made one thing very clear:</p>
+              <p className="cs1-reflection-callout__headline">
+                In financial products, hierarchy is trust.
+              </p>
+              <p className="cs1-reflection-callout__subtext">
+                What you show first, what you hide, and what you interrupt with — all shape how users
+                interpret their financial reality.
+              </p>
+              <p className="cs1-reflection-callout__subtext">
+                By prioritizing clarity and removing competition from high-sensitivity moments, the
+                experience becomes quieter, more predictable, and more trustworthy.
+              </p>
+            </div>
+            <h3 className="cs0-h3">Key Takeaways</h3>
+            <div className="cs0-takeaways-list">
+              <div className="cs0-takeaway-card">
+                <p className="cs0-takeaway-card__text">People trust what they can understand instantly</p>
+              </div>
+              <div className="cs0-takeaway-card">
+                <p className="cs0-takeaway-card__text">Financial clarity should never require effort</p>
+              </div>
+              <div className="cs0-takeaway-card">
+                <p className="cs0-takeaway-card__text">Promotions have a place — just not during critical tasks</p>
+              </div>
+              <div className="cs0-takeaway-card">
+                <p className="cs0-takeaway-card__text">Good structure reduces the need for more features</p>
+              </div>
+            </div>
+            <div className="cs0-looking-forward">
+              <h4 className="cs0-looking-forward__title">What I'd Do Next</h4>
+              <p className="cs0-looking-forward__intro">
+                If this were a real product, I'd focus on validation and edge cases:
+              </p>
+              <ul className="cs0-looking-forward__list">
+                <li className="cs0-looking-forward__item">
+                  <span className="cs0-looking-forward__bullet">•</span>
+                  <span>Test how quickly users can confirm their payment status</span>
+                </li>
+                <li className="cs0-looking-forward__item">
+                  <span className="cs0-looking-forward__bullet">•</span>
+                  <span>Measure confidence before and after changes</span>
+                </li>
+                <li className="cs0-looking-forward__item">
+                  <span className="cs0-looking-forward__bullet">•</span>
+                  <span>Explore failure states (delayed payments, processing issues)</span>
+                </li>
+                <li className="cs0-looking-forward__item">
+                  <span className="cs0-looking-forward__bullet">•</span>
+                  <span>Reintroduce business content in ways that don't interrupt intent</span>
+                </li>
+              </ul>
+              <p className="cs0-looking-forward__intro" style={{ marginTop: '1.5rem', fontStyle: 'italic' }}>
+                Because the real challenge isn't just improving clarity — it's{' '}
+                <strong style={{ fontStyle: 'normal' }}>
+                  maintaining it at scale while balancing business goals
+                </strong>
+                .
+              </p>
+            </div>
+          </section>
+
+        </div>
       </div>
 
       {/* Footer */}
-      <footer className="bg-black text-gray-400 py-8 px-8 md:px-12 mt-24">
-        <div className="max-w-5xl mx-auto text-center text-sm">
+      <footer className="cs0-footer">
+        <div className="cs0-footer__inner">
           <p>Capital One Mobile Experience • UX Case Study</p>
         </div>
       </footer>

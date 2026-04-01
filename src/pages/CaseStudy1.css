@@ -1,0 +1,396 @@
+/* ── CaseStudy1.css ─────────────────────────────────────────────────────── */
+/* CS1-specific styles only. Layout, nav, and shared component classes      */
+/* are inherited from CaseStudy0.css (imported in CaseStudy1.tsx).          */
+
+/* ── Hero title (text-based — no logo) ──────────────────────────────────── */
+.cs1-hero-title {
+  font-family: 'Playfair', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+
+/* ── Problem cards (maroon accent for CS1 theme) ─────────────────────────── */
+.cs1-problem-card {
+  background-color: rgba(141, 38, 69, 0.05);
+  border-left: 2.5px solid #8d2645;
+  padding: 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  box-shadow: 0 8px 32px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Blue callout banner (Key Insight, Design Flows header) ──────────────── */
+.cs1-callout-blue {
+  background-color: var(--blue);
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.cs1-callout-blue__label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.cs1-callout-blue__text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.cs1-callout-blue__subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ── insight-card highlight variant (isHighlight=true) ───────────────────── */
+.insight-card--highlight {
+  border: 2px solid #8d2645;
+  background-color: rgba(141, 38, 69, 0.03);
+}
+
+.insight-card__body-text {
+  font-size: 0.9rem;
+  color: var(--subtext);
+  line-height: 1.6;
+}
+
+/* ── Why This Matters card ───────────────────────────────────────────────── */
+.cs1-why-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(74, 90, 138, 0.15);
+  box-shadow: 0 8px 22px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.cs1-why-card__title {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.cs1-why-card__items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cs1-why-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.cs1-why-card__bullet {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--blue);
+  border-radius: 9999px;
+  flex-shrink: 0;
+  margin-top: 0.55rem;
+}
+
+.cs1-why-card__item-text {
+  color: var(--subtext);
+  line-height: 1.6;
+}
+
+.cs1-why-card__note {
+  color: var(--subtext);
+  font-style: italic;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(74, 90, 138, 0.1);
+  line-height: 1.6;
+}
+
+/* ── Principle card (2-col grid) ─────────────────────────────────────────── */
+.cs1-principle-card {
+  background-color: #ffffff;
+  padding: 1.25rem;
+  border: 1px solid rgba(74, 90, 138, 0.15);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  box-shadow: 0 8px 22px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.cs1-principle-card__icon {
+  color: var(--blue);
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.cs1-principle-card__text {
+  font-size: 0.9rem;
+  color: var(--subtext);
+  line-height: 1.5;
+}
+
+.cs1-principle-card__text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ── Flow section (red / blue / green color variants) ───────────────────── */
+.cs1-flow-section {
+  padding: 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  border-left: 2.5px solid;
+}
+
+.cs1-flow-section--red {
+  background-color: rgba(141, 38, 69, 0.05);
+  border-left-color: #8d2645;
+}
+
+.cs1-flow-section--blue {
+  background-color: rgba(74, 90, 138, 0.07);
+  border-left-color: var(--blue);
+}
+
+.cs1-flow-section--green {
+  background-color: rgba(20, 135, 28, 0.05);
+  border-left-color: #14871c;
+}
+
+.cs1-flow-section__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.cs1-flow-section--red .cs1-flow-section__label  { color: #8d2645; }
+.cs1-flow-section--blue .cs1-flow-section__label { color: var(--blue); }
+.cs1-flow-section--green .cs1-flow-section__label { color: #14871c; }
+
+.cs1-flow-section__content {
+  color: var(--subtext);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.cs1-flow-section__items {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cs1-flow-section__item {
+  font-size: 0.9rem;
+  color: var(--subtext);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.cs1-flow-section__item-icon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.cs1-flow-section--red   .cs1-flow-section__item-icon { color: #8d2645; }
+.cs1-flow-section--blue  .cs1-flow-section__item-icon { color: var(--blue); }
+.cs1-flow-section--green .cs1-flow-section__item-icon { color: #14871c; }
+
+.cs1-flow-section__conclusion {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(74, 90, 138, 0.15);
+}
+
+/* ── "What This Unlocks" box ─────────────────────────────────────────────── */
+.cs1-flow-unlocks {
+  background-color: #EAEAF0;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.cs1-flow-unlocks__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--subtext);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.cs1-flow-unlocks__text {
+  color: var(--subtext);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.cs1-flow-unlocks__exchange {
+  margin-top: 0.75rem;
+}
+
+.cs1-flow-unlocks__before {
+  color: var(--subtext);
+  font-style: italic;
+  margin-bottom: 0.25rem;
+}
+
+.cs1-flow-unlocks__arrow {
+  color: var(--subtext);
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.cs1-flow-unlocks__after {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cs1-flow-unlocks__note {
+  font-size: 0.8rem;
+  color: var(--subtext);
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+.cs1-flow-unlocks__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.cs1-flow-unlocks__item {
+  background: #ffffff;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.25rem;
+  border-left: 2px solid var(--blue);
+  font-size: 0.875rem;
+  color: var(--subtext);
+}
+
+.cs1-flow-unlocks__item strong {
+  color: var(--text);
+}
+
+/* ── Flow stack (vertical spacing between flow cards) ────────────────────── */
+.cs1-flow-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Flow group (spacing between Flow 1 / 2 / 3) ────────────────────────── */
+.cs1-flow-group {
+  margin-top: 3.5rem;
+}
+
+/* ── Measurement card ────────────────────────────────────────────────────── */
+.cs1-measurement-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(74, 90, 138, 0.15);
+  box-shadow: 0 8px 22px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.cs1-measurement-card__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.cs1-measurement-card__subtitle {
+  font-size: 0.875rem;
+  color: var(--subtext);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.cs1-measurement-card__desc {
+  font-size: 0.875rem;
+  color: var(--subtext);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.cs1-measurement-card__items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cs1-measurement-card__item {
+  font-size: 0.875rem;
+  color: var(--subtext);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.cs1-measurement-card__item-icon {
+  color: #14871c;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.cs1-measurement-card__highlight {
+  background-color: rgba(20, 135, 28, 0.05);
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  border-left: 2px solid #14871c;
+}
+
+.cs1-measurement-card__highlight-text {
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--subtext);
+}
+
+/* ── Reflection callout (dark maroon — emotional close for CS1) ──────────── */
+.cs1-reflection-callout {
+  background-color: #8d2645;
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.cs1-reflection-callout__intro {
+  font-size: 1rem;
+  line-height: 1.625;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+}
+
+.cs1-reflection-callout__headline {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.cs1-reflection-callout__subtext {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.625;
+  margin-bottom: 1rem;
+}

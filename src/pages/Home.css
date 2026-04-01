@@ -52,13 +52,14 @@
 
 .hero-second-line {
   margin-block-start: 0em;
+  color: var(--subtext);
 }
 
 .hero-tagline p {
   font-family: 'PlayfairItalic';
   /* font-size: clamp(0.9rem, 1.4vw, 1rem); */
   font-size: 1.7rem;
-  color: #1E1E1E;
+  color: var(--subtext);
   font-weight: 500;
   /* line-height: 1.6; */
   letter-spacing: -5%;
@@ -67,7 +68,7 @@
 .hero-last-line {
   font-family: 'PlayfairItalic';
   font-size: 1.7rem;  
-  color: #1E1E1E;
+  color: #525265;
   line-height: 1.7;
   font-weight: 500;
   letter-spacing: -5%;
