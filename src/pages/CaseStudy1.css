@@ -1,50 +1,53 @@
 /* ── CaseStudy1.css ─────────────────────────────────────────────────────── */
 /* CS1-specific styles only. Layout, nav, and shared component classes      */
 /* are inherited from CaseStudy0.css (imported in CaseStudy1.tsx).          */
+.rb1-logo {
+  width: 35%;
+}
+
 
 /* ── Hero title (text-based — no logo) ──────────────────────────────────── */
 .cs1-hero-title {
   font-family: 'Playfair', serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: var(--text);
+  color: #013D5B;
   margin-bottom: 0.75rem;
   line-height: 1.1;
 }
 
 /* ── Problem cards (maroon accent for CS1 theme) ─────────────────────────── */
 .cs1-problem-card {
-  background-color: rgba(141, 38, 69, 0.05);
-  border-left: 2.5px solid #8d2645;
+  border-left: 2.5px solid var(--blue);
   padding: 1.5rem;
   border-radius: 0 0.5rem 0.5rem 0;
   box-shadow: 0 8px 32px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* ── Blue callout banner (Key Insight, Design Flows header) ──────────────── */
-.cs1-callout-blue {
-  background-color: var(--blue);
-  color: #ffffff;
-  padding: 2rem;
-  border-radius: 0.75rem;
-  margin-bottom: 2rem;
+/* ── yellow callout banner (Key Insight, Design Flows header) ──────────────── */
+.cs1-callout-yellow {
+    /* margin-bottom: 4rem; */
+    border: 1px solid var(--mustard);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 22px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.cs1-callout-blue__label {
+.cs1-callout-yellow__label {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text);
   margin-bottom: 0.75rem;
 }
 
-.cs1-callout-blue__text {
-  font-size: 1.3rem;
-  font-weight: 600;
+.cs1-callout-yellow__text {
+  font-size: 1.4rem;
+  /* font-weight: 600; */
   line-height: 1.4;
-  color: #ffffff;
+  color: var(--text);
 }
 
-.cs1-callout-blue__subtitle {
+.cs1-callout-yellow__subtitle {
   color: rgba(255, 255, 255, 0.85);
   margin-top: 0.5rem;
   font-size: 0.95rem;
@@ -53,13 +56,13 @@
 
 /* ── insight-card highlight variant (isHighlight=true) ───────────────────── */
 .insight-card--highlight {
-  border: 2px solid #8d2645;
-  background-color: rgba(141, 38, 69, 0.03);
+  border: 2px solid var(--blue);
+  /* background-color: rgb(234, 234, 240, 0.7); */
 }
 
 .insight-card__body-text {
   font-size: 0.9rem;
-  color: var(--subtext);
+  color: var(--text);
   line-height: 1.6;
 }
 
@@ -150,8 +153,9 @@
 }
 
 .cs1-flow-section--red {
-  background-color: rgba(141, 38, 69, 0.05);
-  border-left-color: #8d2645;
+  /* background-color: rgba(141, 38, 69, 0.05); */
+  border-left-color: var(--blue);
+  box-shadow: 0 8px 22px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .cs1-flow-section--blue {
@@ -172,7 +176,7 @@
   margin-bottom: 0.75rem;
 }
 
-.cs1-flow-section--red .cs1-flow-section__label  { color: #8d2645; }
+.cs1-flow-section--red .cs1-flow-section__label  { color: var(--blue); }
 .cs1-flow-section--blue .cs1-flow-section__label { color: var(--blue); }
 .cs1-flow-section--green .cs1-flow-section__label { color: #14871c; }
 
@@ -367,17 +371,18 @@
 
 /* ── Reflection callout (dark maroon — emotional close for CS1) ──────────── */
 .cs1-reflection-callout {
-  background-color: #8d2645;
-  color: #ffffff;
-  padding: 2rem;
-  border-radius: 0.75rem;
-  margin-bottom: 2rem;
+  color: var(--text);
+  margin-bottom: 4rem;
+  border: 1px solid var(--mustard);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 22px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .cs1-reflection-callout__intro {
   font-size: 1rem;
   line-height: 1.625;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
   margin-bottom: 0.5rem;
 }
 
@@ -385,12 +390,12 @@
   font-size: 1.4rem;
   font-weight: 600;
   line-height: 1.3;
-  color: #ffffff;
+  color: var(--text);
   margin-bottom: 1.5rem;
 }
 
 .cs1-reflection-callout__subtext {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text);
   line-height: 1.625;
   margin-bottom: 1rem;
 }

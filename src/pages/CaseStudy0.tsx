@@ -25,7 +25,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const CS0_NAV = [
   { label: 'The Problem',             id: 'cs0-problem' },
-  { label: 'Design Strategy',         id: 'cs0-design' },
+  { label: 'Design Approach',         id: 'cs0-design' },
   { label: 'System Architecture',     id: 'cs0-architecture' },
   { label: 'Key Technical Decisions', id: 'cs0-tech-decisions' },
   { label: 'Results',                 id: 'cs0-results' },
@@ -308,9 +308,12 @@ const CaseStudy0 = () => {
         <section id="cs0-problem">
           <h2 className="cs0-h2">The Problem</h2>
           <div className="cs0-overview-callout">
+            <h3 className="cs0-overview-callout__title">
+              News today is optimized for speed, not clarity. 
+            </h3>
             <p className="cs0-overview-callout__text">
-              News today is optimized for speed, not clarity. Most tools try to fix this by summarizing
-                articles, but summaries alone don't address a deeper issue:{' '} <strong className='cs0-overview-callout__text-stronger'> how information is structured, framed, and interpreted. </strong>
+              Most tools try to fix this by summarizing
+              articles, but summaries alone don't address a deeper issue:{' '} <strong className='cs0-overview-callout__text-stronger'> how information is structured, framed, and interpreted. </strong>
             </p>
           </div>
           <p className="cs0-intro cs0-intro--mb8">
@@ -413,7 +416,7 @@ const CaseStudy0 = () => {
 
         {/* Design Direction */}
         <section id="cs0-design">
-          <h2 className="cs0-h2">Design Direction</h2>
+          <h2 className="cs0-h2">Design Approach</h2>
           <div className="cs0-design-callout">
             <p className="cs0-design-callout__text">
               Instead of building a better summarizer, I designed a system that surfaces{' '}
@@ -710,7 +713,7 @@ const CaseStudy0 = () => {
 
           <div className="cs0-results-grid">
             <ResultMetric value="98%" label="Successful article structuring" />
-            <ResultMetric value="~1.2s" label="Time to first insight" />
+            <ResultMetric value="~4s" label="Time to first insight" />
             <ResultMetric value="99%" label="Schema validation success" />
             <ResultMetric value="~12%" label="Fallback usage rate" />
           </div>

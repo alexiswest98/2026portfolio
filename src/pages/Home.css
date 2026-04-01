@@ -191,6 +191,7 @@
 
 .case-study0-tags {
   background-color: var(--sub2-mustard);
+  /* border: 0.1px solid var(--mustard); */
   color: var(--mustard);
   padding-left: 1rem;
   padding-right: 1rem;
@@ -204,6 +205,7 @@
 .tag-blue {
   background-color: #EAEAF0;
   color: var(--blue);
+  /* border: 0.1px solid var(--sub-blue); */
 }
 
 .case-study0-problem-title {

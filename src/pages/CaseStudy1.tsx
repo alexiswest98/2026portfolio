@@ -4,7 +4,7 @@ import {
   CheckCircle2,
   BarChart3,
   Target,
-  DollarSign,
+  CircleDollarSign,
   ArrowLeft,
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
@@ -14,6 +14,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './CaseStudy.css'
 import './CaseStudy0.css'
 import './CaseStudy1.css'
+import CapitalOne_logo from '../assets/CapitalOne_logo.png';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -65,16 +66,6 @@ function UserFeedbackCard({
   )
 }
 
-function PrincipleCard({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <div className="cs1-principle-card">
-      <div className="cs1-principle-card__icon">{icon}</div>
-      <p className="cs1-principle-card__text">
-        <strong>{text}</strong>
-      </p>
-    </div>
-  )
-}
 
 function FlowHeader({ number, title }: { number: string; title: string }) {
   return (
@@ -207,15 +198,17 @@ const CaseStudy1 = () => {
         </button>
         <div className="cs0-hero__inner">
           <div className="cs0-hero__top">
-            <h1 className="cs1-hero-title">Capital One Mobile Experience</h1>
+            <img src={CapitalOne_logo} alt="Capital Onelogo" className='rb1-logo'></img>
+            <h1 className="cs1-hero-title">Mobile Experience</h1>
             <p className="cs0-hero__subtitle">
               Redesigning financial clarity: Making payment status immediately understandable
             </p>
             <div>
               <div className="case-study0-tags-container">
-                <div className="case-study0-tags">UX DESIGN</div>
-                <div className="case-study0-tags">MOBILE</div>
-                <div className="case-study0-tags tag-blue">REDESIGN</div>
+                <div className="case-study0-tags">UX/UI DESIGN</div>
+                <div className="case-study0-tags">FINTECH DESIGN</div>
+                <div className="case-study0-tags tag-blue">UX AUDIT</div>
+                <div className="case-study0-tags tag-blue">INFORMATION ARCHITECTURE</div>
               </div>
             </div>
           </div>
@@ -246,17 +239,15 @@ const CaseStudy1 = () => {
           <section id="cs1-problem">
             <h2 className="cs0-h2">Problem</h2>
             <div className="cs0-overview-callout">
+              <h3 className="cs0-overview-callout__title">
+                Financial apps don't just help people manage money, they shape how people{' '}
+                feel about their financial stability.
+              </h3>
               <p className="cs0-overview-callout__text">
-                Financial apps don't just help people manage money — they shape how people{' '}
-                <strong className="cs0-overview-callout__text-stronger">
-                  feel about their financial stability.
-                </strong>
-              </p>
-            </div>
-            <p className="cs0-intro cs0-intro--mb8">
-              In the Capital One mobile experience, key payment details—minimum payment, due date, and
-              payment status—aren't consistently prioritized in the interface.
+                In the Capital One mobile experience, <strong className="cs0-overview-callout__text-stronger"> key payment details </strong>—minimum payment, due date, and
+                payment status— <strong className="cs0-overview-callout__text-stronger">aren't consistently prioritized in the interface.</strong>
             </p>
+            </div>
             <p className="cs0-intro cs0-intro--mb8">They're technically there, but often:</p>
             <div className="cs0-problem-list">
               <div className="cs1-problem-card">
@@ -309,9 +300,9 @@ const CaseStudy1 = () => {
 
           {/* ── Key Insight ─────────────────────────────────────────────── */}
           <section>
-            <div className="cs1-callout-blue">
-              <p className="cs1-callout-blue__label">Key Insight</p>
-              <p className="cs1-callout-blue__text">
+            <div className="cs1-callout-yellow">
+              <p className="cs1-callout-yellow__label">Key Insight</p>
+              <p className="cs1-callout-yellow__text">
                 People aren't opening a finance app to explore, they're opening it for{' '}
                 reassurance.
               </p>
@@ -360,27 +351,36 @@ const CaseStudy1 = () => {
           {/* ── Design Approach ──────────────────────────────────────────── */}
           <section id="cs1-design">
             <h2 className="cs0-h2">Design Approach</h2>
-            <div className="cs1-flow-section cs1-flow-section--blue" style={{ marginBottom: '2rem' }}>
-              <p className="cs0-intro">
-                Instead of adding features, I focused on restructuring the experience around one goal:
+            <div className="cs0-design-callout">
+              <p className="cs0-design-callout__text">
+                Instead of adding features, I focused on restructuring the experience around one goal:{' '}
+                <strong>make financial status immediately understandable.</strong>
               </p>
-              <p className="cs0-overview-callout__text-stronger" style={{ marginTop: '0.75rem', fontSize: '1.05rem' }}>
-                Make financial status immediately understandable.
-              </p>
-            </div>
-            <h3 className="cs0-h3">That led to a few guiding decisions:</h3>
-            <div className="cs0-grid-2col">
-              <PrincipleCard icon={<Eye size={20} />} text="Show payment status up front, not on demand" />
-              <PrincipleCard icon={<Target size={20} />} text="Align navigation with user intent, not feature lists" />
-              <PrincipleCard icon={<DollarSign size={20} />} text="Separate money tasks from marketing content" />
-              <PrincipleCard icon={<CheckCircle2 size={20} />} text="Make every state (including 'no payment due') explicit and unambiguous" />
+              <div className="cs0-grid-2col">
+                <div className="cs0-design-card">
+                  <div className="cs0-design-card__number"><Eye size={18} style={{ display: 'inline', marginRight: '0.4rem' }} />Visibility</div>
+                  <p className="cs0-design-card__desc">Show payment status up front, not on demand</p>
+                </div>
+                <div className="cs0-design-card">
+                  <div className="cs0-design-card__number"><Target size={18} style={{ display: 'inline', marginRight: '0.4rem' }} />Intent</div>
+                  <p className="cs0-design-card__desc">Align navigation with user intent, not feature lists</p>
+                </div>
+                <div className="cs0-design-card">
+                  <div className="cs0-design-card__number"><CircleDollarSign size={18} style={{ display: 'inline', marginRight: '0.4rem' }} />Separation</div>
+                  <p className="cs0-design-card__desc">Separate money tasks from marketing content</p>
+                </div>
+                <div className="cs0-design-card">
+                  <div className="cs0-design-card__number"><CheckCircle2 size={18} style={{ display: 'inline', marginRight: '0.4rem' }} />Clarity</div>
+                  <p className="cs0-design-card__desc">Make every state (including "no payment due") explicit and unambiguous</p>
+                </div>
+              </div>
             </div>
           </section>
 
           {/* ── Design Flows ─────────────────────────────────────────────── */}
           <section id="cs1-flows">
             <div className="cs1-callout-blue">
-              <h2 className="cs0-section-header__h2" style={{ color: '#fff', marginBottom: '0.5rem' }}>Design Flows</h2>
+              <h2 className="cs0-h2" >Design Flows</h2>
               <p className="cs1-callout-blue__subtitle">
                 Restructuring key user journeys for clarity and confidence
               </p>
@@ -629,12 +629,6 @@ const CaseStudy1 = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="cs0-footer">
-        <div className="cs0-footer__inner">
-          <p>Capital One Mobile Experience • UX Case Study</p>
-        </div>
-      </footer>
     </div>
   )
 }

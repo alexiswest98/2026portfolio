@@ -157,22 +157,24 @@
 
 /* ── Overview ─────────────────────────────────────────────────────────────── */
 .cs0-overview-callout {
-  background-color: var(--sub2-mustard);
-  border-left: 2.5px solid var(--mustard);
+  /* background-color: var(--sub2-mustard); */
+  border: 1px solid var(--mustard);
   padding: 1.5rem;
-  border-radius: 0 0.5rem 0.5rem 0;
+  border-radius: 0.5rem;
   box-shadow: 0 8px 22px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
+.cs0-overview-callout__title {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
 .cs0-overview-callout__text {
-  font-size: 1.2rem;
-  line-height: 1.5;
   color: var(--sub-text);
 }
 
 .cs0-overview-callout__text-stronger {
-  font-weight: 700;
-  font-family: 'Playfair';
+  font-weight: bold;
   color: var(--text);
   letter-spacing: -3%;
 }
@@ -217,10 +219,10 @@
 
 /* ── Section heading helpers ──────────────────────────────────────────────── */
 .cs0-h2 {
-  font-size: 1.55rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   font-family: 'Playfair';
 }
 
@@ -272,7 +274,7 @@
 
 .cs0-intro--mb8 {
   margin-bottom: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .cs0-intro--mb12 {
@@ -393,6 +395,7 @@
   padding: 0.75rem;
   border-radius: 0.25rem;
   border-left: 2.5px solid var(--blue);
+  margin-top:0.5rem;
 }
 
 .insight-card__quote-text {
@@ -402,16 +405,16 @@
 }
 
 .insight-card__highlight {
-  background-color: rgba(74, 90, 138, 0.07);
+  background-color: var(--sub2-mustard);
   padding: 0.75rem;
   border-radius: 0.25rem;
-  border-left: 2px solid var(--blue);
+  border-left: 2px solid var(--mustard);
 }
 
 .insight-card__highlight-text {
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--subtext);
+  color: var(--text);
 }
 
 /* ── Design Direction callout ─────────────────────────────────────────────── */
@@ -449,9 +452,10 @@
 .cs0-design-card__number {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--mustard);
+  /* color: var(--mustard); */
   margin-bottom: 0.5rem;
   display: flex;
+  align-items: center;
 }
 
 .cs0-design-card__title {
@@ -1009,11 +1013,13 @@
 
 /* ── Reflection ───────────────────────────────────────────────────────────── */
 .cs0-reflection-callout {
-  background-color: var(--sub2-mustard);
+  /* background-color: var(--sub2-mustard); */
   color: var(--text);
-  padding: 2rem;
-  border-radius: 0.75rem;
   margin-bottom: 4rem;
+  border: 1px solid var(--mustard);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 22px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .cs0-reflection-callout__text {
@@ -1022,7 +1028,7 @@
 }
 
 .cs0-reflection-callout__subtext {
-  color: var(--subtext);
+  color: var(--text);
   margin-top: 1rem;
   line-height: 1.625;
 }
@@ -1041,9 +1047,9 @@
 }
 
 .cs0-takeaway-card {
-  background-color: #ffffff;
+  background-color: var(--sub2-mustard);
   padding: 1.5rem;
-  border-left: 2.5px solid var(--blue);
+  border-left: 2.5px solid var(--mustard);
   border-radius: 0 0.5rem 0.5rem 0;
   box-shadow: 0 8px 22px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
@@ -1100,24 +1106,3 @@
   flex-shrink: 0;
 }
 
-/* ── Footer ───────────────────────────────────────────────────────────────── */
-.cs0-footer {
-  background-color: var(--text);
-  color: var(--subtext);
-  padding: 2rem;
-  margin-top: 6rem;
-}
-
-@media (min-width: 768px) {
-  .cs0-footer {
-    padding: 2rem 3rem;
-  }
-}
-
-.cs0-footer__inner {
-  max-width: 64rem;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  font-size: 0.875rem;
-}
