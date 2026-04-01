@@ -47,15 +47,15 @@ function ApproachCard({
         <ul className="space-y-2 mb-4">
           {changes.map((change, idx) => (
             <li key={idx} className="text-sm text-[#535252] flex items-start gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00B60C] mt-0.5 flex-shrink-0" />
+              <CheckCircle2 className="w-4 h-4 text-[#00A20B] mt-0.5 flex-shrink-0" />
               <span>{change}</span>
             </li>
           ))}
         </ul>
 
         {outcome && (
-          <div className="bg-[#00B60C]/5 p-4 rounded border-l-2 border-[#00B60C]">
-            <p className="text-xs font-bold text-[#00B60C] uppercase tracking-wide mb-1">Outcome</p>
+          <div className="bg-[#00A20B]/5 p-4 rounded border-l-2 border-[#00A20B]">
+            <p className="text-xs font-bold text-[#00A20B] uppercase tracking-wide mb-1">Outcome</p>
             <p className="text-sm font-medium text-black">{outcome}</p>
           </div>
         )}
@@ -92,8 +92,8 @@ function DecisionCard({ text }: { text: string }) {
 
 function ResultMetric({ value, label }: { value: string; label: string }) {
   return (
-    <div className="bg-white p-6 rounded-lg border border-[#00B60C]/30 text-center">
-      <div className="text-4xl font-bold text-[#00B60C] mb-2">{value}</div>
+    <div className="bg-white p-6 rounded-lg border border-[#00A20B]/30 text-center">
+      <div className="text-4xl font-bold text-[#00A20B] mb-2">{value}</div>
       <div className="text-sm text-[#535252]">{label}</div>
     </div>
   )
@@ -419,9 +419,9 @@ const CaseStudy2 = () => {
         </section>
 
         {/* Impact */}
-        <section className="bg-gradient-to-br from-[#00B60C]/5 to-[#00B60C]/10 -mx-8 md:-mx-12 px-8 md:px-12 py-12 md:rounded-xl">
+        <section className="bg-gradient-to-br from-[#00A20B]/5 to-[#00A20B]/10 -mx-8 md:-mx-12 px-8 md:px-12 py-12 md:rounded-xl">
           <div className="flex items-center gap-3 mb-8">
-            <TrendingUp className="w-8 h-8 text-[#00B60C]" />
+            <TrendingUp className="w-8 h-8 text-[#00A20B]" />
             <h2 className="text-3xl font-bold text-black">Impact</h2>
           </div>
 
@@ -430,7 +430,7 @@ const CaseStudy2 = () => {
             <ResultMetric value="+160,000" label="Users year-over-year" />
           </div>
 
-          <div className="bg-white p-6 rounded-lg border border-[#00B60C]/30">
+          <div className="bg-white p-6 rounded-lg border border-[#00A20B]/30">
             <p className="text-[#535252] leading-relaxed">
               These results indicate users were able to find relevant information faster and engage
               more meaningfully with support resources.

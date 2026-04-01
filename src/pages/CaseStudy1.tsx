@@ -96,7 +96,7 @@ function FlowSection({
   const colorMap = {
     red: { bg: 'bg-[#8D2645]/5', border: 'border-[#8D2645]', text: 'text-[#8D2645]' },
     blue: { bg: 'bg-[#0022FF]/5', border: 'border-[#0022FF]', text: 'text-[#0022FF]' },
-    green: { bg: 'bg-[#00B60C]/5', border: 'border-[#00B60C]', text: 'text-[#00B60C]' },
+    green: { bg: 'bg-[#00A20B]/5', border: 'border-[#00A20B]', text: 'text-[#00A20B]' },
   }
 
   const colors = colorMap[color]
@@ -149,14 +149,14 @@ function MeasurementCard({
       <ul className="space-y-2 mb-4">
         {metrics.map((metric, idx) => (
           <li key={idx} className="text-sm text-[#535252] flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-[#00B60C] mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-[#00A20B] mt-0.5 flex-shrink-0" />
             <span>{metric}</span>
           </li>
         ))}
       </ul>
 
       {highlight && (
-        <div className="bg-[#00B60C]/5 p-4 rounded border-l-2 border-[#00B60C]">
+        <div className="bg-[#00A20B]/5 p-4 rounded border-l-2 border-[#00A20B]">
           <p className="text-sm italic text-[#535252]">{highlight}</p>
         </div>
       )}
