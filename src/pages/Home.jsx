@@ -14,10 +14,8 @@ gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin)
 
 const SECTIONS = [
   { id: 'hero' },
-  { id: 'case-study-0' },
-  { id: 'case-study-1' },
-  { id: 'case-study-2' },
-  // { id: 'playground' },
+  { id: 'works' },
+  { id: 'about' },
 ]
 
 const Home = () => {
@@ -120,15 +118,24 @@ const Home = () => {
         y: '-55vh',
         opacity: 0,
         ease: 'none',
-      }, 0.025)
+      }, 0)
 
       // lastLine joins the same timeline at position 0 — perfectly synced with line1 and logo
       heroTl.to('.last-line-wrapper', { y: '-55vh', ease: 'none' }, 0)
 
-      // ── 4. lastLine PIN at ~10vh ───────────────────────────────────────
+      // ── 4. lastLine PIN at ~3vh ───────────────────────────────────────
+      // The wrapper (not lastLine) is animated by heroTl, so ScrollTrigger can't
+      // infer lastLine's visual position from its natural layout position.
+      // We calculate the exact scroll offset at which the wrapper's translation
+      // will have moved lastLine to 3% from viewport top, then fire the pin there.
       ScrollTrigger.create({
-        trigger: '.last-line-wrapper',
-        start: 'top 3%',
+        trigger: lastLineRef.current,
+        start: () => {
+          const L = lastLineRef.current.getBoundingClientRect().top
+          const vh = window.innerHeight / 100
+          const progress = Math.max(0, Math.min(1, (L - 3 * vh) / (55 * vh)))
+          return progress * 180 * vh // absolute scroll position
+        },
         endTrigger: '#playground',
         end: 'bottom top',
         pin: true,
@@ -148,20 +155,6 @@ const Home = () => {
       //   },
       // })
 
-      // ── 5. Optional polish: subtle opacity shift when locking ──────────
-      // gsap.fromTo(
-      //   lastLineRef.current,
-      //   { opacity: 0.6 },
-      //   {
-      //     opacity: 1,
-      //     scrollTrigger: {
-      //       trigger: lastLineRef.current,
-      //       start: 'top 20%',
-      //       end: 'top 10%',
-      //       scrub: true,
-      //     },
-      //   }
-      // )
 
       // ── 6. Fade out at playground ──────────────────────────────────────
       // gsap.to(lastLineRef.current, {
@@ -215,36 +208,54 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Sections */}
-      <section id="case-study-0" className="section section--placeholder">
-        {/* <p className="placeholder-label">CASE STUDY 0</p> */}
+      {/* ── Works Section ──────────────────────────────────────────────── */}
+      <section id="works" className="section section--works">
         <div className='case-study0-container'>
           <div className='case-study0-left'>
-            <img src={readBetweenLogo} alt="Read Between logo" className='rb-logo'/>
-            <p>A transparency-first news chrome extension that helps users evaluate articles in under 60 seconds.</p>
-            <h3 className='case-study0-problem'> Problem: Readers lack fast, reliable ways to evaluate news credibility</h3>
+            <div>
+              <img src={readBetweenLogo} alt="Read Between logo" className='rb-logo'/>
+              <p>A transparency-first news chrome extension that helps users evaluate articles in under 60 seconds.</p>
+            </div>
+            <div>
+              <h3 className='case-study0-problem-title'> The Problem</h3>
+              <h2 className='case-study0-problem'>Readers lack fast, reliable ways to evaluate news credibility</h2>
+            </div>
+            <div>
+              <div className='case-study0-tags-container'>
+                <div className='case-study0-tags'> PRODUCT DESIGN</div>
+                <div className='case-study0-tags'>END-TO-END</div>
+              </div>
+              <div className='case-study0-tags-container'>
+                <div className='case-study0-tags tag-blue'>DEV</div>
+                <div className='case-study0-tags tag-blue'>CHROME EXTENSION</div>
+              </div>
+            </div>
           </div>
           <div className='case-study0-right'>
-            <h3>PRODUCT DESIGN · END-TO-END</h3>
             <video src={ReadingBetweenDemo} className='rb-demo-vid'
               autoPlay
               loop
               muted
               playsInline>
               </video>
-              <Link to="/case-study-0" className="cs-link">VIEW PROJECT →</Link>
+              <Link to="/case-study-0" state={{ scrollTo: 'works' }} className="cs-link">VIEW PROJECT <span className="cs-link__arrow">→</span></Link>
           </div>
+        </div>
+
+        <div className="works-item">
+          <p className="placeholder-label">CASE STUDY 1</p>
+          <Link to="/case-study-1" state={{ scrollTo: 'works' }} className="cs-link">VIEW PROJECT <span className="cs-link__arrow">→</span></Link>
+        </div>
+
+        <div className="works-item">
+          <p className="placeholder-label">CASE STUDY 2</p>
+          <Link to="/case-study-2" state={{ scrollTo: 'works' }} className="cs-link">VIEW PROJECT <span className="cs-link__arrow">→</span></Link>
         </div>
       </section>
 
-      <section id="case-study-1" className="section section--placeholder">
-        <p className="placeholder-label">CASE STUDY 1</p>
-        <Link to="/case-study-1" className="cs-link">VIEW PROJECT →</Link>
-      </section>
-
-      <section id="case-study-2" className="section section--placeholder">
-        <p className="placeholder-label">CASE STUDY 2</p>
-        <Link to="/case-study-2" className="cs-link">VIEW PROJECT →</Link>
+      {/* ── About Section ──────────────────────────────────────────────── */}
+      <section id="about" className="section section--placeholder">
+        <p className="placeholder-label">ABOUT</p>
       </section>
 
       {/* Invisible spacer — required for lastLineRef GSAP pin endTrigger */}

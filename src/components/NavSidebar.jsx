@@ -6,18 +6,15 @@ import './NavSidebar.css'
 gsap.registerPlugin(ScrambleTextPlugin)
 
 const NAV_ITEMS = [
-  { label: 'home', id: 'hero' },
-  { label: 'case study 0', id: 'case-study-0' },
-  { label: 'case study 1', id: 'case-study-1' },
-  { label: 'case study 2', id: 'case-study-2' },
-  // { label: 'playground', id: 'playground' },
+  { label: 'home',  id: 'hero' },
+  { label: 'works', id: 'works' },
+  { label: 'about', id: 'about' },
 ]
 
 const binaryMap = {
-  'home':         '1001',
-  'case study 0': '101001101001',
-  'case study 1': '011010010110',
-  'case study 2': '110001011001',
+  'home':  '1001',
+  'works': '10110',
+  'about': '01101',
 }
 
 const NavSidebar = ({ activeSection }) => {

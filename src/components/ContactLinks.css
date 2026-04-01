@@ -11,9 +11,9 @@
 
 .contact-link {
   font-family: 'AlteHaas', sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   letter-spacing: -5%;
-  color: var(--blue);
+  color: var(--mustard);
   text-decoration: none;
   writing-mode: vertical-rl;
   text-orientation: mixed;

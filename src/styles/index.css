@@ -3,29 +3,41 @@
 
 @font-face {
   font-family: 'AlteHaas';
-  src: url('../assets/fonts/AlteHaasGroteskBold.ttf') format('truetype');
+  src: url('../assets/fonts/alte-haas-grotesk.regular.ttf') format('truetype');
   font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AlteHaas';
+  src: url('../assets/fonts/AlteHaasGroteskBold.ttf') format('truetype');
+  font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'PlayfairItalic';
   src: url('../assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: 400 500 600 700 800 900;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Playfair';
   src: url('../assets/fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: 400 500 600 700 800 900;
   font-style: normal;
 }
 
 :root {
-  --blue: #0061D7;
-  --maroon: #5D0062;
+  --blue: #4A5A8A;
+  --sub-blue: #7A8DB5;
+  --mustard: #C4852A;
+  --sub1-mustard: #E6A44A;
+  --sub2-mustard: #F5E8D0;
   --ui-top: 7vh;
+  --text: #1E1B16;
+  --subtext: #6A6A82;
 }
 
 * {
@@ -43,8 +55,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
-  color: #000000;
+  letter-spacing: -3%;
+  color: var(--text);
   background-color: #FCFCFE;
+  font-size: 1.1rem;
   /* background-image:
     linear-gradient(to right, rgba(0, 34, 255, 0.05) 0.5px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 34, 255, 0.08) 1px, transparent 1px);

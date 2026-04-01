@@ -5,8 +5,8 @@
 
 /* ── Hero header ─────────────────────────────────────────────────────────── */
 .case-study header {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
   padding-left: 10.25%;
   padding-right: 10.25%;
 }
@@ -24,8 +24,8 @@
 
 /* ── Main content area ───────────────────────────────────────────────────── */
 .case-study .cs-content {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
@@ -35,10 +35,9 @@
 }
 
 /* ── Section spacing ─────────────────────────────────────────────────────── */
-.case-study section {
+/* .case-study section {
   padding-top: 1rem;
-  padding-bottom: 1rem;
-}
+} */
 
 .case-study section + section {
   margin-top: 5rem;
@@ -46,7 +45,7 @@
 
 /* ── Section headings ────────────────────────────────────────────────────── */
 .case-study section h2 {
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
   line-height: 1.2;
   letter-spacing: -0.01em;
 }

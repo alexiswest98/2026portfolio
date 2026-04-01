@@ -269,10 +269,18 @@ const CaseStudy0 = () => {
         </button>
         <div className="cs0-hero__inner">
           <div className="cs0-hero__top">
-              <img src={readBetweenLogo} alt="Read Between logo" className='rb-logo'/>
+              <img src={readBetweenLogo} alt="Read Between logo" className='rb0-logo'/>
               <p className="cs0-hero__subtitle">
                 A transparency-first news analysis tool that helps users evaluate articles in under 60 seconds
               </p>
+            <div>
+              <div className='case-study0-tags-container'>
+                <div className='case-study0-tags'> PRODUCT DESIGN</div>
+                <div className='case-study0-tags'>END-TO-END</div>
+                <div className='case-study0-tags tag-blue'>DEV</div>
+                <div className='case-study0-tags tag-blue'>CHROME EXTENSION</div>
+              </div>
+            </div>
           </div>
         </div>
       </header>
@@ -296,40 +304,15 @@ const CaseStudy0 = () => {
 
         <div className="cs-content">
 
-        {/* Overview */}
-        <section>
-          <div className="cs0-overview-callout">
-            <p className="cs0-overview-callout__text">
-              News today is optimized for speed, not clarity. Most tools try to fix this by summarizing
-              articles, but summaries alone don't address a deeper issue:{' '}
-              <strong>
-                how information is structured, framed, and interpreted.
-              </strong>
-            </p>
-          </div>
-
-          <div className="cs0-overview-grid">
-            <div className="cs0-overview-card">
-              <FileText className="cs0-overview-card__icon" />
-              <h3 className="cs0-overview-card__title">What an article says</h3>
-              <p className="cs0-overview-card__text">The explicit content being reported</p>
-            </div>
-            <div className="cs0-overview-card">
-              <Eye className="cs0-overview-card__icon" />
-              <h3 className="cs0-overview-card__title">How it says it</h3>
-              <p className="cs0-overview-card__text">The structure and framing choices</p>
-            </div>
-            <div className="cs0-overview-card">
-              <AlertCircle className="cs0-overview-card__icon" />
-              <h3 className="cs0-overview-card__title">What it leaves out</h3>
-              <p className="cs0-overview-card__text">Missing context and perspectives</p>
-            </div>
-          </div>
-        </section>
-
         {/* The Problem */}
         <section id="cs0-problem">
           <h2 className="cs0-h2">The Problem</h2>
+          <div className="cs0-overview-callout">
+            <p className="cs0-overview-callout__text">
+              News today is optimized for speed, not clarity. Most tools try to fix this by summarizing
+                articles, but summaries alone don't address a deeper issue:{' '} <strong className='cs0-overview-callout__text-stronger'> how information is structured, framed, and interpreted. </strong>
+            </p>
+          </div>
           <p className="cs0-intro cs0-intro--mb8">
             Through research and exploration, I observed three consistent gaps in how people engage with news:
           </p>
@@ -805,12 +788,6 @@ const CaseStudy0 = () => {
         </div> {/* cs-content */}
       </div> {/* cs0-body */}
 
-      {/* Footer */}
-      <footer className="cs0-footer">
-        <div className="cs0-footer__inner">
-          <p>Read Between • Product Design Case Study</p>
-        </div>
-      </footer>
     </div>
   )
 }

@@ -1,11 +1,17 @@
 /* ── CaseStudy0.css ─────────────────────────────────────────────────────── */
 
+.rb0-logo {
+  width: 50%;
+}
+
+
 /* ── Body layout (nav + content side-by-side) ────────────────────────────── */
 .cs0-body {
   display: flex;
   align-items: flex-start;
   max-width: 85%;
   margin: 0 auto;
+  margin-top:1.5rem;
 }
 
 .cs0-body .cs-content {
@@ -41,7 +47,7 @@
   font-family: 'AlteHaas', sans-serif;
   font-size: 1.05 rem;
   letter-spacing: -5%;
-  color: var(--maroon);
+  color: var(--blue);
   text-align: left;
   line-height: 1.1;
   opacity: 0.45;
@@ -55,7 +61,7 @@
 
 .cs0-nav-item--active .cs0-nav-text.main {
   text-decoration: line-through;
-  text-decoration-color: var(--maroon);
+  text-decoration-color: var(--blue);
   text-decoration-thickness: 1.5px;
 }
 
@@ -72,23 +78,24 @@
 }
 
 .cs0-nav-text.trail1 {
-  color: rgba(0, 34, 255, 0.4);
+  /* color: rgb(122, 141, 181, 0.4) */
+  color: rgb(74, 90, 138, 0.4);
 }
 
 .cs0-nav-text.trail2 {
-  color: rgba(0, 34, 255, 0.2);
+  /* color: rgb(122, 141, 181, 0.2) */
+  color: rgb(74, 90, 138, 0.2);
 }
 
 /* ── Root ─────────────────────────────────────────────────────────────────── */
 .cs0-root {
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: #FCFCFE;;
 }
 
 /* ── Hero ─────────────────────────────────────────────────────────────────── */
 .cs0-hero {
-  background-color: #eff1fc;
-  border-bottom: 0.5px solid var(--blue);;
+  /* border-bottom: 0.5px solid var(--blue);; */
   color: #000;
   padding: 5rem 2rem;
 }
@@ -136,23 +143,44 @@
 
 .cs0-hero__subtitle {
   font-size: 1.25rem;
-  color: #1f1f1f;
+  color: var(--text);
   max-width: 42rem;
   line-height: 1.625;
+  margin-bottom: 1rem;
+}
+
+.cs0-hero-tags {
+  text-transform: uppercase;
+  color: var(--mustard);
+  letter-spacing: 3%;
+  width: 100%;
+  text-align: start;
+  margin-top: 1rem;
+  font-weight: bold;
 }
 
 /* ── Overview ─────────────────────────────────────────────────────────────── */
 .cs0-overview-callout {
-  background-color: #f9fafb;
-  border-left: 4px solid #000000;
+  /* background-color: rgb(234, 234, 240); */
+  border-left: 2.7px solid var(--blue);
   padding: 2rem;
   border-radius: 0 0.5rem 0.5rem 0;
+  box-shadow: 0 8px 32px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .cs0-overview-callout__text {
-  font-size: 1.125rem;
-  line-height: 1.625;
-  color: #535252;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--subtext);
+  /* font-family: 'Playfair';
+  font-weight:500; */
+}
+
+.cs0-overview-callout__text-stronger {
+  font-weight: 700;
+  font-family: 'Playfair';
+  color: var(--text);
+  letter-spacing: -2%;
 }
 
 .cs0-overview-grid {
@@ -184,7 +212,7 @@
 
 .cs0-overview-card__title {
   font-weight: 600;
-  color: #000000;
+  color: var(--text);
   margin-bottom: 0.5rem;
 }
 
@@ -195,10 +223,11 @@
 
 /* ── Section heading helpers ──────────────────────────────────────────────── */
 .cs0-h2 {
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: #000000;
-  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2.2rem;
+  font-family: 'Playfair';
 }
 
 .cs0-h2--mb4 {
@@ -206,9 +235,9 @@
 }
 
 .cs0-h3 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #000000;
+  color: var(--text);
   margin-bottom: 1.5rem;
 }
 
@@ -243,12 +272,13 @@
 
 /* ── Body intro text ──────────────────────────────────────────────────────── */
 .cs0-intro {
-  color: #535252;
+  color: var(--text);
   line-height: 1.625;
 }
 
 .cs0-intro--mb8 {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 4rem;
 }
 
 .cs0-intro--mb12 {
@@ -268,10 +298,11 @@
 }
 
 .cs0-problem-card {
-  background-color: rgba(141, 38, 69, 0.1);
-  border-left: 4px solid var(--maroon);
+  background-color: #F5E8D0;
+  border-left: 4px solid var(--mustard);
   padding: 1.5rem;
   border-radius: 0 0.5rem 0.5rem 0;
+  box-shadow: 0 8px 32px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .cs0-problem-card__title {
@@ -630,7 +661,7 @@
 
 .cs0-tradeoff-callout {
   background-color: rgba(141, 38, 69, 0.1);
-  border-left: 4px solid var(--maroon);
+  border-left: 4px solid var(--mustard);
   padding: 1.5rem;
   border-radius: 0 0.5rem 0.5rem 0;
 }
