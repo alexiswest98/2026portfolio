@@ -7,7 +7,9 @@ import NavSidebar from '../components/NavSidebar'
 import ContactLinks from '../components/ContactLinks'
 import readBetweenLogo from '../assets/ReadBetweenLogo.png';
 import logo_vid from '../assets/name24.mp4';
+import CapitalOne_logo from '../assets/CapitalOne_logo.png';
 import ReadingBetweenDemo from '../assets/rbDemo.mp4';
+import CapitalOneDemo from '../assets/BankFinalMockup.mp4'
 import './Home.css'
 
 gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin)
@@ -220,18 +222,14 @@ const Home = () => {
               <h3 className='case-study0-problem-title'> The Problem</h3>
               <h2 className='case-study0-problem'>Readers lack fast, reliable ways to evaluate news credibility</h2>
             </div>
-            <div>
-              <div className='case-study0-tags-container'>
-                <div className='case-study0-tags'> PRODUCT DESIGN</div>
-                <div className='case-study0-tags'>END-TO-END</div>
-              </div>
-              <div className='case-study0-tags-container'>
-                <div className='case-study0-tags tag-blue'>DEV</div>
-                <div className='case-study0-tags tag-blue'>CHROME EXTENSION</div>
-              </div>
-            </div>
           </div>
           <div className='case-study0-right'>
+            <div className='case-study0-tags-container'>
+              <div className='case-study0-tags'> PRODUCT DESIGN</div>
+              <div className='case-study0-tags'>END-TO-END</div>
+              <div className='case-study0-tags tag-blue'>DEV</div>
+              <div className='case-study0-tags tag-blue'>CHROME EXTENSION</div>
+            </div>
             <video src={ReadingBetweenDemo} className='rb-demo-vid'
               autoPlay
               loop
@@ -242,9 +240,62 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="works-item">
-          <p className="placeholder-label">CASE STUDY 1</p>
-          <Link to="/case-study-1" state={{ scrollTo: 'works' }} className="cs-link">VIEW PROJECT <span className="cs-link__arrow">→</span></Link>
+        {/* ── Case Study 2  ──────────────────────────────────────────────── */}
+        <div className='case-study0-container'>
+          <div className='case-study0-left'>
+            <div>
+              <img src={CapitalOne_logo} alt="Capital One logo" className='rb22-logo' />
+              <p>A systems-level approach to making financial interactions feel effortless and transparent.</p>
+            </div>
+            <div>
+              <h3 className='case-study0-problem-title'> The Problem</h3>
+              <h2 className='case-study0-problem'>Users struggle to see critical payment info consistently in the Capital One mobile app.</h2>
+            </div>
+          </div>
+          <div className='case-study0-right'>
+            <div className='case-study0-tags-container'>
+              <div className="case-study0-tags">UX/UI DESIGN</div>
+              <div className="case-study0-tags">FINTECH DESIGN</div>
+              <div className="case-study0-tags tag-blue">UX AUDIT</div>
+              <div className="case-study0-tags tag-blue">INFORMATION ARCHITECTURE</div>
+            </div>
+            <video src={CapitalOneDemo} className='rb-demo-vid'
+              autoPlay
+              loop
+              muted
+              playsInline>
+            </video>
+            <Link to="/case-study-1" state={{ scrollTo: 'works' }} className="cs-link">VIEW PROJECT <span className="cs-link__arrow">→</span></Link>
+          </div>
+        </div>
+
+        {/* ── Case Study 3  ──────────────────────────────────────────────── */}
+        <div className='case-study0-container'>
+          <div className='case-study0-left'>
+            <div>
+              <img src={CapitalOne_logo} alt="Capital One logo" className='rb22-logo' />
+              <p>A systems-level approach to making financial interactions feel effortless and transparent.</p>
+            </div>
+            <div>
+              <h3 className='case-study0-problem-title'> The Problem</h3>
+              <h2 className='case-study0-problem'>Users struggle to see critical payment info consistently in the Capital One mobile app.</h2>
+            </div>
+          </div>
+          <div className='case-study0-right'>
+            <div className='case-study0-tags-container'>
+              <div className="case-study0-tags">UX/UI DESIGN</div>
+              <div className="case-study0-tags">FINTECH DESIGN</div>
+              <div className="case-study0-tags tag-blue">UX AUDIT</div>
+              <div className="case-study0-tags tag-blue">INFORMATION ARCHITECTURE</div>
+            </div>
+            <video src={CapitalOneDemo} className='rb-demo-vid'
+              autoPlay
+              loop
+              muted
+              playsInline>
+            </video>
+            <Link to="/case-study-1" state={{ scrollTo: 'works' }} className="cs-link">VIEW PROJECT <span className="cs-link__arrow">→</span></Link>
+          </div>
         </div>
 
         <div className="works-item">

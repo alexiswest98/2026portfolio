@@ -182,10 +182,10 @@
 }
 
 .case-study0-tags-container {
-  /* background-color: pink; */
   width: 100%;
   display: flex;
-  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 0.4rem;
 }
 
@@ -200,12 +200,13 @@
   color: var(--mustard);
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   width: fit-content;
   border-radius: 0.5rem;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  width: fit-content;
 }
 
 .tag-blue {
@@ -216,23 +217,22 @@
 
 .case-study0-problem-title {
   font-family: 'AlteHaas', sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  color: var(--subtext);
+  color: var(--sub-blue);
   line-height: 1.75;
   letter-spacing: 3%;
   text-transform: uppercase;
-  border-top: 1px solid var(--sub-blue);
+  border-top: 1px solid rgba(74, 90, 138, 0.5);
   padding-top: 1rem;
 }
 
 .case-study0-problem {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-family: 'Playfair', sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text);
   line-height: 1.4;
-  letter-spacing: -5%;
 }
 
 .case-study0-right {
@@ -244,6 +244,8 @@
   gap: 0.7rem;
   padding-left: 2rem;
 }
+
+
 
 .case-study0-right h3 {
   color: var(--mustard);
@@ -258,4 +260,8 @@
 .rb-demo-vid {
   width: fill;
   margin-bottom: 0.4rem;
+}
+
+.rb22-logo {
+width: 70%;
 }

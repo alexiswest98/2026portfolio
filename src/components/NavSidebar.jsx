@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
 import './NavSidebar.css'
@@ -19,6 +20,7 @@ const binaryMap = {
 
 const NavSidebar = ({ activeSection }) => {
   const navRef = useRef(null)
+  const location = useLocation()
   // Line-through only appears after scramble completes
   const [scrambleDone, setScrambleDone] = useState(false)
 
@@ -32,13 +34,16 @@ const NavSidebar = ({ activeSection }) => {
   }
 
   useEffect(() => {
-    // Derive original texts from NAV_ITEMS — spans are intentionally empty in JSX
-    // so React never reconciles {label} back into them during re-renders
-    const originalTexts = NAV_ITEMS.map(item => item.label)
+    // Only run scramble on the home page — nav persists across routes
+    if (location.pathname !== '/') return
 
+    const originalTexts = NAV_ITEMS.map(item => item.label)
     const buttons = Array.from(navRef.current.querySelectorAll('.nav-item'))
     const allSpanGroups = buttons.map(btn => Array.from(btn.querySelectorAll('.nav-text')))
     const mainSpans = buttons.map(btn => btn.querySelector('.nav-text.main'))
+
+    // Reset state so line-through doesn't flash during scramble
+    setScrambleDone(false)
 
     // Set all 3 spans per button to binary
     allSpanGroups.forEach((spans, i) => {
@@ -57,7 +62,6 @@ const NavSidebar = ({ activeSection }) => {
         onComplete: () => {
           allSpanGroups[i].forEach(span => { span.textContent = originalTexts[i] })
           if (i === NAV_ITEMS.length - 1) {
-            // Restore trail visibility after last item — CSS color alpha resumes
             gsap.set(navRef.current.querySelectorAll('.nav-text.trail'), { clearProps: 'opacity' })
             setScrambleDone(true)
           }
@@ -65,8 +69,14 @@ const NavSidebar = ({ activeSection }) => {
       }, i * 0.3)
     })
 
-    return () => { loadTl.kill() }
-  }, [])
+    return () => {
+      // Restore English text so spans aren't left binary if navigating away mid-scramble
+      allSpanGroups.forEach((spans, i) => {
+        spans.forEach(span => { span.textContent = originalTexts[i] })
+      })
+      loadTl.kill()
+    }
+  }, [location.pathname])
 
   return (
     <nav ref={navRef} className="nav-sidebar">
