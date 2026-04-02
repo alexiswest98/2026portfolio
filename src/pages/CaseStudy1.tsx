@@ -204,7 +204,7 @@ const CaseStudy1 = () => {
               Redesigning financial clarity: Making payment status immediately understandable
             </p>
             <div>
-              <div className="case-study0-tags-container">
+              <div className="case-study0-tags-container extra-tags-border">
                 <div className="case-study0-tags">UX/UI DESIGN</div>
                 <div className="case-study0-tags">FINTECH DESIGN</div>
                 <div className="case-study0-tags tag-blue">UX AUDIT</div>
@@ -244,8 +244,8 @@ const CaseStudy1 = () => {
                 feel about their financial stability.
               </h3>
               <p className="cs0-overview-callout__text">
-                In the Capital One mobile experience, <strong className="cs0-overview-callout__text-stronger"> key payment details </strong>—minimum payment, due date, and
-                payment status— <strong className="cs0-overview-callout__text-stronger">aren't consistently prioritized in the interface.</strong>
+                In the Capital One mobile experience, <strong className="cs0-overview-callout__text-stronger"> key payment details</strong>—minimum payment, due date, and
+                payment status—<strong className="cs0-overview-callout__text-stronger">aren't consistently prioritized in the interface.</strong>
             </p>
             </div>
             <p className="cs0-intro cs0-intro--mb8">They're technically there, but often:</p>
@@ -272,7 +272,7 @@ const CaseStudy1 = () => {
           <section>
             <h2 className="cs0-h2">Why This Matters</h2>
             <p className="cs0-intro cs0-intro--lg">
-              When this question isn't answered immediately, the issue isn't just usability — it's{' '}
+              When this question isn't answered immediately, the issue isn't just usability—it's{' '}
               <strong>trust</strong>.
             </p>
             <div className="cs1-why-card">
@@ -292,7 +292,7 @@ const CaseStudy1 = () => {
                 </div>
               </div>
               <p className="cs1-why-card__note">
-                And when that friction shows up around money, users don't just get annoyed — they start
+                And when that friction shows up around money, users don't just get annoyed—they start
                 to question the system itself.
               </p>
             </div>
@@ -331,7 +331,7 @@ const CaseStudy1 = () => {
               />
               <UserFeedbackCard
                 number="2"
-                title="I just want to manage my money — not fight the UI"
+                title="I just want to manage my money—not fight the UI"
                 quotes={['Bombarded with ads', 'Popups every time']}
                 insight="Promotional content is interrupting high-intent tasks."
               />
@@ -342,7 +342,7 @@ const CaseStudy1 = () => {
                   "Payment wasn't successful but the app adjusted everything",
                   'Feels like a scam',
                 ]}
-                insight="This is the real problem. When payment states aren't clear or reliable, users don't just lose clarity — they lose confidence."
+                insight="This is the real problem. When payment states aren't clear or reliable, users don't just lose clarity—they lose confidence."
                 isHighlight
               />
             </div>
@@ -412,7 +412,7 @@ const CaseStudy1 = () => {
                   <div className="cs1-flow-unlocks__exchange">
                     <p className="cs1-flow-unlocks__before">"Let me figure this out"</p>
                     <p className="cs1-flow-unlocks__arrow">to:</p>
-                    <p className="cs1-flow-unlocks__after">"Got it — I'm good" (or "I need to act")</p>
+                    <p className="cs1-flow-unlocks__after">"Got it! I'm good." (or "I need to act")</p>
                   </div>
                   <p className="cs1-flow-unlocks__note">That clarity happens immediately, without navigation.</p>
                 </div>
@@ -436,7 +436,7 @@ const CaseStudy1 = () => {
               <div className="cs1-flow-stack">
                 <FlowSection
                   label="The Issue"
-                  content="The account screen functions like a list of features, not a system. Users have to scan, interpret, and piece together where things live — especially when trying to make a payment."
+                  content="The account screen functions like a list of features, not a system. Users have to scan, interpret, and piece together where things live—especially when trying to make a payment."
                   color="red"
                 />
                 <FlowSection
@@ -502,7 +502,7 @@ const CaseStudy1 = () => {
                 <div className="cs1-flow-unlocks">
                   <p className="cs1-flow-unlocks__label">What This Unlocks</p>
                   <p className="cs1-flow-unlocks__text">
-                    In financial products, control isn't just functional — it's emotional. When users can
+                    In financial products, control isn't just functional—it's emotional. When users can
                     clearly see and manage their card, trust increases.
                   </p>
                 </div>
@@ -556,7 +556,7 @@ const CaseStudy1 = () => {
                   '100% correctly understood the "No Payment Due" state',
                   'Users reported noticeably lower anxiety during payment tasks',
                 ]}
-                highlight="Together, these results show that improving information hierarchy didn't just make the interface easier to use — it made users feel more certain about their financial standing."
+                highlight="Together, these results show that improving information hierarchy didn't just make the interface easier to use—it made users feel more certain about their financial standing."
               />
             </div>
           </section>
@@ -570,7 +570,7 @@ const CaseStudy1 = () => {
                 In financial products, hierarchy is trust.
               </p>
               <p className="cs1-reflection-callout__subtext">
-                What you show first, what you hide, and what you interrupt with — all shape how users
+                What you show first, what you hide, and what you interrupt with—all shape how users
                 interpret their financial reality.
               </p>
               <p className="cs1-reflection-callout__subtext">
@@ -587,7 +587,7 @@ const CaseStudy1 = () => {
                 <p className="cs0-takeaway-card__text">Financial clarity should never require effort</p>
               </div>
               <div className="cs0-takeaway-card">
-                <p className="cs0-takeaway-card__text">Promotions have a place — just not during critical tasks</p>
+                <p className="cs0-takeaway-card__text">Promotions have a place—just not during critical tasks</p>
               </div>
               <div className="cs0-takeaway-card">
                 <p className="cs0-takeaway-card__text">Good structure reduces the need for more features</p>
@@ -617,7 +617,7 @@ const CaseStudy1 = () => {
                 </li>
               </ul>
               <p className="cs0-looking-forward__intro" style={{ marginTop: '1.5rem', fontStyle: 'italic' }}>
-                Because the real challenge isn't just improving clarity — it's{' '}
+                Because the real challenge isn't just improving clarity—it's{' '}
                 <strong style={{ fontStyle: 'normal' }}>
                   maintaining it at scale while balancing business goals
                 </strong>

@@ -274,7 +274,7 @@ const CaseStudy0 = () => {
                 A transparency-first news analysis tool that helps users evaluate articles in under 60 seconds
               </p>
             <div>
-              <div className='case-study0-tags-container'>
+              <div className='case-study0-tags-container extra-tags-border'>
                 <div className='case-study0-tags'> PRODUCT DESIGN</div>
                 <div className='case-study0-tags'>END-TO-END</div>
                 <div className='case-study0-tags tag-blue'>DEV</div>

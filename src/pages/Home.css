@@ -189,6 +189,11 @@
   gap: 0.4rem;
 }
 
+.extra-tags-border {
+  border-top: 1px solid rgba(74, 90, 138, 0.15);
+  padding-top: 1rem;
+}
+
 .case-study0-tags {
   background-color: var(--sub2-mustard);
   /* border: 0.1px solid var(--mustard); */
@@ -200,6 +205,7 @@
   width: fit-content;
   border-radius: 0.5rem;
   font-weight: bold;
+  font-size: 1rem;
 }
 
 .tag-blue {

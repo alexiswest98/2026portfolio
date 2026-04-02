@@ -1,0 +1,164 @@
+/* ── CaseStudy2.css ─────────────────────────────────────────────────────── */
+/* CS2-specific styles only. Layout, nav, and shared component classes      */
+/* are inherited from CaseStudy0.css and CaseStudy1.css.                    */
+
+/* ── Logo ────────────────────────────────────────────────────────────────── */
+.rb2-logo {
+  width: 35%;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Hero title ──────────────────────────────────────────────────────────── */
+.cs2-hero-title {
+  font-family: 'Playfair', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00384D;
+  margin-bottom: 0.75rem;
+  line-height: 1.15;
+}
+
+/* ── Hero meta row (Role / Timeline / Org) ───────────────────────────────── */
+.cs2-hero-meta {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* gap: 2%; */
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+
+  /* background-color: yellow; */
+}
+
+.cs2-hero-containers {
+  display: flex;
+  flex-direction: column;
+  width: fill;
+  /* background-color: pink; */
+}
+
+.cs2-hero-meta__label {
+  font-family: 'AlteHaas', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--subtext);
+}
+
+.cs2-hero-meta__value {
+  font-size: 1rem;
+  color: var(--sub-text);
+}
+
+/* ── Constraint card (mustard palette, replaces maroon) ──────────────────── */
+.cs2-constraint-card {
+  background-color: var(--sub2-mustard);
+  border: 1px solid rgba(196, 133, 42, 0.4);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.cs2-constraint-card__title {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.cs2-constraint-card__items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cs2-constraint-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: var(--subtext);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.cs2-constraint-card__bullet {
+  color: var(--mustard);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+/* ── Sensitive context card (Tone & Language, Visual Considerations) ─────── */
+.cs2-sensitive-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(74, 90, 138, 0.15);
+  box-shadow: 0 8px 22px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.cs2-sensitive-card__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.cs2-sensitive-card__text {
+  color: var(--subtext);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.cs2-sensitive-card__tags {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.cs2-sensitive-card__tag {
+  background-color: #EAEAF0;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+}
+
+.cs2-sensitive-card__items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cs2-sensitive-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: var(--subtext);
+  line-height: 1.6;
+}
+
+.cs2-sensitive-card__bullet {
+  color: var(--blue);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+/* ── Sub-section divider (Execution / Key Decisions inside Approach) ─────── */
+.cs2-subsection-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(74, 90, 138, 0.12);
+}
