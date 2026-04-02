@@ -47,6 +47,7 @@
   color: var(--blue);
   line-height: 1.75;
   letter-spacing: -5%;
+  font-weight: bold;
 }
 
 .nav-text {
@@ -73,5 +74,5 @@
 .nav-item--active .nav-text.main {
   text-decoration: line-through;
   text-decoration-color: var(--blue);
-  text-decoration-thickness: 1.6px;
+  text-decoration-thickness: 1.8px;
 }

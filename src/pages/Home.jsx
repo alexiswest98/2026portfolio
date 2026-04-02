@@ -8,8 +8,10 @@ import ContactLinks from '../components/ContactLinks'
 import readBetweenLogo from '../assets/ReadBetweenLogo.png';
 import logo_vid from '../assets/name24.mp4';
 import CapitalOne_logo from '../assets/CapitalOne_logo.png';
-import ReadingBetweenDemo from '../assets/rbDemo.mp4';
-import CapitalOneDemo from '../assets/BankFinalMockup.mp4'
+import MHASF_logo from '../assets/MHASF_logo.png';
+import DEMO_bank from '../assets/todayDEMO_bank.mp4';
+import DEMO_mhasf from '../assets/todayDEMO_mhasf.mp4';
+import DEMO_rb from '../assets/todayDEMO_rb.mp4';
 import './Home.css'
 
 gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin)
@@ -224,13 +226,13 @@ const Home = () => {
             </div>
           </div>
           <div className='case-study0-right'>
-            <div className='case-study0-tags-container'>
+            <div id='v-special' className='case-study0-tags-container'>
               <div className='case-study0-tags'> PRODUCT DESIGN</div>
               <div className='case-study0-tags'>END-TO-END</div>
               <div className='case-study0-tags tag-blue'>DEV</div>
               <div className='case-study0-tags tag-blue'>CHROME EXTENSION</div>
             </div>
-            <video src={ReadingBetweenDemo} className='rb-demo-vid'
+            <video src={DEMO_rb} className='rb-demo-vid'
               autoPlay
               loop
               muted
@@ -253,13 +255,13 @@ const Home = () => {
             </div>
           </div>
           <div className='case-study0-right'>
-            <div className='case-study0-tags-container'>
+            <div id='v-special' className='case-study0-tags-container'>
               <div className="case-study0-tags">UX/UI DESIGN</div>
               <div className="case-study0-tags">FINTECH DESIGN</div>
               <div className="case-study0-tags tag-blue">UX AUDIT</div>
               <div className="case-study0-tags tag-blue">INFORMATION ARCHITECTURE</div>
             </div>
-            <video src={CapitalOneDemo} className='rb-demo-vid'
+            <video src={DEMO_bank} className='rb-demo-vid'
               autoPlay
               loop
               muted
@@ -273,35 +275,31 @@ const Home = () => {
         <div className='case-study0-container'>
           <div className='case-study0-left'>
             <div>
-              <img src={CapitalOne_logo} alt="Capital One logo" className='rb22-logo' />
-              <p>A systems-level approach to making financial interactions feel effortless and transparent.</p>
+              <img src={MHASF_logo} alt="Mental Health Association of San Francisco logo" className='rb22-logo' />
+              <p>Established foundational IA, interaction patterns, and visual systems to scale a more usable and trustworthy experience.</p>
             </div>
             <div>
               <h3 className='case-study0-problem-title'> The Problem</h3>
-              <h2 className='case-study0-problem'>Users struggle to see critical payment info consistently in the Capital One mobile app.</h2>
+              <h2 className='case-study0-problem'>Turning ambiguity into structure for a platform used in real moments of crisis.</h2>
             </div>
           </div>
           <div className='case-study0-right'>
-            <div className='case-study0-tags-container'>
-              <div className="case-study0-tags">UX/UI DESIGN</div>
-              <div className="case-study0-tags">FINTECH DESIGN</div>
-              <div className="case-study0-tags tag-blue">UX AUDIT</div>
+            <div id='v-special' className='case-study0-tags-container'>
+              <div className="case-study0-tags">UX DESIGN</div>
               <div className="case-study0-tags tag-blue">INFORMATION ARCHITECTURE</div>
+              <div className="case-study0-tags tag-blue">ACCESIBILITY</div>
+              <div className="case-study0-tags tag-blue">STAKEHOLDER COLLABORATION</div>
             </div>
-            <video src={CapitalOneDemo} className='rb-demo-vid'
+            <video src={DEMO_mhasf} className='rb-demo-vid'
               autoPlay
               loop
               muted
               playsInline>
             </video>
-            <Link to="/case-study-1" state={{ scrollTo: 'works' }} className="cs-link">VIEW PROJECT <span className="cs-link__arrow">→</span></Link>
+            <Link to="/case-study-2" state={{ scrollTo: 'works' }} className="cs-link">VIEW PROJECT <span className="cs-link__arrow">→</span></Link>
           </div>
         </div>
 
-        <div className="works-item">
-          <p className="placeholder-label">CASE STUDY 2</p>
-          <Link to="/case-study-2" state={{ scrollTo: 'works' }} className="cs-link">VIEW PROJECT <span className="cs-link__arrow">→</span></Link>
-        </div>
       </section>
 
       {/* ── About Section ──────────────────────────────────────────────── */}
@@ -310,7 +308,7 @@ const Home = () => {
       </section>
 
       {/* Invisible spacer — required for lastLineRef GSAP pin endTrigger */}
-      <div id="playground" aria-hidden="true" style={{ height: '100vh', visibility: 'hidden', pointerEvents: 'none' }} />
+      <div id="playground" aria-hidden="true" style={{ height: '5vh', visibility: 'hidden', pointerEvents: 'none' }} />
 
     </div>
   )

@@ -625,7 +625,10 @@ const CaseStudy1 = () => {
               </p>
             </div>
           </section>
-
+          <div className='cs0-footer'>
+            <a className='footer-link' href='https://www.figma.com/design/y8UZpDTVwpwbJyATi4qCcj/CapitalOne-Mobile-App?node-id=5-18&t=HtOFHqNt9vsmiWPF-1'>figma files</a>
+          </div>
+          
         </div>
       </div>
 

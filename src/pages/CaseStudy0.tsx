@@ -785,9 +785,13 @@ const CaseStudy0 = () => {
             </ul>
           </div>
         </section>
+      <div className='cs0-footer'>
+            <a className='footer-link' href='https://github.com/alexiswest98/ReadingBetween_ChromeExtension'>github link</a>
+            <a className='footer-link' href='https://www.figma.com/design/qJEcmboSRUfWgc2c4jQlv7/Read-Between-AI-Chrome-Extension?node-id=513-601&t=Hn30t3EncrA5FyAQ-1'>figma files</a>
+      </div>
         </div> {/* cs-content */}
       </div> {/* cs0-body */}
-
+      
     </div>
   )
 }

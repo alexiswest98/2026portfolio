@@ -168,7 +168,7 @@ const CaseStudy2 = () => {
             <div>
               <div className="case-study0-tags-container extra-tags-border">
                 <div className="case-study0-tags">UX DESIGN</div>
-                <div className="case-study0-tags">INFORMATION ARCHITECTURE</div>
+                <div className="case-study0-tags tag-blue">INFORMATION ARCHITECTURE</div>
                 <div className="case-study0-tags tag-blue">ACCESIBILITY</div>
                 <div className="case-study0-tags tag-blue">STAKEHOLDER COLLABORATION</div>
               </div>

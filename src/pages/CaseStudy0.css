@@ -1068,7 +1068,7 @@
 .cs0-looking-forward {
   margin-top: 3rem;
   padding-top: 2rem;
-  margin-bottom:5rem;
+  margin-bottom:3rem;
   border-top: 1px solid rgba(74, 90, 138, 0.15);
 }
 
@@ -1106,3 +1106,22 @@
   flex-shrink: 0;
 }
 
+.cs0-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  /* background-color: pink; */
+  gap: 2rem;
+}
+
+.footer-link {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--blue);
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+}

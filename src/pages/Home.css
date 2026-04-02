@@ -150,14 +150,17 @@
 /* ── Case study 0 section ───────────────────────────────────────────────── */
 .case-study0-container {
   width: 70%;
-  height: 70vh;
+  height: 72vh;
   /* background-color: rgb(255, 255, 0, 0.3); */
   display: flex;
   flex-direction: row;
   box-shadow: 0 8px 32px rgb(234, 234, 240, 0.9);
   border-radius: 1rem;
-  padding: 2rem;
-  margin-bottom: 4rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  margin-bottom: 8rem;
 }
 
 .case-study0-left {
@@ -185,8 +188,12 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  /* justify-content: flex-start; */
   gap: 0.4rem;
+}
+
+#v-special {
+  justify-content: flex-end;
 }
 
 .extra-tags-border {
@@ -255,6 +262,7 @@
 
 .rb-logo {
   width: 90%;
+  margin-bottom: 0.2rem;
 }
 
 .rb-demo-vid {
@@ -263,5 +271,6 @@
 }
 
 .rb22-logo {
-width: 70%;
+  width: 70%;
+  margin-bottom: 0.8rem;
 }

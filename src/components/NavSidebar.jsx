@@ -34,24 +34,29 @@ const NavSidebar = ({ activeSection }) => {
   }
 
   useEffect(() => {
-    // Only run scramble on the home page — nav persists across routes
-    if (location.pathname !== '/') return
-
     const originalTexts = NAV_ITEMS.map(item => item.label)
     const buttons = Array.from(navRef.current.querySelectorAll('.nav-item'))
     const allSpanGroups = buttons.map(btn => Array.from(btn.querySelectorAll('.nav-text')))
     const mainSpans = buttons.map(btn => btn.querySelector('.nav-text.main'))
 
-    // Reset state so line-through doesn't flash during scramble
+    // On case study pages — show English immediately, no animation
+    if (location.pathname !== '/') {
+      allSpanGroups.forEach((spans, i) => {
+        spans.forEach(span => { span.textContent = originalTexts[i] })
+      })
+      gsap.set(navRef.current.querySelectorAll('.nav-text.trail'), { clearProps: 'opacity' })
+      setScrambleDone(true)
+      return
+    }
+
+    // Home page — run binary → English scramble
     setScrambleDone(false)
 
-    // Set all 3 spans per button to binary
     allSpanGroups.forEach((spans, i) => {
       const bin = binaryMap[originalTexts[i]] ?? '01010101'
       spans.forEach(span => { span.textContent = bin })
     })
 
-    // Hide trails — prevents semi-transparent overlay from showing revealed english in main
     gsap.set(navRef.current.querySelectorAll('.nav-text.trail'), { opacity: 0 })
 
     const loadTl = gsap.timeline({ delay: 0.5 })
@@ -70,7 +75,6 @@ const NavSidebar = ({ activeSection }) => {
     })
 
     return () => {
-      // Restore English text so spans aren't left binary if navigating away mid-scramble
       allSpanGroups.forEach((spans, i) => {
         spans.forEach(span => { span.textContent = originalTexts[i] })
       })
