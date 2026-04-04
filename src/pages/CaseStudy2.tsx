@@ -13,7 +13,11 @@ import './CaseStudy.css'
 import './CaseStudy0.css'
 import './CaseStudy1.css'
 import './CaseStudy2.css'
-import MHASF_logo from '../assets/MHASF_logo.png'
+import MHASF_logo from '../assets/MHASF_logo.png';
+import MHASF_chat_demo from '../assets/MHASF_demo_final2.mp4';
+import MHASF_newSiteMap from '../assets/MHASF_newSiteMap.png';
+import MHASF_oldSiteMap from '../assets/MHASF_oldSiteMap.png';
+import MHASF_demo from '../assets/todayDEMO_mhasf.mp4';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -282,6 +286,16 @@ const CaseStudy2 = () => {
                 vulnerable mental health states.
               </p>
             </div>
+
+            <div className='cs0-media1'>
+              <video src={MHASF_chat_demo}
+                className='cs0-media-link1'
+                autoPlay
+                loop
+                muted
+                playsInline
+              ></video>
+            </div>
           </section>
 
           {/* ── Key Insight ──────────────────────────────────────────────── */}
@@ -397,6 +411,16 @@ const CaseStudy2 = () => {
                 ]}
                 outcome="Faster access to critical resources"
               />
+
+                <div className='cs2-sitemap-container'>
+                  <img src={MHASF_oldSiteMap} alt='MHASF Old Site Map for Navigation' className='cs2-sitemap'></img>
+                <p className='cs0-problem-media__text c2-sitemap-desc'><strong>Inconsistent naming, deep nesting, and scattered IA</strong>—pages organized around internal teams rather than user goals made key actions hard to find.</p>
+                </div>
+                <div className='cs2-sitemap-container'>
+                  <img src={MHASF_newSiteMap} alt='MHASF New Site Map for Navigation' className='cs2-sitemap'></img>
+                <p className='cs0-problem-media__text c2-sitemap-desc'> <strong>Flattened hierarchy, action-oriented labels, consolidated navigation</strong>—reorganized around user goals, merging related programs while preserving complexity only where content justified it.</p>
+                </div>
+
               <ApproachCard
                 number="2"
                 title="Aligning Content with Behavior"
@@ -478,6 +502,15 @@ const CaseStudy2 = () => {
               <div className="cs0-takeaway-card">
                 <p className="cs0-takeaway-card__text">Focused on systems, not just screens</p>
               </div>
+            </div>
+            <div className='cs0-media1'>
+              <video src={MHASF_demo}
+                className='cs0-media-link1'
+                autoPlay
+                loop
+                muted
+                playsInline
+              ></video>
             </div>
           </section>
 

@@ -41,7 +41,7 @@
 }
 
 .cs1-callout-yellow__text {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   /* font-weight: 600; */
   line-height: 1.4;
   color: var(--text);
@@ -116,6 +116,17 @@
   line-height: 1.6;
 }
 
+.cs1-business-implic {
+  margin-top: 2rem;
+}
+
+.cs1-bus__title {
+  font-weight: bold;
+  color: var(--text);
+  font-size: 1.2rem;
+}
+
+
 /* ── Principle card (2-col grid) ─────────────────────────────────────────── */
 .cs1-principle-card {
   background-color: #ffffff;
@@ -164,7 +175,7 @@
 }
 
 .cs1-flow-section--green {
-  background-color: rgba(20, 135, 28, 0.05);
+  background-color: rgba(0, 182, 12, 0.1);
   border-left-color: #14871c;
 }
 
@@ -298,6 +309,26 @@
   gap: 1.5rem;
 }
 
+.cs1-flow1-gold {
+  display: flex;
+  align-items: center;
+  
+}
+
+.cs1-flow1-gold-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-right: 2rem;
+}
+
+.cs1-flow-gold-img {
+  border-radius: 0.5rem;
+  width: 30%;
+  height: fit-content;
+  box-shadow: 0 8px 22px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
 /* ── Flow group (spacing between Flow 1 / 2 / 3) ────────────────────────── */
 .cs1-flow-group {
   margin-top: 3.5rem;
@@ -357,7 +388,7 @@
 }
 
 .cs1-measurement-card__highlight {
-  background-color: rgba(20, 135, 28, 0.05);
+  background-color: rgba(0, 182, 12, 0.1);
   padding: 0.75rem;
   border-radius: 0.25rem;
   border-left: 2px solid #14871c;
@@ -366,7 +397,18 @@
 .cs1-measurement-card__highlight-text {
   font-size: 0.875rem;
   font-style: italic;
-  color: var(--subtext);
+  color: var(--text);
+}
+
+.cs1-media2-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cs1-media2{
+  width: 75%;
+  border-radius: 1rem;
 }
 
 /* ── Reflection callout (dark maroon — emotional close for CS1) ──────────── */
@@ -387,7 +429,7 @@
 }
 
 .cs1-reflection-callout__headline {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 600;
   line-height: 1.3;
   color: var(--text);
@@ -398,4 +440,40 @@
   color: var(--text);
   line-height: 1.625;
   margin-bottom: 1rem;
+}
+
+.cs0-problem-container {
+  display: flex;
+  width: 100%;
+  /* background-color: pink; */
+}
+
+.cs0-problem-container-left {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 2rem;
+}
+
+.cs1-media1 {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.cs0-problem-container-right {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    text-align: center;
+}
+
+.cs0-problem-media__text {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cs0-problem-media__subtext {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-style: italic;
 }

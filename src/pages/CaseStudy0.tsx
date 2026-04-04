@@ -1,4 +1,8 @@
 import readBetweenLogo from '../assets/ReadBetweenLogo.png';
+// import paywall_img from '../assets/rb_PaywallState.png'
+import paywall_demo from '../assets/RB_demo_paywall.mp4';
+import demo_vid from '../assets/RB_demo_final.mp4';
+import rb_font_brainstorm from '../assets/rb-font-brainstorm.png';
 import {
   Search,
   Users,
@@ -261,7 +265,7 @@ const CaseStudy0 = () => {
       {/* Hero Section */}
       <header className="cs0-hero">
         <button
-          onClick={() => navigate('/', { state: { scrollTo: 'case-study-0' } })}
+          onClick={() => navigate('/', { state: { scrollTo: 'works' } })}
           className="cs0-hero__back-btn"
           aria-label="Go back"
         >
@@ -333,6 +337,16 @@ const CaseStudy0 = () => {
               <h3 className="cs0-problem-card__title">3. Missing context is invisible</h3>
               <p className="cs0-problem-card__text">Omitted perspectives and background are rarely surfaced</p>
             </div>
+          </div>
+
+          <div className='cs0-media1'> 
+              <p className='cs0-problem-media__text'>How it works</p>
+              <video src={demo_vid} className='cs0-media-link1'
+                autoPlay
+                loop
+                muted
+                playsInline
+              ></video>
           </div>
         </section>
 
@@ -437,6 +451,10 @@ const CaseStudy0 = () => {
                 <p className="cs0-design-card__desc">What is not included</p>
               </div>
             </div>
+          </div>
+          <div className='cs0-media2'>
+              <h3 className='cs0-media2-title'>Exploring how trust and interpretation could be visually communicated</h3>
+              <img src={rb_font_brainstorm} className='cs0-media2-img'></img>
           </div>
         </section>
 
@@ -573,81 +591,93 @@ const CaseStudy0 = () => {
               Input → Extraction → Preprocessing → Signal Processing → AI Analysis → Structured Output → UI
             </p>
           </div>
+          <div>
+            <div className="cs0-arch-stages">
+              <ArchitectureStage
+                stage="1"
+                title="Extraction"
+                timing="Instant"
+                items={['DOM parsing of article content', 'Metadata extraction (headline, author, date)']}
+              />
+              <ArchitectureStage
+                stage="2"
+                title="Preprocessing"
+                items={['Removes boilerplate content', 'Deduplicates text', 'Normalizes formatting']}
+              />
+              <ArchitectureStage
+                stage="3"
+                title="Signal Processing"
+                timing="Deterministic, Parallel"
+                items={[
+                  'Source detection using regex-based attribution',
+                  'Language analysis using word-level dictionaries',
+                ]}
+                note="This layer ensures consistent results without relying on AI."
+              />
 
-          <div className="cs0-arch-stages">
-            <ArchitectureStage
-              stage="1"
-              title="Extraction"
-              timing="Instant"
-              items={['DOM parsing of article content', 'Metadata extraction (headline, author, date)']}
-            />
-            <ArchitectureStage
-              stage="2"
-              title="Preprocessing"
-              items={['Removes boilerplate content', 'Deduplicates text', 'Normalizes formatting']}
-            />
-            <ArchitectureStage
-              stage="3"
-              title="Signal Processing"
-              timing="Deterministic, Parallel"
-              items={[
-                'Source detection using regex-based attribution',
-                'Language analysis using word-level dictionaries',
-              ]}
-              note="This layer ensures consistent results without relying on AI."
-            />
+              <div className="cs0-ai-stage">
+                <div className="cs0-ai-stage__header">
+                  <div className="cs0-ai-badge">4</div>
+                  <h4 className="cs0-ai-stage__title">AI Analysis (Layered + Prioritized)</h4>
+                </div>
 
-            <div className="cs0-ai-stage">
-              <div className="cs0-ai-stage__header">
-                <div className="cs0-ai-badge">4</div>
-                <h4 className="cs0-ai-stage__title">AI Analysis (Layered + Prioritized)</h4>
-              </div>
-
-              <div className="cs0-ai-stage-list">
-                <div className="cs0-ai-stage-item">
-                  <div className="cs0-ai-stage-item__header">
-                    <Zap className="cs0-ai-stage-item__zap" />
-                    <p className="cs0-ai-stage-item__label">
-                      Stage 1 — Critical Path (Blocking UI)
-                    </p>
+                <div className="cs0-ai-stage-list">
+                  <div className="cs0-ai-stage-item">
+                    <div className="cs0-ai-stage-item__header">
+                      <Zap className="cs0-ai-stage-item__zap" />
+                      <p className="cs0-ai-stage-item__label">
+                        Stage 1 — Critical Path (Blocking UI)
+                      </p>
+                    </div>
+                    <p className="cs0-ai-stage-item__desc">Reported points • Missing context</p>
+                    <p className="cs0-ai-stage-item__note">→ Delivers immediate value to the user</p>
                   </div>
-                  <p className="cs0-ai-stage-item__desc">Reported points • Missing context</p>
-                  <p className="cs0-ai-stage-item__note">→ Delivers immediate value to the user</p>
-                </div>
-                <div className="cs0-ai-stage-item cs0-ai-stage-item--secondary">
-                  <p className="cs0-ai-stage-item__label--standalone">
-                    Stage 2 — Background (Enrichment)
-                  </p>
-                  <p className="cs0-ai-stage-item__desc">
-                    Narrative structure • Tone observations
-                  </p>
-                  <p className="cs0-ai-stage-item__note">→ Adds depth without delaying interaction</p>
-                </div>
-                <div className="cs0-ai-stage-item cs0-ai-stage-item--tertiary">
-                  <p className="cs0-ai-stage-item__label--standalone">
-                    Stage 3 — Background + Web
-                  </p>
-                  <p className="cs0-ai-stage-item__desc">Similar coverage via live search</p>
-                  <p className="cs0-ai-stage-item__note">→ Expands perspective beyond the article</p>
+                  <div className="cs0-ai-stage-item cs0-ai-stage-item--secondary">
+                    <p className="cs0-ai-stage-item__label--standalone">
+                      Stage 2 — Background (Enrichment)
+                    </p>
+                    <p className="cs0-ai-stage-item__desc">
+                      Narrative structure • Tone observations
+                    </p>
+                    <p className="cs0-ai-stage-item__note">→ Adds depth without delaying interaction</p>
+                  </div>
+                  <div className="cs0-ai-stage-item cs0-ai-stage-item--tertiary">
+                    <p className="cs0-ai-stage-item__label--standalone">
+                      Stage 3 — Background + Web
+                    </p>
+                    <p className="cs0-ai-stage-item__desc">Similar coverage via live search</p>
+                    <p className="cs0-ai-stage-item__note">→ Expands perspective beyond the article</p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <ArchitectureStage
-              stage="5"
-              title="Structured Output"
-              items={['Strict JSON schema', 'Validated outputs']}
-              note="Ensures consistency between system layers and UI rendering"
-            />
-            <ArchitectureStage
-              stage="6"
-              title="UI Rendering"
-              items={[
-                'Progressive loading',
-                'Cards appear in order of importance',
-                'Deeper insights load asynchronously',
-              ]}
-            />
+              <ArchitectureStage
+                stage="5"
+                title="Structured Output"
+                items={['Strict JSON schema', 'Validated outputs']}
+                note="Ensures consistency between system layers and UI rendering"
+              />
+              <ArchitectureStage
+                stage="6"
+                title="UI Rendering"
+                items={[
+                  'Progressive loading',
+                  'Cards appear in order of importance',
+                  'Deeper insights load asynchronously',
+                ]}
+              />
+            </div>
+          </div>
+          <div className='cs0-media1'>
+              <p style={{ marginBottom: '0.5rem' }}>Paywall State Wireframe</p>
+              {/* <img src={paywall_img} alt='paywall result in extension' className='cs0-media3'></img> */}
+              <video src={paywall_demo}
+                className='cs0-media-link1'
+                autoPlay
+                loop
+                muted
+                playsInline>
+              </video>
           </div>
         </section>
 
@@ -786,8 +816,8 @@ const CaseStudy0 = () => {
           </div>
         </section>
       <div className='cs0-footer'>
-            <a className='footer-link' href='https://github.com/alexiswest98/ReadingBetween_ChromeExtension'>github link</a>
-            <a className='footer-link' href='https://www.figma.com/design/qJEcmboSRUfWgc2c4jQlv7/Read-Between-AI-Chrome-Extension?node-id=513-601&t=Hn30t3EncrA5FyAQ-1'>figma files</a>
+            <a className='footer-link' href='https://github.com/alexiswest98/ReadingBetween_ChromeExtension' target="_blank" rel="noopener noreferrer">github repo</a>
+            <a className='footer-link' href='https://www.figma.com/design/qJEcmboSRUfWgc2c4jQlv7/Read-Between-AI-Chrome-Extension?node-id=513-601&t=Hn30t3EncrA5FyAQ-1' target="_blank" rel="noopener noreferrer">figma files</a>
       </div>
         </div> {/* cs-content */}
       </div> {/* cs0-body */}

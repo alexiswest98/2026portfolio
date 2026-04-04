@@ -6,6 +6,9 @@ import './NavSidebar.css'
 
 gsap.registerPlugin(ScrambleTextPlugin)
 
+// Module-level flag — survives StrictMode double-invocation
+let hasNavScrambled = false
+
 const NAV_ITEMS = [
   { label: 'home',  id: 'hero' },
   { label: 'works', id: 'works' },
@@ -49,7 +52,16 @@ const NavSidebar = ({ activeSection }) => {
       return
     }
 
-    // Home page — run binary → English scramble
+    // Home page — only scramble on first load, not on every back-navigation
+    if (hasNavScrambled) {
+      allSpanGroups.forEach((spans, i) => {
+        spans.forEach(span => { span.textContent = originalTexts[i] })
+      })
+      gsap.set(navRef.current.querySelectorAll('.nav-text.trail'), { clearProps: 'opacity' })
+      setScrambleDone(true)
+      return
+    }
+    hasNavScrambled = true
     setScrambleDone(false)
 
     allSpanGroups.forEach((spans, i) => {
@@ -58,6 +70,8 @@ const NavSidebar = ({ activeSection }) => {
     })
 
     gsap.set(navRef.current.querySelectorAll('.nav-text.trail'), { opacity: 0 })
+
+    let scrambleCompleted = false
 
     const loadTl = gsap.timeline({ delay: 0.5 })
     mainSpans.forEach((el, i) => {
@@ -69,6 +83,7 @@ const NavSidebar = ({ activeSection }) => {
           if (i === NAV_ITEMS.length - 1) {
             gsap.set(navRef.current.querySelectorAll('.nav-text.trail'), { clearProps: 'opacity' })
             setScrambleDone(true)
+            scrambleCompleted = true
           }
         },
       }, i * 0.3)
@@ -79,6 +94,11 @@ const NavSidebar = ({ activeSection }) => {
         spans.forEach(span => { span.textContent = originalTexts[i] })
       })
       loadTl.kill()
+      // If cleanup fires before the scramble finished (StrictMode double-invoke),
+      // reset the flag so the second effect run can actually play the animation.
+      if (!scrambleCompleted) {
+        hasNavScrambled = false
+      }
     }
   }, [location.pathname])
 

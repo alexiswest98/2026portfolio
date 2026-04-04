@@ -165,7 +165,7 @@
 
 .case-study0-left {
   width: 40%;
-  height: fill;
+  height: 100%;
   /* background-color: pink; */
   display: flex;
   flex-direction: column;
@@ -179,7 +179,7 @@
   /* text-align: center; */
   margin-top: 0.4rem;
   font-family: 'AlteHaas', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 120%;
   letter-spacing: -3%;
 }
@@ -273,4 +273,50 @@
 .rb22-logo {
   width: 70%;
   margin-bottom: 0.8rem;
+}
+
+/* ── About section ───────────────────────────────────────────────── */
+
+.about-container {
+  width: 64%;
+  height: 75vh;
+  background-color: rgb(255, 192, 203, 0.2);
+  display: flex;
+  
+}
+
+.about-left-side {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.about-right-side {
+  width: 40%;
+}
+
+.about-header {
+  font-size:3rem;
+  font-weight: bold;
+  letter-spacing: -3%;
+}
+
+.about-subheader {
+  font-family: 'PlayfairItalic';
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.about-skills-header {
+  font-size: 1.45rem;
+  font-weight: bold;
+  letter-spacing: -3%;
+  margin-bottom: 0.2rem;
+}
+
+.about-skills-subheader {
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: -3%;
 }

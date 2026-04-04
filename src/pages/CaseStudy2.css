@@ -162,3 +162,23 @@
   padding-top: 2rem;
   border-top: 1px solid rgba(74, 90, 138, 0.12);
 }
+
+.cs2-sitemap-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.cs2-sitemap {
+  width: 70%;
+}
+
+.c2-sitemap-desc {
+  max-width: 75%;
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}

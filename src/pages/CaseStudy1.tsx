@@ -15,6 +15,11 @@ import './CaseStudy.css'
 import './CaseStudy0.css'
 import './CaseStudy1.css'
 import CapitalOne_logo from '../assets/CapitalOne_logo.png';
+import CO_oldAccount from '../assets/CO_oldAccount.png';
+import DEMO_bank from '../assets/todayDEMO_bank.mp4';
+import C0_manage_account from '../assets/CO_NewManageAccount.png';
+import CO_new_home from '../assets/CO_NewHomeScreen.png';
+import CO_virtual_card from '../assets/CO_virtual_card.png';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -249,22 +254,34 @@ const CaseStudy1 = () => {
             </p>
             </div>
             <p className="cs0-intro cs0-intro--mb8">They're technically there, but often:</p>
-            <div className="cs0-problem-list">
-              <div className="cs1-problem-card">
-                <p className="cs0-problem-card__text">Revealed only after interaction</p>
+            <div className='cs0-problem-container'>
+              <div className='cs0-problem-container-left'>
+                <div className="cs0-problem-list">
+                  <div className="cs1-problem-card">
+                    <p className="cs0-problem-card__text">Revealed only after interaction</p>
+                  </div>
+                  <div className="cs1-problem-card">
+                    <p className="cs0-problem-card__text">Competing with promotional content</p>
+                  </div>
+                  <div className="cs1-problem-card">
+                    <p className="cs0-problem-card__text">Positioned lower in the visual hierarchy</p>
+                  </div>
+                  <div className="cs1-problem-card">
+                    <p className="cs0-problem-card__text">Section labels don’t align with user mental models, making key information harder to locate</p>
+                  </div>
+                </div>
+                <div className="cs1-flow-section cs1-flow-section--blue cs0-intro--mb8" style={{ marginTop: '2rem' }}>
+                  <p className="cs0-overview-callout__text-stronger" style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>
+                    "Am I on track, or do I owe something right now?"
+                  </p>
+                  <p className="insight-card__body-text">So something simple becomes effortful</p>
+                </div>
               </div>
-              <div className="cs1-problem-card">
-                <p className="cs0-problem-card__text">Competing with promotional content</p>
+              <div className='cs0-problem-container-right'>
+                <p className='cs0-problem-media__text'><strong>Before redesign</strong></p>
+                <p className='cs0-problem-media__subtext'>3+ interactions required to reach payment details</p>
+                <img src={CO_oldAccount} alt='Current Capital One Mobile Account View' className='cs1-media1'></img>
               </div>
-              <div className="cs1-problem-card">
-                <p className="cs0-problem-card__text">Positioned lower in the visual hierarchy</p>
-              </div>
-            </div>
-            <div className="cs1-flow-section cs1-flow-section--blue cs0-intro--mb8" style={{ marginTop: '2rem' }}>
-              <p className="cs0-overview-callout__text-stronger" style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>
-                "Am I on track, or do I owe something right now?"
-              </p>
-              <p className="insight-card__body-text">So something simple becomes effortful</p>
             </div>
           </section>
 
@@ -295,6 +312,10 @@ const CaseStudy1 = () => {
                 And when that friction shows up around money, users don't just get annoyed—they start
                 to question the system itself.
               </p>
+              <div className='cs1-business-implic'>
+                <h3 className="cs1-bus__title">Business impact:</h3>
+                <p>In a competitive market, hidden payment details can shake user confidence, risking churn and missed payments.<strong> Clear, immediate information strengthens trust and retention.</strong></p>
+              </div>
             </div>
           </section>
 
@@ -375,6 +396,14 @@ const CaseStudy1 = () => {
                 </div>
               </div>
             </div>
+            <div className='cs1-media2-container'>
+              <video src={DEMO_bank} className='cs1-media2'
+                autoPlay
+                loop
+                muted
+                playsInline
+              ></video>
+            </div>
           </section>
 
           {/* ── Design Flows ─────────────────────────────────────────────── */}
@@ -395,27 +424,35 @@ const CaseStudy1 = () => {
                   content="The home screen tries to do too much at once. Account data, rewards, and promotions all compete for attention, making it harder to answer the one question users actually care about."
                   color="red"
                 />
-                <FlowSection
-                  label="What I Changed"
-                  content="I restructured the screen so financial status becomes the entry point:"
-                  items={[
-                    'Elevated the account card as the primary focus',
-                    'Introduced a clear, scannable payment state',
-                    'Moved secondary content below the fold',
-                    'Reduced visual competition without removing functionality',
-                  ]}
-                  color="blue"
-                />
-                <div className="cs1-flow-unlocks">
-                  <p className="cs1-flow-unlocks__label">What This Unlocks</p>
-                  <p className="cs1-flow-unlocks__text">The experience shifts from:</p>
-                  <div className="cs1-flow-unlocks__exchange">
-                    <p className="cs1-flow-unlocks__before">"Let me figure this out"</p>
-                    <p className="cs1-flow-unlocks__arrow">to:</p>
-                    <p className="cs1-flow-unlocks__after">"Got it! I'm good." (or "I need to act")</p>
+                <div className='cs1-flow1-gold'>
+                  <div className='cs1-flow1-gold-left'>
+                    <FlowSection
+                      label="What I Changed"
+                      content="I restructured the screen so financial status becomes the entry point:"
+                      items={[
+                        'Elevated the account card as the primary focus',
+                        'Introduced a clear, scannable payment state',
+                        'Moved secondary content below the fold',
+                        'Reduced visual competition without removing functionality',
+                      ]}
+                      color="blue"
+                    />
+                    <div className="cs1-flow-unlocks">
+                      <p className="cs1-flow-unlocks__label">What This Unlocks</p>
+                      <p className="cs1-flow-unlocks__text">The experience shifts from:</p>
+                      <div className="cs1-flow-unlocks__exchange">
+                        <p className="cs1-flow-unlocks__before">"Let me figure this out"</p>
+                        <p className="cs1-flow-unlocks__arrow">to:</p>
+                        <p className="cs1-flow-unlocks__after">"Got it! I'm good." (or "I need to act")</p>
+                      </div>
+                      <p className="cs1-flow-unlocks__note">That clarity happens immediately, without navigation.</p>
+                    </div>
                   </div>
-                  <p className="cs1-flow-unlocks__note">That clarity happens immediately, without navigation.</p>
+                  <img src={CO_new_home} alt='New Home Screen Layout' className='cs1-flow-gold-img'></img>
+
                 </div>
+
+
                 <FlowSection
                   label="Result"
                   content="In usability testing (n=10):"
@@ -439,33 +476,38 @@ const CaseStudy1 = () => {
                   content="The account screen functions like a list of features, not a system. Users have to scan, interpret, and piece together where things live—especially when trying to make a payment."
                   color="red"
                 />
-                <FlowSection
-                  label="What I Changed"
-                  content="I turned the screen into a structured control surface:"
-                  items={[
-                    'Grouped content by intent (Payments, Transactions, Account, Management)',
-                    'Introduced preview → drill-down patterns',
-                    'Separated actions from informational content',
-                    'Standardized navigation patterns across sections',
-                  ]}
-                  color="blue"
-                />
-                <div className="cs1-flow-unlocks">
-                  <p className="cs1-flow-unlocks__label">What This Unlocks</p>
-                  <p className="cs1-flow-unlocks__text">
-                    Users no longer have to think about <em>where</em> something is. They just act on intent:
-                  </p>
-                  <div className="cs1-flow-unlocks__items">
-                    <div className="cs1-flow-unlocks__item">
-                      "I need to pay" → <strong>Payments</strong>
-                    </div>
-                    <div className="cs1-flow-unlocks__item">
-                      "I want to check activity" → <strong>Transactions</strong>
-                    </div>
-                    <div className="cs1-flow-unlocks__item">
-                      "I need to change something about my account" → <strong>Manage Account</strong>
+                <div className='cs1-flow1-gold'>
+                  <div className='cs1-flow1-gold-left'>
+                    <FlowSection
+                      label="What I Changed"
+                      content="I turned the screen into a structured control surface:"
+                      items={[
+                        'Grouped content by intent (Payments, Transactions, Account Management)',
+                        'Consolidated all account tasks (credit line, authorized users, balance transfers, statements & documents) into one Manage Account section',
+                        'Introduced preview → drill-down patterns',
+                        'Separated actions from informational content'
+                      ]}
+                      color="blue"
+                    />
+                    <div className="cs1-flow-unlocks">
+                      <p className="cs1-flow-unlocks__label">What This Unlocks</p>
+                      <p className="cs1-flow-unlocks__text">
+                        Users no longer have to think about <em>where</em> something is. They just act on intent:
+                      </p>
+                      <div className="cs1-flow-unlocks__items">
+                        <div className="cs1-flow-unlocks__item">
+                          "I need to pay" → <strong>Payments</strong>
+                        </div>
+                        <div className="cs1-flow-unlocks__item">
+                          "I want to check activity" → <strong>Transactions</strong>
+                        </div>
+                        <div className="cs1-flow-unlocks__item">
+                          "I need to change something about my account" → <strong>Manage Account</strong>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                  <img src={C0_manage_account} className='cs1-flow-gold-img'></img>
                 </div>
                 <FlowSection
                   label="Result"
@@ -490,22 +532,29 @@ const CaseStudy1 = () => {
                   content="Virtual card features exist, but they don't feel like a cohesive control system. That weakens the perception of security."
                   color="red"
                 />
-                <FlowSection
-                  label="What I Changed"
-                  items={[
-                    'Centralized card controls into a single surface',
-                    'Grouped actions clearly (lock, view, manage)',
-                    'Made sensitive actions feel intentional (not passive)',
-                  ]}
-                  color="blue"
-                />
-                <div className="cs1-flow-unlocks">
-                  <p className="cs1-flow-unlocks__label">What This Unlocks</p>
-                  <p className="cs1-flow-unlocks__text">
-                    In financial products, control isn't just functional—it's emotional. When users can
-                    clearly see and manage their card, trust increases.
-                  </p>
+                <div className='cs1-flow1-gold'>
+                  <div className='cs1-flow1-gold-left'>
+                    <FlowSection
+                      label="What I Changed"
+                      items={[
+                        'Centralized card controls into a single surface',
+                        'Grouped actions clearly (lock, view, manage)',
+                        'Made sensitive actions feel intentional (not passive)',
+                      ]}
+                      color="blue"
+                    />
+                    <div className="cs1-flow-unlocks">
+                      <p className="cs1-flow-unlocks__label">What This Unlocks</p>
+                      <p className="cs1-flow-unlocks__text">
+                        In financial products, control isn't just functional—it's emotional. When users can
+                        clearly see and manage their card, trust increases.
+                      </p>
+                    </div>
+                  </div>
+                  <img src={CO_virtual_card} alt='New Virtual Card Function' className='cs1-flow-gold-img'></img>
                 </div>
+
+
                 <FlowSection
                   label="Result"
                   items={[

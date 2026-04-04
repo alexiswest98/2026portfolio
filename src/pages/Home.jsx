@@ -304,7 +304,27 @@ const Home = () => {
 
       {/* ── About Section ──────────────────────────────────────────────── */}
       <section id="about" className="section section--placeholder">
-        <p className="placeholder-label">ABOUT</p>
+        {/* <p className="placeholder-label">ABOUT</p> */}
+        <div className='about-container'>
+          <div className='about-left-side'>
+            <div>
+              <h2 className='about-header'>Hi, I’m Alexis</h2>
+              <p className='about-subheader'>I'm a designer and developer who believes the best digital experiences feel effortless to the people using them. I build across research, design, and production—bringing clarity and intention to every layer, from systems thinking to polished, production-ready builds that are genuinely useful.</p>
+            </div>
+            <div className='about-left-side-bottom'>
+              <h2 className='about-skills-header'>Skills</h2>
+              <h3 className='about-skills-subheader'>Design & Product</h3>
+              <p>UX/UI Design · Information Architecture · Wireframing & Prototyping · Design Systems · User Research · Interaction Design</p>
+              <h3 className='about-skills-subheader'>Development & AI</h3>
+              <p>JavaScript/Typescript & React · Python & Flask & SQLite · REST APIs · CMS & No-Code (WordPress, Framer) · AI Integration (Claude Code, OpenAI API)</p>
+              <h3 className='about-skills-subheader'>Creative Coding & Technical Tools</h3>
+              <p>Blender (Intermediate) · TouchDesigner (Intermediate) · Adobe Illustrator · Adobe Premiere Pro · p5.js · ml5.js </p>
+            </div>
+          </div>
+          <div className='about-right-side'>
+            three.js goes here
+          </div>
+        </div>
       </section>
 
       {/* Invisible spacer — required for lastLineRef GSAP pin endTrigger */}
