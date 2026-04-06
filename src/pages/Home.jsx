@@ -322,7 +322,7 @@ const Home = () => {
               <h3 className='about-skills-subheader'>Development & AI</h3>
               <p>JavaScript/Typescript & React · Python & Flask & SQLite · REST APIs · CMS & No-Code (WordPress, Framer) · AI Integration (Claude Code, OpenAI API)</p>
               <h3 className='about-skills-subheader'>Creative Coding & Technical Tools</h3>
-              <p>Blender (Intermediate) · TouchDesigner (Intermediate) · Adobe Illustrator · Adobe Premiere Pro · p5.js · ml5.js </p>
+              <p>Blender · TouchDesigner (Intermediate) · Adobe Illustrator · Adobe Premiere Pro · p5.js · Arduino</p>
             </div>
           </div>
           <div className='about-right-side'>
