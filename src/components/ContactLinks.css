@@ -25,3 +25,16 @@
 .contact-link:hover {
   opacity: 0.6;
 }
+
+/* ── Mobile (≤ 768px) ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .contact-links {
+    right: 0.75rem;
+    gap: 1rem;
+    top: 4vh;
+  }
+
+  .contact-link {
+    font-size: 1rem;
+  }
+}

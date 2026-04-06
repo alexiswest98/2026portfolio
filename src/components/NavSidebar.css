@@ -76,3 +76,17 @@
   text-decoration-color: var(--blue);
   text-decoration-thickness: 1.8px;
 }
+
+/* ── Mobile (≤ 768px) ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav-sidebar {
+    bottom: 1.25rem;
+    left: 1.25rem;
+    gap: 0.15rem;
+  }
+
+  .nav-item {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+}

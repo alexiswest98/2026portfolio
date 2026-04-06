@@ -477,3 +477,55 @@
   margin-bottom: 1rem;
   font-style: italic;
 }
+
+/* ── Mobile (≤ 768px) ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Logo */
+  .rb1-logo {
+    width: 80%;
+  }
+
+  /* Hero title */
+  .cs1-hero-title {
+    font-size: 1.4rem;
+  }
+
+  /* Problem container — stack vertically */
+  .cs0-problem-container {
+    flex-direction: column;
+  }
+
+  .cs0-problem-container-left {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .cs0-problem-container-right {
+    width: 100%;
+  }
+
+  /* Flow gold section — stack image below text */
+  .cs1-flow1-gold {
+    flex-direction: column;
+  }
+
+  .cs1-flow1-gold-left {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .cs1-flow-gold-img {
+    width: 100%;
+  }
+
+  /* Media */
+  .cs1-media2 {
+    width: 100%;
+  }
+
+  /* Callout text */
+  .cs1-callout-yellow__text {
+    font-size: 1rem;
+  }
+}

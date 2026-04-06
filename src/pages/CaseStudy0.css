@@ -114,6 +114,12 @@
   flex-direction: column;
 }
 
+@media (max-width: 768px) {
+  .cs0-hero__top {
+    margin-top: 1rem;
+  }
+}
+
 .cs0-hero__back-btn {
   color: var(--text);
   background: none;
@@ -126,6 +132,7 @@
 .cs0-hero__back-btn:hover {
   background-color: rgba(74, 90, 138, 0.08);
 }
+
 
 .cs0-hero__back-icon {
   width: 2rem;
@@ -1164,4 +1171,79 @@
 
 .footer-link:hover {
   opacity: 0.8;
+}
+
+/* ── Mobile (≤ 768px) ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Hero */
+  .cs0-hero {
+    padding: 3rem 1.25rem;
+  }
+
+  .cs0-hero__inner {
+    margin-left: 2%;
+    margin-right: 2%;
+    max-width: 96%;
+  }
+
+  .cs0-hero__title {
+    font-size: 1.5rem;
+  }
+
+  .cs0-hero__subtitle {
+    font-size: 0.95rem;
+  }
+
+  .rb0-logo {
+    width: 80%;
+  }
+
+  /* Body layout — hide sidebar, content fills full width */
+  .cs0-body {
+    max-width: 96%;
+  }
+
+  .cs0-nav-aside {
+    display: none;
+  }
+
+  /* Section headings */
+  .cs0-h2 {
+    font-size: 1.25rem;
+  }
+
+  .cs0-h3 {
+    font-size: 1rem;
+  }
+
+  .cs0-section-header__h2 {
+    font-size: 1.1rem;
+  }
+
+  .cs0-intro--lg {
+    font-size: 1rem;
+  }
+
+  /* Media */
+  .cs0-media2-img {
+    width: 100%;
+  }
+
+  .cs0-media3 {
+    width: 100%;
+  }
+
+  /* Results */
+  .result-metric__value {
+    font-size: 1.4rem;
+  }
+
+  /* Reduce full-bleed negative margins for narrow screens */
+  .cs0-attribution-section,
+  .cs0-results-section {
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+    padding: 2rem 1.25rem;
+  }
 }

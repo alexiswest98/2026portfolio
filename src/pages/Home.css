@@ -333,3 +333,132 @@
   font-weight: bold;
   letter-spacing: -3%;
 }
+
+/* ── Mobile (≤ 768px) ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Hero */
+  .hero-logo {
+    width: 85%;
+  }
+
+  .hero-tagline {
+    max-width: 85%;
+  }
+
+  .hero-tagline p,
+  .hero-second-line {
+    font-size: 1.1rem;
+  }
+
+  .hero-last-line {
+    font-size: 1.1rem;
+  }
+
+  /* Works section */
+  .section--works {
+    gap: 2rem;
+    padding: 3rem 0;
+    padding-top: 5rem;
+  }
+
+  /* Case study cards — stack vertically */
+  .case-study0-container {
+    flex-direction: column;
+    width: 80%;
+    height: auto;
+    padding: 2rem 1.25rem;
+    margin-bottom: 5rem;
+  }
+
+  .case-study0-left {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .case-study0-left p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .case-study0-right {
+    width: 100%;
+    align-items: center;
+    padding-left: 0;
+    margin-top: 1.5rem;
+  }
+
+  .cs-link {
+    margin-top: 0.2rem;
+  }
+
+  .case-study0-tags-container {
+    justify-content: flex-start;
+  }
+
+  #v-special {
+    justify-content: flex-start;
+  }
+
+  .rb22-logo {
+    width: 80%;
+  }
+
+  .rb-demo-vid {
+    width: 100%;
+  }
+
+  .case-study0-problem {
+    font-size: 1rem;
+  }
+
+  .case-study0-problem-title {
+    font-size: 0.8rem;
+  }
+
+  .case-study0-tags {
+    font-size: 0.8rem;
+  }
+
+  /* About section — stack vertically */
+  .about-container {
+    flex-direction: column;
+    width: 80%;
+    height: auto;
+    gap: 1rem;
+  }
+
+  .about-left-side {
+    width: 100%;
+    gap: 1.5rem;
+  }
+
+  .about-right-side {
+    width: 100%;
+    height: 60vw; /* explicit height so Three.js canvas renders */
+  }
+
+  .three-instructions {
+    visibility: hidden;
+  }
+
+  .about-header {
+    font-size: 1.75rem;
+  }
+
+  .about-subheader {
+    font-size: 0.95rem;
+  }
+
+  .about-skills-header {
+    font-size: 1rem;
+  }
+
+  .about-skills-subheader {
+    font-size: 0.95rem;
+  }
+
+  .about-left-side p {
+    font-size: 0.95rem;
+  }
+}
