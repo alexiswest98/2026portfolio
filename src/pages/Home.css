@@ -84,6 +84,7 @@
   justify-content: center;
   gap: 4rem;
   padding: 4rem 0;
+  padding-top: 4rem;
   min-height: auto;
 }
 
@@ -280,7 +281,7 @@
 .about-container {
   width: 64%;
   height: 75vh;
-  background-color: rgb(255, 192, 203, 0.2);
+  /* background-color: rgb(255, 192, 203, 0.2); */
   display: flex;
   
 }
@@ -294,29 +295,41 @@
 
 .about-right-side {
   width: 40%;
+  height: 100%;
+  /* background-color: pink; */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.three-instructions {
+  color: var(--subtext);
+  font-size: 1rem;
+  line-height: 1.2;
 }
 
 .about-header {
-  font-size:3rem;
+  font-size:2.5rem;
   font-weight: bold;
   letter-spacing: -3%;
 }
 
 .about-subheader {
-  font-family: 'PlayfairItalic';
+  font-family: 'Playfair';
   font-size: 1.2rem;
   font-weight: 500;
 }
 
 .about-skills-header {
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   font-weight: bold;
   letter-spacing: -3%;
   margin-bottom: 0.2rem;
 }
 
 .about-skills-subheader {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   letter-spacing: -3%;
 }

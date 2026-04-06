@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
 import NavSidebar from '../components/NavSidebar'
+import ModelViewer from '../components/ModelViewer'
 import ContactLinks from '../components/ContactLinks'
 import readBetweenLogo from '../assets/ReadBetweenLogo.png';
 import logo_vid from '../assets/name24.mp4';
@@ -13,6 +14,7 @@ import DEMO_bank from '../assets/todayDEMO_bank.mp4';
 import DEMO_mhasf from '../assets/todayDEMO_mhasf.mp4';
 import DEMO_rb from '../assets/todayDEMO_rb.mp4';
 import './Home.css'
+import { Break } from 'three/tsl'
 
 gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin)
 
@@ -36,9 +38,11 @@ const Home = () => {
   useEffect(() => {
     const target = location.state?.scrollTo
     if (!target) return
+    // Clear state immediately so a page refresh doesn't re-trigger the scroll
+    window.history.replaceState({}, '', window.location.pathname)
     requestAnimationFrame(() => {
       const el = document.getElementById(target)
-      if (el) window.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.15, behavior: 'smooth' })
     })
   }, [location.state])
 
@@ -214,7 +218,7 @@ const Home = () => {
 
       {/* ── Works Section ──────────────────────────────────────────────── */}
       <section id="works" className="section section--works">
-        <div className='case-study0-container'>
+        <div id="case-study-0" className='case-study0-container'>
           <div className='case-study0-left'>
             <div>
               <img src={readBetweenLogo} alt="Read Between logo" className='rb-logo'/>
@@ -243,7 +247,7 @@ const Home = () => {
         </div>
 
         {/* ── Case Study 2  ──────────────────────────────────────────────── */}
-        <div className='case-study0-container'>
+        <div id="case-study-1" className='case-study0-container'>
           <div className='case-study0-left'>
             <div>
               <img src={CapitalOne_logo} alt="Capital One logo" className='rb22-logo' />
@@ -272,7 +276,7 @@ const Home = () => {
         </div>
 
         {/* ── Case Study 3  ──────────────────────────────────────────────── */}
-        <div className='case-study0-container'>
+        <div id="case-study-2" className='case-study0-container'>
           <div className='case-study0-left'>
             <div>
               <img src={MHASF_logo} alt="Mental Health Association of San Francisco logo" className='rb22-logo' />
@@ -322,7 +326,8 @@ const Home = () => {
             </div>
           </div>
           <div className='about-right-side'>
-            three.js goes here
+            <ModelViewer />
+            <p className='three-instructions'>click and drag me to <br></br> move me around</p>
           </div>
         </div>
       </section>

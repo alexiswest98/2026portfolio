@@ -265,7 +265,7 @@ const CaseStudy0 = () => {
       {/* Hero Section */}
       <header className="cs0-hero">
         <button
-          onClick={() => navigate('/', { state: { scrollTo: 'works' } })}
+          onClick={() => navigate('/', { state: { scrollTo: 'case-study-0' } })}
           className="cs0-hero__back-btn"
           aria-label="Go back"
         >

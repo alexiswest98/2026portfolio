@@ -3,10 +3,12 @@ import Home from './pages/Home'
 import CaseStudy0 from './pages/CaseStudy0'
 import CaseStudy1 from './pages/CaseStudy1'
 import CaseStudy2 from './pages/CaseStudy2'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/case-study-0" element={<CaseStudy0 />} />
