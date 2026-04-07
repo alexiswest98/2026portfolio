@@ -42,10 +42,10 @@
   cursor: pointer;
   padding: 0;
   font-family: 'AlteHaas', sans-serif;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: normal;
   color: var(--blue);
-  line-height: 1.75;
+  line-height: 1.5;
   letter-spacing: -5%;
   font-weight: bold;
 }

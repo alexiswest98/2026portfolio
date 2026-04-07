@@ -332,6 +332,11 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ── Experiments Section ────────────────────────────────────────── */}
+      <section id="experiments" className="section section--placeholder">
+        <p className="placeholder-label">Experiments</p>
+      </section>
+
       {/* Invisible spacer — required for lastLineRef GSAP pin endTrigger */}
       <div id="playground" aria-hidden="true" style={{ height: '5vh', visibility: 'hidden', pointerEvents: 'none' }} />
 

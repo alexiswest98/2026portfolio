@@ -10,15 +10,17 @@ gsap.registerPlugin(ScrambleTextPlugin)
 let hasNavScrambled = false
 
 const NAV_ITEMS = [
-  { label: 'home',  id: 'hero' },
-  { label: 'works', id: 'works' },
-  { label: 'about', id: 'about' },
+  { label: 'home',        id: 'hero' },
+  { label: 'works',       id: 'works' },
+  { label: 'about',       id: 'about' },
+  { label: 'experiments', id: 'experiments' },
 ]
 
 const binaryMap = {
-  'home':  '1001',
-  'works': '10110',
-  'about': '01101',
+  'home':        '1001',
+  'works':       '10110',
+  'about':       '01101',
+  'experiments': '0110101',
 }
 
 const NavSidebar = ({ activeSection }) => {
