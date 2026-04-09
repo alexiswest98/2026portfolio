@@ -46,7 +46,7 @@ function UserFeedbackCard({
   number: string
   title: string
   quotes: string[]
-  insight: string
+  insight?: string
   isHighlight?: boolean
 }) {
   return (
@@ -62,13 +62,13 @@ function UserFeedbackCard({
           </li>
         ))}
       </ul>
-      {isHighlight ? (
+      {insight && (isHighlight ? (
         <div className="insight-card__highlight">
           <p className="insight-card__highlight-text">{insight}</p>
         </div>
       ) : (
         <p className="insight-card__body-text">{insight}</p>
-      )}
+      ))}
     </div>
   )
 }

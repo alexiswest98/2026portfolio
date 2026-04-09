@@ -7,7 +7,6 @@ import {
   Search,
   Users,
   FileText,
-  Eye,
   CheckCircle2,
   AlertCircle,
   MessageSquare,

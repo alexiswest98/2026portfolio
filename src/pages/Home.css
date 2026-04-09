@@ -337,7 +337,7 @@
 /* ── Experiments ─────────────────────────────────────────────────────── */
 .experiment-container {
   width: 60%;
-  background-color: pink;
+  /* background-color: pink; */
   display: flex;
   margin-top: 10rem;
   justify-content: center;
