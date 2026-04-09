@@ -339,7 +339,7 @@
   width: 60%;
   /* background-color: pink; */
   display: flex;
-  margin-top: 10rem;
+  margin-top: 15rem;
   justify-content: center;
 }
 
@@ -380,7 +380,7 @@
 }
 
 .halluc-video {
-  width: 40%;
+  width: 45%;
 }
 
 .halluc-location {
@@ -389,6 +389,10 @@
   margin-top: 1rem;
   /* font-weight: bold; */
   letter-spacing: 2%;
+}
+
+.girl-video {
+  width: 38%;
 }
 
 

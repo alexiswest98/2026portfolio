@@ -29,6 +29,7 @@ const SECTIONS = [
   { id: 'hero' },
   { id: 'works' },
   { id: 'about' },
+  { id: 'experiments' },
 ]
 
 const Home = () => {
@@ -362,7 +363,7 @@ const Home = () => {
           <video src={office_imagination} className='office-video' controls></video>
         </div>
         <div className='experiment-container'>
-          <video src={hallucinating} className='office-video' controls></video>
+          <video src={hallucinating} className='halluc-video' controls></video>
           <div className='audio_waves-text'>
             <h1 className='experiment-title'>Hallucinating</h1>
             <p className='experiment-text'>MadMapper—projection mapping, audio reactive</p>
@@ -380,7 +381,7 @@ const Home = () => {
           <video src={touch_synth} className='synth-video' controls></video>
         </div>
         <div className='experiment-container'>
-          <video src={little_girl} className='halluc-video' controls></video>
+          <video src={little_girl} className='girl-video' controls></video>
           <div className='audio_waves-text'>
             <h1 className='experiment-title'>Little Girl in Red</h1>
             <p className='experiment-text'>TouchDesigner</p>
