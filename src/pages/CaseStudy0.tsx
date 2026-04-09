@@ -88,14 +88,14 @@ function SolutionCard({
   icon,
   title,
   subtitle,
-  description,
+  // description,
   impact,
   highlight,
 }: {
   icon: React.ReactNode
   title: string
   subtitle: string
-  description: string
+  // description: string
   impact: string
   highlight?: string
 }) {
@@ -108,7 +108,7 @@ function SolutionCard({
             <h3 className="solution-card__title">{title}</h3>
             <span className="solution-card__subtitle">{subtitle}</span>
           </div>
-          <p className="solution-card__description">{description}</p>
+          {/* <p className="solution-card__description">{description}</p> */}
           <div className="solution-card__impact">
             <p className="solution-card__impact-label">Why it matters:</p>
             <p className="solution-card__impact-text">{impact}</p>
@@ -321,7 +321,7 @@ const CaseStudy0 = () => {
             </p>
           </div>
           <p className="cs0-intro cs0-intro--mb8">
-            Through research and exploration, I observed three consistent gaps in how people engage with news:
+              Three gaps emerged:
           </p>
 
           <div className="cs0-problem-list">
@@ -346,6 +346,7 @@ const CaseStudy0 = () => {
                 loop
                 muted
                 playsInline
+                preload="auto"
               ></video>
           </div>
         </section>
@@ -373,7 +374,7 @@ const CaseStudy0 = () => {
                 number="1"
                 title="Trust is fragmented and personal"
                 items={[
-                  'Users rely on personal heuristics (authors, investors, tone)',
+                  'Trust is personal and heuristic-driven (authors, investors, tone)',
                   'Institutional trust is low across the board',
                   'Many users assume bias is always present',
                 ]}
@@ -390,15 +391,6 @@ const CaseStudy0 = () => {
               />
               <InsightCard
                 number="3"
-                title="People look for signals—not full verification"
-                items={[
-                  'Sources, quotes, and statistics increase trust',
-                  'Few users actively fact-check',
-                  'Many rely on intuition or quick comparisons',
-                ]}
-              />
-              <InsightCard
-                number="4"
                 title="Structure and formatting heavily impact comprehension"
                 items={[
                   'Large text blocks reduce engagement',
@@ -407,16 +399,7 @@ const CaseStudy0 = () => {
                 ]}
               />
               <InsightCard
-                number="5"
-                title="Summaries alone are not enough"
-                items={[
-                  'Some users rely on summaries',
-                  'Others distrust them entirely',
-                ]}
-                highlight="The real need wasn't shorter content—it was clearer structure and context"
-              />
-              <InsightCard
-                number="6"
+                number="4"
                 title="Bias is felt, but hard to articulate"
                 items={[
                   'Users recognize tone, framing, and narrative patterns',
@@ -432,10 +415,6 @@ const CaseStudy0 = () => {
         <section id="cs0-design">
           <h2 className="cs0-h2">Design Approach</h2>
           <div className="cs0-design-callout">
-            <p className="cs0-design-callout__text">
-              Instead of building a better summarizer, I designed a system that surfaces{' '}
-              <strong>three layers of understanding</strong>:
-            </p>
             <div className="cs0-grid-3col">
               <div className="cs0-design-card">
                 <div className="cs0-design-card__number">1. Content </div>
@@ -471,21 +450,21 @@ const CaseStudy0 = () => {
               icon={<FileText />}
               title="What's Being Reported"
               subtitle="Content Layer"
-              description="Extracts key claims from the article and prioritizes factual, neutral statements"
+              // description="Extracts key claims from the article and prioritizes factual, neutral statements"
               impact="Gives users a quick understanding of what the article actually says, without interpretation."
             />
             <SolutionCard
               icon={<Users />}
               title="Sources & Attribution"
               subtitle="Credibility Layer"
-              description="Identifies who is speaking and maps quotes to named sources"
+              // description="Identifies who is speaking and maps quotes to named sources"
               impact="Helps users understand whose perspectives are shaping the narrative."
             />
             <SolutionCard
               icon={<AlertCircle />}
               title="What's Not Included"
               subtitle="Context Layer"
-              description="Surfaces missing perspectives and background, highlights gaps in coverage"
+              // description="Surfaces missing perspectives and background, highlights gaps in coverage"
               impact="Encourages critical reading beyond the surface."
               highlight="This became the most differentiating feature, shifting the system from summarization to interpretation."
             />
@@ -493,21 +472,21 @@ const CaseStudy0 = () => {
               icon={<Layers />}
               title="How the Story is Structured"
               subtitle="Structure Layer"
-              description="Analyzes how attention is guided and identifies framing choices and emphasis"
+              // description="Analyzes how attention is guided and identifies framing choices and emphasis"
               impact="Articles don't just present information—they organize it to influence interpretation."
             />
             <SolutionCard
               icon={<MessageSquare />}
               title="Tone Indicators"
               subtitle="Language Layer"
-              description="Detects emotionally loaded language, highlights moral and certainty framing, surfaces notable rhetorical patterns"
+              // description="Detects emotionally loaded language, highlights moral and certainty framing, surfaces notable rhetorical patterns"
               impact="Language subtly shapes perception, even when content appears neutral."
             />
             <SolutionCard
               icon={<Search />}
               title="Similar Coverage"
               subtitle="Comparative Layer"
-              description="Shows how other publishers report the same story"
+              // description="Shows how other publishers report the same story"
               impact="Provides external perspective without requiring manual research."
             />
           </div>
@@ -593,17 +572,17 @@ const CaseStudy0 = () => {
           </div>
           <div>
             <div className="cs0-arch-stages">
-              <ArchitectureStage
+              {/* <ArchitectureStage
                 stage="1"
                 title="Extraction"
                 timing="Instant"
                 items={['DOM parsing of article content', 'Metadata extraction (headline, author, date)']}
-              />
-              <ArchitectureStage
+              /> */}
+              {/* <ArchitectureStage
                 stage="2"
                 title="Preprocessing"
                 items={['Removes boilerplate content', 'Deduplicates text', 'Normalizes formatting']}
-              />
+              /> */}
               <ArchitectureStage
                 stage="3"
                 title="Signal Processing"
@@ -651,13 +630,13 @@ const CaseStudy0 = () => {
                 </div>
               </div>
 
-              <ArchitectureStage
+              {/* <ArchitectureStage
                 stage="5"
                 title="Structured Output"
                 items={['Strict JSON schema', 'Validated outputs']}
                 note="Ensures consistency between system layers and UI rendering"
-              />
-              <ArchitectureStage
+              /> */}
+              {/* <ArchitectureStage
                 stage="6"
                 title="UI Rendering"
                 items={[
@@ -665,18 +644,19 @@ const CaseStudy0 = () => {
                   'Cards appear in order of importance',
                   'Deeper insights load asynchronously',
                 ]}
-              />
+              /> */}
             </div>
           </div>
           <div className='cs0-media1'>
-              <p style={{ marginBottom: '0.5rem' }}>Paywall State Wireframe</p>
+              <p style={{ marginBottom: '0.5rem' }}>Paywall State</p>
               {/* <img src={paywall_img} alt='paywall result in extension' className='cs0-media3'></img> */}
               <video src={paywall_demo}
                 className='cs0-media-link1'
                 autoPlay
                 loop
                 muted
-                playsInline>
+                playsInline
+                preload="auto">
               </video>
           </div>
         </section>
@@ -705,12 +685,12 @@ const CaseStudy0 = () => {
               decision="Use deterministic methods where reliability matters, AI where interpretation is needed"
               impacts={['More stable results', 'Reduced hallucination risk', 'Better system control']}
             />
-            <TechnicalDecision
+            {/* <TechnicalDecision
               title="Schema-Constrained Outputs"
               tradeoff="Flexibility vs consistency"
               decision="Enforce strict JSON schema"
               impacts={['Reliable UI rendering', 'Easier debugging and iteration']}
-            />
+            /> */}
             <TechnicalDecision
               title="Context Gap Detection Constraints"
               tradeoff="Richer insights vs risk of speculation"
@@ -723,14 +703,14 @@ const CaseStudy0 = () => {
               decision="Load critical insights first, enrich later"
               impacts={['Faster perceived performance', 'Better user engagement']}
             />
-            <TechnicalDecision
+            {/* <TechnicalDecision
               title="Fallback & Resilience Design"
               decision="Build fallback logic for AI-dependent features"
               impacts={[
                 'System remains functional under failure',
                 'Avoids empty or broken states',
               ]}
-            />
+            /> */}
           </div>
         </section>
 
@@ -755,14 +735,10 @@ const CaseStudy0 = () => {
 
           <div className="cs0-reflection-callout">
             <p className="cs0-reflection-callout__text">
-              This project started as a summarization tool, but quickly shifted into something more
-              fundamental:{' '}
-              <strong>
-                helping users understand how information is constructed—not just what it says.
-              </strong>
+                This project evolved from summarization into helping users understand how information is constructed.
             </p>
             <p className="cs0-reflection-callout__subtext">
-              Through building the system, I realized that clarity doesn't come from reducing content,
+                Through building the system, I realized that <strong> clarity</strong> doesn't <strong>come from</strong> reducing content,
               but from <strong>exposing structure, attribution, and gaps</strong>.
             </p>
           </div>
@@ -770,14 +746,14 @@ const CaseStudy0 = () => {
           <h3 className="cs0-takeaways-heading">Key Takeaways</h3>
 
           <div className="cs0-takeaways-list">
-            <div className="cs0-takeaway-card">
+            {/* <div className="cs0-takeaway-card">
               <h4 className="cs0-takeaway-card__title">
                 Understanding comes from structure, not just content
               </h4>
               <p className="cs0-takeaway-card__text">
                 The way information is organized shapes interpretation as much as the information itself.
               </p>
-            </div>
+            </div> */}
             <div className="cs0-takeaway-card">
               <h4 className="cs0-takeaway-card__title">Constraints improve trust</h4>
               <p className="cs0-takeaway-card__text">

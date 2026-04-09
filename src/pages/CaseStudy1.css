@@ -237,6 +237,7 @@
   background-color: #EAEAF0;
   padding: 1.5rem;
   border-radius: 0.5rem;
+  /* width: 50%; */
 }
 
 .cs1-flow-unlocks__label {
@@ -320,11 +321,12 @@
   flex-direction: column;
   gap: 1.5rem;
   margin-right: 2rem;
+  justify-content: flex-start;
 }
 
 .cs1-flow-gold-img {
+  width: 90%;
   border-radius: 0.5rem;
-  width: 30%;
   height: fit-content;
   box-shadow: 0 8px 22px rgb(234, 234, 240, 0.8), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
@@ -407,7 +409,7 @@
 }
 
 .cs1-media2{
-  width: 75%;
+  width: 90%;
   border-radius: 1rem;
 }
 
@@ -478,6 +480,56 @@
   font-style: italic;
 }
 
+/* ── Image carousel (Flow 2) ─────────────────────────────────────────────── */
+.cs1-img-carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  /* background-color: pink; */
+}
+
+.cs1-img-carousel__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cs1-img-carousel__btn {
+  background: none;
+  border: 1px solid rgba(74, 90, 138, 0.2);
+  border-radius: 0.375rem;
+  color: var(--blue);
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  display: flex;
+  align-items: center;
+  transition: background 0.15s ease;
+}
+
+.cs1-img-carousel__btn:hover {
+  background: #EAEAF0;
+}
+
+.cs1-img-carousel__counter {
+  font-family: 'AlteHaas', sans-serif;
+  font-size: 0.85rem;
+  color: var(--subtext);
+}
+
+  /* Flow gold section — stack image below text */
+  .cs1-flow1-gold {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .cs1-flow1-gold-left {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+    width: 60%;
+  }
+
+
 /* ── Mobile (≤ 768px) ─────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
 
@@ -505,20 +557,6 @@
     width: 100%;
   }
 
-  /* Flow gold section — stack image below text */
-  .cs1-flow1-gold {
-    flex-direction: column;
-  }
-
-  .cs1-flow1-gold-left {
-    margin-right: 0;
-    margin-bottom: 1.5rem;
-  }
-
-  .cs1-flow-gold-img {
-    width: 100%;
-  }
-
   /* Media */
   .cs1-media2 {
     width: 100%;
@@ -527,5 +565,17 @@
   /* Callout text */
   .cs1-callout-yellow__text {
     font-size: 1rem;
+  }
+
+  .cs1-flow1-gold {
+    flex-direction: column;
+  }
+
+  .cs1-flow1-gold-left {
+    width: 100%;
+  }
+
+  .cs1-flow-gold-img {
+    width: 100%;
   }
 }

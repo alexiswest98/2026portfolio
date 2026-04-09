@@ -141,4 +141,8 @@
   .case-study .cs-content {
     padding-top: 1rem;
   }
+
+  .case-study section+section {
+    margin-top: 4rem;
+  }
 }

@@ -1,20 +1,27 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
+import { Break } from 'three/tsl'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
 import NavSidebar from '../components/NavSidebar'
 import ModelViewer from '../components/ModelViewer'
 import ContactLinks from '../components/ContactLinks'
-import readBetweenLogo from '../assets/ReadBetweenLogo.png';
-import logo_vid from '../assets/name24.mp4';
-import CapitalOne_logo from '../assets/CapitalOne_logo.png';
-import MHASF_logo from '../assets/MHASF_logo.png';
-import DEMO_bank from '../assets/todayDEMO_bank.mp4';
-import DEMO_mhasf from '../assets/todayDEMO_mhasf.mp4';
-import DEMO_rb from '../assets/todayDEMO_rb.mp4';
+import readBetweenLogo from '../assets/ReadBetweenLogo.png'
+import logo_vid from '../assets/name24.mp4'
+import CapitalOne_logo from '../assets/CapitalOne_logo.png'
+import MHASF_logo from '../assets/MHASF_logo.png'
+import DEMO_bank from '../assets/todayDEMO_bank.mp4'
+import DEMO_mhasf from '../assets/todayDEMO_mhasf.mp4'
+import DEMO_rb from '../assets/todayDEMO_rb.mp4'
 import './Home.css'
-import { Break } from 'three/tsl'
+//experiments
+import audio_waves from '../assets/experiments/previewBH.mp4'
+import office_imagination from '../assets/experiments/Office_final_1.mp4'
+import hallucinating from '../assets/experiments/Hallucinating.mp4'
+import touch_synth from '../assets/experiments/TouchTones.mp4'
+import little_girl from '../assets/experiments/LittleGirl.mp4'
+
 
 gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin)
 
@@ -195,17 +202,17 @@ const Home = () => {
       <section id="hero" ref={heroRef} className="section section--hero">
         <div className="hero-content">
           {/* <h1 ref={logoRef} className='hero-title'>Alexis West</h1> */}
-          <video ref={logoRef} src={logo_vid} className='hero-logo' 
+          <video ref={logoRef} src={logo_vid} className='hero-logo'
             autoPlay
             loop
             muted
-            playsInline>
+            playsInline
+            preload="auto">
           </video>
 
           <div className="hero-tagline">
             <p ref={line1Ref} className='hero-second-line'>
-              San Francisco–based UX designer, developer, and <br />
-              creative technologist crafting digital experiences that feel
+              San Francisco–based creative technologist crafting digital experiences that feel
             </p>
             <div className="last-line-wrapper">
               <p ref={lastLineRef} className="hero-last-line">
@@ -240,7 +247,8 @@ const Home = () => {
               autoPlay
               loop
               muted
-              playsInline>
+              playsInline
+              preload="auto">
               </video>
               <Link to="/case-study-0" state={{ scrollTo: 'works' }} className="cs-link">VIEW PROJECT <span className="cs-link__arrow">→</span></Link>
           </div>
@@ -269,7 +277,8 @@ const Home = () => {
               autoPlay
               loop
               muted
-              playsInline>
+              playsInline
+              preload="auto">
             </video>
             <Link to="/case-study-1" state={{ scrollTo: 'works' }} className="cs-link">VIEW PROJECT <span className="cs-link__arrow">→</span></Link>
           </div>
@@ -298,7 +307,8 @@ const Home = () => {
               autoPlay
               loop
               muted
-              playsInline>
+              playsInline
+              preload="auto">
             </video>
             <Link to="/case-study-2" state={{ scrollTo: 'works' }} className="cs-link">VIEW PROJECT <span className="cs-link__arrow">→</span></Link>
           </div>
@@ -334,11 +344,53 @@ const Home = () => {
 
       {/* ── Experiments Section ────────────────────────────────────────── */}
       <section id="experiments" className="section section--placeholder">
-        <p className="placeholder-label">Experiments</p>
+        <div className='experiment-container'>
+          <video src={audio_waves} className='audio_waves-video' controls></video>
+          <div className='audio_waves-text'>
+            <h1 className='experiment-title'>Audio Reactive Sound Waves</h1>
+            <p className='experiment-text'>TouchDesigner</p>
+          </div>
+        </div>
+        <div className='experiment-container office_ate'>
+          <div className='office_ate-text'>
+            <h1 className='experiment-title'>The Office Ate My Imagination</h1>
+            <p className='experiment-text'>Blender—3d modeling, character rigging</p>
+            <p className='experiment-text'>MadMapper—projection mapping</p>
+            <p className='experiment-text'>Oil on canvas</p>
+            <div className='halluc-location'>GRAY AREA</div>
+          </div>
+          <video src={office_imagination} className='office-video' controls></video>
+        </div>
+        <div className='experiment-container'>
+          <video src={hallucinating} className='office-video' controls></video>
+          <div className='audio_waves-text'>
+            <h1 className='experiment-title'>Hallucinating</h1>
+            <p className='experiment-text'>MadMapper—projection mapping, audio reactive</p>
+            <div className='halluc-location'>GRAY AREA</div>
+          </div>
+        </div>
+        <div className='experiment-container office_ate'>
+          <div className='synth-text'>
+            <h1 className='experiment-title'>TouchSynth</h1>
+            <p className='experiment-text'>React</p>
+            <p className='experiment-text'>ml5.js</p>
+            <p className='experiment-text'>p5.js</p>
+            <p className='experiment-text'>Tone.js</p>
+          </div>
+          <video src={touch_synth} className='synth-video' controls></video>
+        </div>
+        <div className='experiment-container'>
+          <video src={little_girl} className='halluc-video' controls></video>
+          <div className='audio_waves-text'>
+            <h1 className='experiment-title'>Little Girl in Red</h1>
+            <p className='experiment-text'>TouchDesigner</p>
+            <p className='experiment-text'>Original poem</p>
+          </div>
+        </div>
       </section>
 
       {/* Invisible spacer — required for lastLineRef GSAP pin endTrigger */}
-      <div id="playground" aria-hidden="true" style={{ height: '5vh', visibility: 'hidden', pointerEvents: 'none' }} />
+      <div id="playground" aria-hidden="true" style={{ height: '10vh', visibility: 'hidden', pointerEvents: 'none' }} />
 
     </div>
   )

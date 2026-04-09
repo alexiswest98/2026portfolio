@@ -6,20 +6,22 @@ import {
   Target,
   CircleDollarSign,
   ArrowLeft,
+  ArrowRight
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import './CaseStudy.css'
-import './CaseStudy0.css'
-import './CaseStudy1.css'
+import './CaseStudy.css';
+import './CaseStudy0.css';
+import './CaseStudy1.css';
 import CapitalOne_logo from '../assets/CapitalOne_logo.png';
 import CO_oldAccount from '../assets/CO_oldAccount.png';
 import DEMO_bank from '../assets/todayDEMO_bank.mp4';
 import C0_manage_account from '../assets/CO_NewManageAccount.png';
 import CO_new_home from '../assets/CO_NewHomeScreen.png';
 import CO_virtual_card from '../assets/CO_virtual_card.png';
+import CO_account_home from '../assets/CO_NewAccountHome.png';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -153,6 +155,8 @@ function MeasurementCard({
 const CaseStudy1 = () => {
   const navigate = useNavigate()
   const [activeSection, setActiveSection] = useState('')
+  const [flowImg, setFlowImg] = useState(0)
+  const flowImages = [CO_account_home, C0_manage_account]
 
   const handleNavClick = (id: string) => {
     const el = document.getElementById(id)
@@ -308,10 +312,10 @@ const CaseStudy1 = () => {
                   <p className="cs1-why-card__item-text">What competes for attention creates friction</p>
                 </div>
               </div>
-              <p className="cs1-why-card__note">
+              {/* <p className="cs1-why-card__note">
                 And when that friction shows up around money, users don't just get annoyed—they start
                 to question the system itself.
-              </p>
+              </p> */}
               <div className='cs1-business-implic'>
                 <h3 className="cs1-bus__title">Business impact:</h3>
                 <p>In a competitive market, hidden payment details can shake user confidence, risking churn and missed payments.<strong> Clear, immediate information strengthens trust and retention.</strong></p>
@@ -348,13 +352,13 @@ const CaseStudy1 = () => {
                   'Features that are highest use are buried',
                   'I have to go through make a payment just to check my balance',
                 ]}
-                insight="Basic financial information requires too much effort to access."
+                // insight="Basic financial information requires too much effort to access."
               />
               <UserFeedbackCard
                 number="2"
                 title="I just want to manage my money—not fight the UI"
                 quotes={['Bombarded with ads', 'Popups every time']}
-                insight="Promotional content is interrupting high-intent tasks."
+                // insight="Promotional content is interrupting high-intent tasks."
               />
               <UserFeedbackCard
                 number="3"
@@ -402,6 +406,7 @@ const CaseStudy1 = () => {
                 loop
                 muted
                 playsInline
+                preload="auto"
               ></video>
             </div>
           </section>
@@ -430,7 +435,6 @@ const CaseStudy1 = () => {
                       label="What I Changed"
                       content="I restructured the screen so financial status becomes the entry point:"
                       items={[
-                        'Elevated the account card as the primary focus',
                         'Introduced a clear, scannable payment state',
                         'Moved secondary content below the fold',
                         'Reduced visual competition without removing functionality',
@@ -448,7 +452,9 @@ const CaseStudy1 = () => {
                       <p className="cs1-flow-unlocks__note">That clarity happens immediately, without navigation.</p>
                     </div>
                   </div>
-                  <img src={CO_new_home} alt='New Home Screen Layout' className='cs1-flow-gold-img'></img>
+                  <div className="cs1-img-carousel">
+                    <img src={CO_new_home} alt='New Home Screen Layout' className='cs1-flow-gold-img'></img>
+                  </div>
 
                 </div>
 
@@ -507,7 +513,26 @@ const CaseStudy1 = () => {
                       </div>
                     </div>
                   </div>
-                  <img src={C0_manage_account} className='cs1-flow-gold-img'></img>
+                  <div className="cs1-img-carousel">
+                    <img src={flowImages[flowImg]} className="cs1-flow-gold-img" alt="Flow 2 screen" />
+                    <div className="cs1-img-carousel__controls">
+                      <button
+                        className="cs1-img-carousel__btn"
+                        onClick={() => setFlowImg(i => (i - 1 + flowImages.length) % flowImages.length)}
+                        aria-label="Previous image"
+                      >
+                        <ArrowLeft size={16} />
+                      </button>
+                      <span className="cs1-img-carousel__counter">{flowImg + 1}/{flowImages.length}</span>
+                      <button
+                        className="cs1-img-carousel__btn"
+                        onClick={() => setFlowImg(i => (i + 1) % flowImages.length)}
+                        aria-label="Next image"
+                      >
+                        <ArrowRight size={16} />
+                      </button>
+                    </div>
+                  </div>
                 </div>
                 <FlowSection
                   label="Result"
@@ -551,7 +576,9 @@ const CaseStudy1 = () => {
                       </p>
                     </div>
                   </div>
-                  <img src={CO_virtual_card} alt='New Virtual Card Function' className='cs1-flow-gold-img'></img>
+                  <div className="cs1-img-carousel">
+                    <img src={CO_virtual_card} alt='New Virtual Card Function' className='cs1-flow-gold-img'></img>
+                  </div>
                 </div>
 
 
@@ -614,17 +641,15 @@ const CaseStudy1 = () => {
           <section id="cs1-reflection">
             <h2 className="cs0-h2">Reflection</h2>
             <div className="cs1-reflection-callout">
-              <p className="cs1-reflection-callout__intro">This project made one thing very clear:</p>
+              {/* <p className="cs1-reflection-callout__intro">This project made one thing very clear:</p> */}
               <p className="cs1-reflection-callout__headline">
                 In financial products, hierarchy is trust.
               </p>
               <p className="cs1-reflection-callout__subtext">
                 What you show first, what you hide, and what you interrupt with—all shape how users
                 interpret their financial reality.
-              </p>
-              <p className="cs1-reflection-callout__subtext">
                 By prioritizing clarity and removing competition from high-sensitivity moments, the
-                experience becomes quieter, more predictable, and more trustworthy.
+                experience becomes more user-centered, predictable, and trustworthy.
               </p>
             </div>
             <h3 className="cs0-h3">Key Takeaways</h3>
@@ -639,14 +664,11 @@ const CaseStudy1 = () => {
                 <p className="cs0-takeaway-card__text">Promotions have a place—just not during critical tasks</p>
               </div>
               <div className="cs0-takeaway-card">
-                <p className="cs0-takeaway-card__text">Good structure reduces the need for more features</p>
+                <p className="cs0-takeaway-card__text"><strong> Good structure reduces the need for more features</strong></p>
               </div>
             </div>
             <div className="cs0-looking-forward">
               <h4 className="cs0-looking-forward__title">What I'd Do Next</h4>
-              <p className="cs0-looking-forward__intro">
-                If this were a real product, I'd focus on validation and edge cases:
-              </p>
               <ul className="cs0-looking-forward__list">
                 <li className="cs0-looking-forward__item">
                   <span className="cs0-looking-forward__bullet">•</span>

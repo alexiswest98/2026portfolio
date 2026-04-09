@@ -294,6 +294,7 @@ const CaseStudy2 = () => {
                 loop
                 muted
                 playsInline
+                preload="auto"
               ></video>
             </div>
           </section>
@@ -510,6 +511,7 @@ const CaseStudy2 = () => {
                 loop
                 muted
                 playsInline
+                preload="auto"
               ></video>
             </div>
           </section>

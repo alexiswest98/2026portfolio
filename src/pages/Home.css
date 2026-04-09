@@ -267,7 +267,7 @@
 }
 
 .rb-demo-vid {
-  width: fill;
+  width: 100%;
   margin-bottom: 0.4rem;
 }
 
@@ -279,7 +279,7 @@
 /* ── About section ───────────────────────────────────────────────── */
 
 .about-container {
-  width: 64%;
+  width: 70%;
   height: 75vh;
   /* background-color: rgb(255, 192, 203, 0.2); */
   display: flex;
@@ -333,6 +333,64 @@
   font-weight: bold;
   letter-spacing: -3%;
 }
+
+/* ── Experiments ─────────────────────────────────────────────────────── */
+.experiment-container {
+  width: 60%;
+  background-color: pink;
+  display: flex;
+  margin-top: 10rem;
+  justify-content: center;
+}
+
+.audio_waves-video {
+  width: 60%;
+}
+
+.audio_waves-text {
+  margin-left: 1rem;
+  width: fit-content;
+}
+
+.experiment-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1.5;
+  letter-spacing: -3%;
+}
+
+
+.office-video {
+  width: 50%;
+}
+
+.office_ate-text {
+  margin-right: 1rem;
+  text-align: start;
+  width: fit-content;
+}
+
+.synth-video {
+  width: 50%;
+}
+
+.synth-text {
+  width: fit-content;
+  margin-right: 1rem;
+}
+
+.halluc-video {
+  width: 40%;
+}
+
+.halluc-location {
+  width: 100%;
+  text-align: end;
+  margin-top: 1rem;
+  /* font-weight: bold; */
+  letter-spacing: 2%;
+}
+
 
 /* ── Mobile (≤ 768px) ─────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
