@@ -48,10 +48,12 @@ const Home = () => {
     if (!target) return
     // Clear state immediately so a page refresh doesn't re-trigger the scroll
     window.history.replaceState({}, '', window.location.pathname)
-    requestAnimationFrame(() => {
+    const scrollToTarget = () => {
       const el = document.getElementById(target)
       if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.15, behavior: 'smooth' })
-    })
+    }
+    // Delay to let GSAP ScrollTrigger initialize and insert pin spacers before measuring
+    setTimeout(scrollToTarget, 400)
   }, [location.state])
 
   useEffect(() => {
