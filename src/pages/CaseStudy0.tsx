@@ -245,15 +245,19 @@ const CaseStudy0 = () => {
         },
       })
 
-      // Active section tracking
-      CS0_NAV.forEach(({ id }) => {
-        ScrollTrigger.create({
-          trigger: `#${id}`,
-          start: 'top 55%',
-          end: 'bottom 55%',
-          onEnter: () => setActiveSection(id),
-          onEnterBack: () => setActiveSection(id),
-        })
+      // Active section tracking — finds whichever section's top is last above 30vh
+      ScrollTrigger.create({
+        start: 0,
+        end: 'max',
+        onUpdate: () => {
+          const threshold = window.innerHeight * 0.3
+          let current = CS0_NAV[0].id
+          for (const { id } of CS0_NAV) {
+            const el = document.getElementById(id)
+            if (el && el.getBoundingClientRect().top <= threshold) current = id
+          }
+          setActiveSection(current)
+        },
       })
     })
     return () => ctx.revert()

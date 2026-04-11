@@ -1,0 +1,140 @@
+.experiment-body {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    max-width: 85%;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    margin-bottom: 5rem;
+    /* background-color: rgb(255, 192, 203, 0.5); */
+}
+
+.experiment_material-container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    /* background-color: rgb(250, 113, 136); */
+}
+
+.experiment_material-main {
+    width: 55%;
+}
+
+.main-vid {
+    width: 95%;
+    margin-bottom: 0.5rem;
+}
+
+.experiment-tech-text {
+    font-size: 1.15rem;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: -3%;
+    margin-bottom: 0.5rem;
+    color: var(--subtext);
+}
+
+.experiment_material-description {
+    width: 45%;
+}
+
+.experiment_material-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 5rem;
+}
+
+.experiment_grid-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.experiment_grid-media {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.experiment_grid-caption {
+    width: 100%;
+}
+
+.main1-vid {
+    width: 75%;
+}
+
+.office-main-preview {
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    padding-right: 3%;
+}
+
+.experiment_grid-media-horiz {
+    width: 80%;
+}
+
+.grid-item-horizontal {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.grid-caption-horizontal {
+    width: 80%;
+}
+
+
+
+/* ── Mobile (≤ 768px) ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .experiment-body {
+        max-width: 100%;
+        margin-top: 1rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .experiment_material-container {
+        flex-direction: column;
+        margin-top: 1rem;
+        flex-direction: column-reverse;
+    }
+
+    .experiment_material-main {
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .main-vid {
+        width: 100%;
+    }
+
+    .main1-vid {
+        width: 100%;
+    }
+
+    .experiment_material-description {
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+
+    .experiment_material-grid {
+        grid-template-columns: 1fr;
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 2rem;
+    }
+
+    .experiment-tech-text {
+        margin-bottom: 1rem;
+    }
+
+    .experiment_grid-media-horiz {
+        width: 100%;
+    }
+}

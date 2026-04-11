@@ -279,11 +279,10 @@
 /* ── About section ───────────────────────────────────────────────── */
 
 .about-container {
-  width: 70%;
-  height: 75vh;
+  width: 65%;
+  height: 70vh;
   /* background-color: rgb(255, 192, 203, 0.2); */
   display: flex;
-  
 }
 
 .about-left-side {
@@ -335,7 +334,23 @@
 }
 
 /* ── Experiments ─────────────────────────────────────────────────────── */
+.experiment-container1 {
+  width: 60%;
+  /* background-color: pink; */
+  display: flex;
+  margin-top: 7rem;
+  justify-content: center;
+}
+
 .experiment-container {
+  width: 60%;
+  /* background-color: pink; */
+  display: flex;
+  margin-top: 15rem;
+  justify-content: center;
+}
+
+.experiment2-container {
   width: 60%;
   /* background-color: pink; */
   display: flex;
@@ -359,6 +374,9 @@
   letter-spacing: -3%;
 }
 
+.home-experiment-title:hover {
+  color: var(--mustard);
+}
 
 .office-video {
   width: 50%;
@@ -371,7 +389,7 @@
 }
 
 .synth-video {
-  width: 50%;
+  width: 55%;
 }
 
 .synth-text {
@@ -389,6 +407,7 @@
   margin-top: 1rem;
   /* font-weight: bold; */
   letter-spacing: 2%;
+  color: var(--subtext)
 }
 
 .girl-video {
@@ -523,4 +542,40 @@
   .about-left-side p {
     font-size: 0.95rem;
   }
+
+  #experiments {
+    margin-bottom: 5rem;
+  }
+
+  .experiment-container1 {
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .experiment-title {
+    font-size: 1.3rem;
+  }
+
+  .audio_waves-video, .office-video, .halluc-video, .synth-video {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .audio_waves-text, .office_ate-text, .synth-text {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .experiment-container {
+    flex-direction: column;
+    width: 80%;
+    flex-direction: column-reverse;
+    
+  }
+
+  .experiment2-container {
+    flex-direction: column;
+    width: 80%;
+  }
+
 }

@@ -65,10 +65,31 @@ const Home = () => {
       el.textContent = binaryMap[originalTexts[i].toLowerCase()] ?? '01010101'
     })
 
+    let idleTimer = null
+
     const ctx = gsap.context(() => {
+
+      // Trails start hidden — shown only while scrolling
+      gsap.set('.nav-text.trail', { opacity: 0 })
 
       // ── 1. Active section + nav velocity ───────────────────────────────
       let trackedSection = 'hero'
+
+      // ---- TRAIL TUNING ----
+      // Velocity normalization divisor — higher = trails kick in later/softer
+      const V_DIVISOR = 1500
+      // Max displacement (px) for trail1 and trail2
+      const TRAIL1_Y = 6, TRAIL1_X = 2
+      const TRAIL2_Y = 12, TRAIL2_X = 4
+      // Fade-out duration (s) when scrolling stops
+      const FADE_OUT_DURATION = 0.4
+      // ---- END TUNING ----
+
+      const hideTrails = () => {
+        gsap.to('.nav-text.trail1', { y: 0, x: 0, opacity: 0, duration: FADE_OUT_DURATION, overwrite: true })
+        gsap.to('.nav-text.trail2', { y: 0, x: 0, opacity: 0, duration: FADE_OUT_DURATION, overwrite: true })
+      }
+
       ScrollTrigger.create({
         start: 0,
         end: 'max',
@@ -83,20 +104,20 @@ const Home = () => {
           if (newActive !== trackedSection) {
             trackedSection = newActive
             setActiveSection(newActive)
-            // Immediately cancel in-flight trail tweens at boundary sections
-            if (newActive === 'hero') {
-              gsap.to('.nav-text.trail1', { y: 0, x: 0, duration: 0.3, overwrite: true })
-              gsap.to('.nav-text.trail2', { y: 0, x: 0, duration: 0.45, overwrite: true })
-            }
+            if (newActive === 'hero') hideTrails()
           }
 
-          // Suppress trails entirely at hero and playground
+          // Suppress trails entirely at hero
           const suppressTrails = trackedSection === 'hero'
-          const v = suppressTrails ? 0 : Math.min(Math.abs(self.getVelocity()) / 1500, 1)
+          const v = suppressTrails ? 0 : Math.min(Math.abs(self.getVelocity()) / V_DIVISOR, 1)
 
           gsap.to('.nav-text.main', { y: 0, duration: 0.2, overwrite: true })
-          gsap.to('.nav-text.trail1', { y: v * 6, x: v * 2, duration: 0.3, overwrite: true })
-          gsap.to('.nav-text.trail2', { y: v * 12, x: v * 4, duration: 0.45, overwrite: true })
+          gsap.to('.nav-text.trail1', { y: v * TRAIL1_Y, x: v * TRAIL1_X, opacity: 1, duration: 0.3, overwrite: true })
+          gsap.to('.nav-text.trail2', { y: v * TRAIL2_Y, x: v * TRAIL2_X, opacity: 1, duration: 0.45, overwrite: true })
+
+          // Reset idle timer — hide trails when scrolling stops
+          clearTimeout(idleTimer)
+          idleTimer = setTimeout(hideTrails, 150)
         },
       })
 
@@ -147,6 +168,7 @@ const Home = () => {
       ScrollTrigger.create({
         trigger: lastLineRef.current,
         start: () => {
+          if (!lastLineRef.current) return 0
           const L = lastLineRef.current.getBoundingClientRect().top
           const vh = window.innerHeight / 100
           const progress = Math.max(0, Math.min(1, (L - 3 * vh) / (55 * vh)))
@@ -187,6 +209,7 @@ const Home = () => {
     })
 
     return () => {
+      clearTimeout(idleTimer)
       linkEls.forEach((el, i) => { el.textContent = originalTexts[i] })
       ctx.revert()
     }
@@ -217,7 +240,7 @@ const Home = () => {
             </p>
             <div className="last-line-wrapper">
               <p ref={lastLineRef} className="hero-last-line">
-                intuitive, intentional, and quietly human.
+                intuitive, intentional, and unapologetically human.
               </p>
             </div>
           </div>
@@ -324,12 +347,13 @@ const Home = () => {
           <div className='about-left-side'>
             <div>
               <h2 className='about-header'>Hi, I’m Alexis</h2>
-              <p className='about-subheader'>I'm a designer and developer who believes the best digital experiences feel effortless to the people using them. I build across research, design, and production—bringing clarity and intention to every layer, from systems thinking to polished, production-ready builds that are genuinely useful.</p>
+              <p className='about-subheader'>I'm a designer and developer who believes the best digital experiences are felt, not just used.</p>
+              <p className='about-subheader'>I work across research, design, and production, drawing inspiration from the beauty of the physical world to bring warmth and meaning to every layer, from systems thinking to production-ready builds.</p>
             </div>
             <div className='about-left-side-bottom'>
               <h2 className='about-skills-header'>Skills</h2>
               <h3 className='about-skills-subheader'>Design & Product</h3>
-              <p>UX/UI Design · Information Architecture · Wireframing & Prototyping · Design Systems · User Research · Interaction Design</p>
+              <p>UX/UI Design · Information Architecture · Wireframing & Prototyping · Design Systems · User Research · Interaction Design · Visual Storytelling</p>
               <h3 className='about-skills-subheader'>Development & AI</h3>
               <p>JavaScript/Typescript & React · Python & Flask & SQLite · REST APIs · CMS & No-Code (WordPress, Framer) · AI Integration (Claude Code, OpenAI API)</p>
               <h3 className='about-skills-subheader'>Creative Coding & Technical Tools</h3>
@@ -345,16 +369,16 @@ const Home = () => {
 
       {/* ── Experiments Section ────────────────────────────────────────── */}
       <section id="experiments" className="section section--placeholder">
-        <div className='experiment-container'>
+        <div id='experiment-0' className='experiment-container1'>
           <video src={audio_waves} className='audio_waves-video' controls></video>
           <div className='audio_waves-text'>
-            <h1 className='experiment-title'>Audio Reactive Sound Waves</h1>
+            <Link to="/experiment-0"><h1 className='experiment-title home-experiment-title'>Audio Reactive Sound Waves</h1></Link>
             <p className='experiment-text'>TouchDesigner</p>
           </div>
         </div>
-        <div className='experiment-container office_ate'>
+        <div id='experiment-1' className='experiment-container office_ate'>
           <div className='office_ate-text'>
-            <h1 className='experiment-title'>The Office Ate My Imagination</h1>
+            <Link to="/experiment-1"><h1 className='experiment-title home-experiment-title'>The Office Ate My Imagination</h1></Link>
             <p className='experiment-text'>Blender—3d modeling, character rigging</p>
             <p className='experiment-text'>MadMapper—projection mapping</p>
             <p className='experiment-text'>Oil on canvas</p>
@@ -362,17 +386,17 @@ const Home = () => {
           </div>
           <video src={office_imagination} className='office-video' controls></video>
         </div>
-        <div className='experiment-container'>
+        <div id='experiment-2' className='experiment2-container'>
           <video src={hallucinating} className='halluc-video' controls></video>
           <div className='audio_waves-text'>
-            <h1 className='experiment-title'>Hallucinating</h1>
-            <p className='experiment-text'>MadMapper—projection mapping, audio reactive</p>
+            <Link to="/experiment-2"><h1 className='experiment-title home-experiment-title'>Hallucinating</h1></Link>
+            <p className='experiment-text'>MadMapper—projection mapping</p>
             <div className='halluc-location'>GRAY AREA</div>
           </div>
         </div>
-        <div className='experiment-container office_ate'>
+        <div id='experiment-3' className='experiment-container office_ate'>
           <div className='synth-text'>
-            <h1 className='experiment-title'>TouchSynth</h1>
+            <Link to="/experiment-3"><h1 className='experiment-title home-experiment-title'>TouchSynth</h1></Link>
             <p className='experiment-text'>React</p>
             <p className='experiment-text'>ml5.js</p>
             <p className='experiment-text'>p5.js</p>
@@ -380,18 +404,18 @@ const Home = () => {
           </div>
           <video src={touch_synth} className='synth-video' controls></video>
         </div>
-        <div className='experiment-container'>
+        {/* <div id='experiment-4' className='experiment-container'>
           <video src={little_girl} className='girl-video' controls></video>
           <div className='audio_waves-text'>
-            <h1 className='experiment-title'>Little Girl in Red</h1>
+            <Link to="/experiment-4"><h1 className='experiment-title'>Little Girl in Red</h1></Link>
             <p className='experiment-text'>TouchDesigner</p>
             <p className='experiment-text'>Original poem</p>
           </div>
-        </div>
+        </div> */}
       </section>
 
       {/* Invisible spacer — required for lastLineRef GSAP pin endTrigger */}
-      <div id="playground" aria-hidden="true" style={{ height: '10vh', visibility: 'hidden', pointerEvents: 'none' }} />
+      <div id="playground" aria-hidden="true" style={{ height: '15vh', visibility: 'hidden', pointerEvents: 'none' }} />
 
     </div>
   )

@@ -1,0 +1,104 @@
+#main-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+#touch_synth-title {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: -3%;
+}
+
+#right-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#start-button {
+    font-size: 1.1rem;
+    padding: 0.7rem 1.2rem;
+    margin-top: 0.5rem;
+    background-color: var(--blue);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#start-button:hover {
+    opacity: 0.6;
+}
+
+#start-button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}
+
+#instructions {
+    width: 30%;
+    flex-shrink: 0;
+    margin-top: 1.5rem;
+    text-align: left;
+    /* background-color: black; */
+    border: 0.1rem solid black;
+    padding: 1rem;
+    /* border-radius: 8px; */
+    /* color: white; */
+}
+
+
+.finger-mapping {
+    margin: 10px 0;
+    padding: 8px;
+    background-color: var(--sub1-mustard);
+    border-radius: 4px;
+}
+
+#canvas-container {
+    margin-top: 1.5rem;
+    border: 2px solid white;
+    /* border-radius: 8px; */
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    overflow: hidden;
+}
+
+.experiment3-tech-text {
+font-size: 1.15rem;
+font-weight: bold;
+line-height: 1.5;
+letter-spacing: -3%;
+margin-bottom: 0.5rem;
+}
+
+/* ── Mobile (≤ 768px) ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    #main-layout {
+        flex-direction: column;
+        padding: 0;
+        gap: 1rem;
+    }
+
+    #instructions {
+        width: 100%;
+    }
+
+    #canvas-container {
+        width: 100%;
+    }
+
+    #right-panel {
+        width: 100%;
+    }
+}
