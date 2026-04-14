@@ -16,7 +16,7 @@ import DEMO_mhasf from '../assets/todayDEMO_mhasf.mp4'
 import DEMO_rb from '../assets/todayDEMO_rb.mp4'
 import './Home.css'
 //experiments
-import audio_waves from '../assets/experiments/previewFRANK.mp4'
+import audio_waves from '../assets/experiments/FRANK_prev_1.mp4'
 import office_imagination from '../assets/experiments/Office_final_1.mp4'
 import hallucinating from '../assets/experiments/Hallucinating.mp4'
 import touch_synth from '../assets/experiments/TouchTones.mp4'
