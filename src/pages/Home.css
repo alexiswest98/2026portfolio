@@ -48,6 +48,7 @@
   display: flex;
   justify-content: center;
   position: relative;
+  z-index: 10;
 }
 
 .hero-second-line {
@@ -149,13 +150,28 @@
 }
 
 /* ── Case study 0 section ───────────────────────────────────────────────── */
-.case-study0-container {
+.case-study-container {
   width: 70%;
-  height: 72vh;
+  height: 70vh;
   /* background-color: rgb(255, 255, 0, 0.3); */
   display: flex;
   flex-direction: row;
-  box-shadow: 0 8px 32px rgb(234, 234, 240, 0.9);
+  box-shadow: 0 8px 32px rgb(234, 234, 240);
+  border-radius: 1rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  margin-bottom: 8rem;
+}
+
+.case-study0-container {
+  width: 70%;
+  height: 75vh;
+  /* background-color: rgb(255, 255, 0, 0.3); */
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 8px 32px rgb(234, 234, 240);
   border-radius: 1rem;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -356,6 +372,11 @@
   display: flex;
   margin-top: 15rem;
   justify-content: center;
+}
+
+.experiment-text-sound {
+  font-style: italic;
+  color: var(--subtext)
 }
 
 .audio_waves-video {
@@ -578,4 +599,29 @@
     width: 80%;
   }
 
+}
+
+/* trying pixel animation on scroll */
+.pixelate-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.pixel-video {
+  width: 100%;
+  display: block;
+}
+
+.pixel-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pixel-block {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #FCFCFE;
 }
