@@ -16,12 +16,11 @@ import DEMO_mhasf from '../assets/todayDEMO_mhasf.mp4'
 import DEMO_rb from '../assets/todayDEMO_rb.mp4'
 import './Home.css'
 //experiments
-import audio_waves from '../assets/experiments/previewFRANK.mp4'
+import audio_waves from '../assets/experiments/FRANK_prev_1.mp4'
 import office_imagination from '../assets/experiments/Office_final_1.mp4'
 import hallucinating from '../assets/experiments/Hallucinating.mp4'
 import touch_synth from '../assets/experiments/TouchTones.mp4'
-// import little_girl from '../assets/experiments/LittleGirl.mp4'
-import PixelatedVideo from '../components/PixelatedVideo'
+import little_girl from '../assets/experiments/LittleGirl.mp4'
 
 
 gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin)
@@ -243,7 +242,7 @@ const Home = () => {
             </p>
             <div className="last-line-wrapper">
               <p ref={lastLineRef} className="hero-last-line">
-                intuitive, intentional, and sincerely human.
+                intuitive, intentional, and unapologetically human.
               </p>
             </div>
           </div>
@@ -252,7 +251,7 @@ const Home = () => {
 
       {/* ── Works Section ──────────────────────────────────────────────── */}
       <section id="works" className="section section--works">
-        <div id="case-study-0" className='case-study-container'>
+        <div id="case-study-0" className='case-study0-container'>
           <div className='case-study0-left'>
             <div>
               <img src={readBetweenLogo} alt="Read Between logo" className='rb-logo'/>
@@ -373,43 +372,39 @@ const Home = () => {
       {/* ── Experiments Section ────────────────────────────────────────── */}
       <section id="experiments" className="section section--placeholder">
         <div id='experiment-0' className='experiment-container1'>
-          {/* <video src={audio_waves} className='audio_waves-video' controls></video> */}
-          <PixelatedVideo src={audio_waves} className="audio_waves-video" />
+          <video src={audio_waves} className='audio_waves-video' controls></video>
           <div className='audio_waves-text'>
             <Link to="/experiment-0"><h1 className='experiment-title home-experiment-title'>Audio Reactive Sound Waves</h1></Link>
-            <p>TouchDesigner</p>
-            <p className='experiment-text-sound'>~play with sound~</p>
+            <p className='experiment-text'>TouchDesigner</p>
           </div>
         </div>
         <div id='experiment-1' className='experiment-container office_ate'>
           <div className='office_ate-text'>
             <Link to="/experiment-1"><h1 className='experiment-title home-experiment-title'>The Office Ate My Imagination</h1></Link>
-            <p>Blender—3d modeling, character rigging</p>
-            <p>MadMapper—projection mapping</p>
-            <p>Oil on canvas</p>
+            <p className='experiment-text'>Blender—3d modeling, character rigging</p>
+            <p className='experiment-text'>MadMapper—projection mapping</p>
+            <p className='experiment-text'>Oil on canvas</p>
             <div className='halluc-location'>GRAY AREA</div>
           </div>
-          <PixelatedVideo src={office_imagination} className="office-video" />
+          <video src={office_imagination} className='office-video' controls></video>
         </div>
         <div id='experiment-2' className='experiment2-container'>
-          <PixelatedVideo src={hallucinating} className="halluc-video" />
+          <video src={hallucinating} className='halluc-video' controls></video>
           <div className='audio_waves-text'>
             <Link to="/experiment-2"><h1 className='experiment-title home-experiment-title'>Hallucinating</h1></Link>
-            <p>MadMapper—projection mapping</p>
-            <p className='experiment-text-sound'>~play with sound~</p>
+            <p className='experiment-text'>MadMapper—projection mapping</p>
             <div className='halluc-location'>GRAY AREA</div>
           </div>
         </div>
         <div id='experiment-3' className='experiment-container office_ate'>
           <div className='synth-text'>
             <Link to="/experiment-3"><h1 className='experiment-title home-experiment-title'>TouchSynth</h1></Link>
-            <p>React</p>
-            <p>ml5.js</p>
-            <p>p5.js</p>
-            <p>Tone.js</p>
-            <p className='experiment-text-sound'>~play with sound~</p>
+            <p className='experiment-text'>React</p>
+            <p className='experiment-text'>ml5.js</p>
+            <p className='experiment-text'>p5.js</p>
+            <p className='experiment-text'>Tone.js</p>
           </div>
-          <PixelatedVideo src={touch_synth} className="synth-video" />
+          <video src={touch_synth} className='synth-video' controls></video>
         </div>
         {/* <div id='experiment-4' className='experiment-container'>
           <video src={little_girl} className='girl-video' controls></video>
