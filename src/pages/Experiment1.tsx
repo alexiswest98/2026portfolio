@@ -32,7 +32,7 @@ const Experiment1 = () => {
           <h1 className='experiment-title'>The Office Ate My Imagination</h1>
           <h2 className='experiment-tech-text'>Blender (3d modeling, character rigging), MadMapper, Oil on Canvas</h2>
           <p className='experiment-text'>What happens to imagination when it's put to work? "The Office Ate My Imagination" is a mixed-media installation that uses projection mapping across four canvases to externalize an interior struggle familiar to many creative workers. A lone character moves through three psychological states: stillness, dream, and collapse, mirroring the cycle of inspiration and burnout that defines life at the intersection of art and industry. The final piece was exhibited as part of Gray Area's Creative Coding Intensive Showcase.</p>
-          <p className='experiment-text'>The final piece was exhibited as a part of Gray Area’s Creative Coding Intensive Showcase.</p>
+          {/* <p className='experiment-text'>The final piece was exhibited as a part of Gray Area’s Creative Coding Intensive Showcase.</p> */}
         </div>
       </div>
       <div className='experiment_material-grid'>
