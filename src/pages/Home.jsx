@@ -160,28 +160,39 @@ const Home = () => {
         ease: 'none',
       }, 0)
 
-      // lastLine joins the same timeline at position 0 — perfectly synced with line1 and logo
-      heroTl.to('.last-line-wrapper', { y: '-55vh', ease: 'none' }, 0)
+      // lastLine: use gsap.matchMedia() for reliable responsive behaviour
+      // (window.innerWidth is not reliable across all mobile browsers/orientations)
+      const mm = gsap.matchMedia()
 
-      // ── 4. lastLine PIN at ~3vh ───────────────────────────────────────
-      // The wrapper (not lastLine) is animated by heroTl, so ScrollTrigger can't
-      // infer lastLine's visual position from its natural layout position.
-      // We calculate the exact scroll offset at which the wrapper's translation
-      // will have moved lastLine to 3% from viewport top, then fire the pin there.
-      ScrollTrigger.create({
-        trigger: lastLineRef.current,
-        start: () => {
-          if (!lastLineRef.current) return 0
-          const L = lastLineRef.current.getBoundingClientRect().top
-          const vh = window.innerHeight / 100
-          const progress = Math.max(0, Math.min(1, (L - 3 * vh) / (55 * vh)))
-          return progress * 180 * vh // absolute scroll position
-        },
-        endTrigger: '#playground',
-        end: 'bottom top',
-        pin: true,
-        pinSpacing: false,
-        pinReparent: true,
+      mm.add('(max-width: 768px)', () => {
+        // Mobile: translate up and fade out — no pin
+        heroTl.to('.last-line-wrapper', { y: '-55vh', color: '#aaaaaa', ease: 'none' }, 0)
+      })
+
+      mm.add('(min-width: 769px)', () => {
+        // Desktop: translate up (no fade), then pin
+        heroTl.to('.last-line-wrapper', { y: '-55vh', ease: 'none' }, 0)
+
+        // ── 4. lastLine PIN at ~3vh ───────────────────────────────────────
+        // The wrapper (not lastLine) is animated by heroTl, so ScrollTrigger can't
+        // infer lastLine's visual position from its natural layout position.
+        // We calculate the exact scroll offset at which the wrapper's translation
+        // will have moved lastLine to 3% from viewport top, then fire the pin there.
+        ScrollTrigger.create({
+          trigger: lastLineRef.current,
+          start: () => {
+            if (!lastLineRef.current) return 0
+            const L = lastLineRef.current.getBoundingClientRect().top
+            const vh = window.innerHeight / 100
+            const progress = Math.max(0, Math.min(1, (L - 3 * vh) / (55 * vh)))
+            return progress * 180 * vh // absolute scroll position
+          },
+          endTrigger: '#playground',
+          end: 'bottom top',
+          pin: true,
+          pinSpacing: false,
+          pinReparent: true,
+        })
       })
 
 
@@ -239,11 +250,11 @@ const Home = () => {
 
           <div className="hero-tagline">
             <p ref={line1Ref} className='hero-second-line'>
-              San Francisco–based creative technologist crafting digital experiences that feel
+              San Francisco based creative technologist crafting digital experiences that feel
             </p>
             <div className="last-line-wrapper">
               <p ref={lastLineRef} className="hero-last-line">
-                intuitive, intentional, and sincerely human.
+                intuitive, intentional, and genuinely human.
               </p>
             </div>
           </div>
