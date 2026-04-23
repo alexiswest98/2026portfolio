@@ -473,6 +473,14 @@
     margin-bottom: 5rem;
   }
 
+  .case-study-container {
+    flex-direction: column;
+    width: 80%;
+    height: auto;
+    padding: 2rem 1.25rem;
+    margin-bottom: 5rem;
+  }
+
   .case-study0-left {
     width: 100%;
     padding-right: 0;

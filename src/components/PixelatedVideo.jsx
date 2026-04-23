@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -10,6 +10,14 @@ const PixelatedVideo = ({ src, className = '' }) => {
     const gridRef = useRef(null)
     const triggerRef = useRef(null)
     const tweenRef = useRef(null)
+    const hideTimeoutRef = useRef(null)
+    const [showControls, setShowControls] = useState(false)
+
+    const handleInteraction = () => {
+        setShowControls(true)
+        clearTimeout(hideTimeoutRef.current)
+        hideTimeoutRef.current = setTimeout(() => setShowControls(false), 3000)
+    }
 
     const createGrid = () => {
         const grid = gridRef.current
@@ -83,11 +91,12 @@ const PixelatedVideo = ({ src, className = '' }) => {
             window.removeEventListener('resize', handleResize)
             triggerRef.current?.kill()
             tweenRef.current?.kill()
+            clearTimeout(hideTimeoutRef.current)
         }
     }, [])
 
     return (
-        <div ref={wrapperRef} className={`pixelate-wrapper ${className}`}>
+        <div ref={wrapperRef} className={`pixelate-wrapper ${className}`} onClick={handleInteraction} onMouseEnter={handleInteraction}>
             <video
                 ref={videoRef}
                 src={src}
@@ -96,7 +105,7 @@ const PixelatedVideo = ({ src, className = '' }) => {
                 muted
                 loop
                 playsInline
-                controls
+                controls={showControls}
             />
             <div ref={gridRef} className="pixel-grid" />
         </div>
