@@ -9,11 +9,13 @@ import Experiment2 from './pages/Experiment2'
 import Experiment3 from './pages/Experiment3'
 import Experiment4 from './pages/Experiment4'
 import ScrollToTop from './components/ScrollToTop'
+import VideoAutoplayManager from './components/VideoAutoplayManager'
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
+      <VideoAutoplayManager />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/case-study-0" element={<CaseStudy0 />} />
