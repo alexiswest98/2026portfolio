@@ -797,6 +797,7 @@ const CaseStudy0 = () => {
       <div className='cs0-footer'>
             <a className='footer-link' href='https://github.com/alexiswest98/ReadingBetween_ChromeExtension' target="_blank" rel="noopener noreferrer">github repo</a>
             <a className='footer-link' href='https://www.figma.com/design/qJEcmboSRUfWgc2c4jQlv7/Read-Between-AI-Chrome-Extension?node-id=513-601&t=Hn30t3EncrA5FyAQ-1' target="_blank" rel="noopener noreferrer">figma files</a>
+            <a className='footer-link' href='https://chromewebstore.google.com/detail/dhnpeehimeoepheolcifejocbccjhkkl?utm_source=item-share-cb' target="_blank" rel="noopener noreferrer">chrome web store</a>
       </div>
         </div> {/* cs-content */}
       </div> {/* cs0-body */}
